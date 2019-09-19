@@ -1,0 +1,69 @@
+{
+  "name": "node-nestjs-structure",
+  "version": "0.0.0",
+  "description": "Node.js framework NestJS project structure",
+  "main": "dist/app",
+  "scripts": {
+    "test": "jest --detectOpenHandles",
+    "lint": "tslint -p tsconfig.json",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "entity": "node bin/entity",
+    "build:entity": "rimraf dist/entity && tsc -p ./src/entity/tsconfig.json",
+    "build": "npm run lint && rimraf dist && tsc -b",
+    "prestart": "npm run build",
+    "start": "node dist/app",
+    "start:dev": "tsc-watch -b --onSuccess \"node dist/app\""
+  },
+  "dependencies": {
+    "@nestjs/common": "^6.7.1",
+    "@nestjs/core": "^6.7.1",
+    "@nestjs/passport": "^6.1.0",
+    "@nestjs/platform-express": "^6.7.1",
+    "@nestjs/serve-static": "^1.0.1",
+    "@nestjs/typeorm": "^6.1.3",
+    "aws-sdk": "^2.531.0",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.10.0",
+    "config": "^3.2.2",
+    "express-session": "^1.16.2",
+    "helmet": "^3.21.0",
+    "mysql": "^2.17.1",
+    "nest-router": "^1.0.9",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "typeorm": "^0.2.19"
+  },
+  "devDependencies": {
+    "@types/config": "0.0.34",
+    "@types/express-session": "^1.15.14",
+    "@types/helmet": "0.0.44",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.5",
+    "@types/passport-local": "^1.0.33",
+    "dtslint": "^0.9.8",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "rimraf": "^3.0.0",
+    "shelljs": "^0.8.3",
+    "ts-jest": "^24.1.0",
+    "tsc-watch": "^4.0.0",
+    "tslint": "^5.20.0",
+    "tslint-microsoft-contrib": "^6.2.0",
+    "tslint-sonarts": "^1.9.0",
+    "typeorm-model-generator": "^0.3.5",
+    "typescript": "^3.6.3",
+    "typescript-tslint-plugin": "^0.5.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CatsMiaow/node-nestjs-structure.git"
+  },
+  "keywords": [
+    "Node.js",
+    "NestJS",
+    "TypeScript"
+  ],
+  "homepage": "https://tested.kr",
+  "author": "infiltrator@naver.com",
+  "license": "MIT"
+}
