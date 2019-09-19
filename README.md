@@ -18,7 +18,7 @@ $ npm run build:entity
 ```sh
 $ npm run start:dev
 ```
-
+Run [http://localhost:3000](http://localhost:3000)
 ### Production
 ```sh
 # define NODE_ENV yourself
@@ -32,6 +32,7 @@ $ npm start
 +-- bin // Custom tasks
 +-- config // Env config files for `config` module
 +-- dist // Source build
++-- public // Static Files
 +-- src
 |   +-- common // Nest Module, global
 |   |   +-- controllers // Nest Controllers
@@ -65,6 +66,7 @@ $ npm start
   - [Login](src/base/controllers/login.controller.ts)
   - [Sample](src/sample/controllers/sample.controller.ts) Parameter, [DTO](src/sample/dto/sample.dto.ts)
 * [Database Query](src/sample/providers/database.service.ts) Sample
+
 
 #### Links.
 * [NestJS](https://docs.nestjs.com)

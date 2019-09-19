@@ -26,7 +26,7 @@ import { SampleModule } from './sample/sample.module';
       }),
       inject: [ConfigService]
     }),
-    // Static Files
+    // Static Folder
     // https://docs.nestjs.com/recipes/serve-static
     // https://docs.nestjs.com/techniques/mvc
     ServeStaticModule.forRoot({
