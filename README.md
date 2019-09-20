@@ -55,8 +55,9 @@ $ npm start
 ### Implementation
 * See [app](src/app.ts), [app.module](src/app.module.ts)
   - Database
-  - Static Files
   - Module Router
+  - Static Files
+  - Validation
 * [Global Authenticated Guard](src/common/guards/authenticated.guard.ts)
 * [Global Exception Filter](src/common/filters/exceptions.filter.ts)
 * [Global Logging Middleware](src/common/middleware/logger.middleware.ts)
