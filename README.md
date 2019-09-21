@@ -52,7 +52,7 @@ $ npm start
 +-- typings // Modules or global type definitions
 ```
 
-### Implementation
+### Implements
 * See [app](src/app.ts), [app.module](src/app.module.ts)
   - Database
   - Module Router
