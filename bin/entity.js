@@ -27,7 +27,9 @@ const dbConfig = config.get('db');
 shell.exec('typeorm-model-generator --noConfig --ce pascal '
   + `-h ${dbConfig.replication.master.host} `
   + `-p ${dbConfig.replication.master.port} `
-  + `-d ${db} `
+  // https://github.com/Kononnable/typeorm-model-generator/issues/204#issuecomment-533709527
+  // If you use multiple databases, add comma.
+  + `-d ${db} ` // + `-d ${db}, `
   + `-u ${dbConfig.replication.master.username} `
   + `-x ${dbConfig.replication.master.password} `
   + `-e ${dbConfig.type} `

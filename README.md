@@ -13,12 +13,14 @@ $ npm run entity dbname
 $ npm run entity dbname skip
 $ npm run build:entity
 ```
+If you use multiple databases, [modify them.](bin/entity.js#L31)
 
 ### Development
 ```sh
 $ npm run start:dev
 ```
 Run [http://localhost:3000](http://localhost:3000)
+
 ### Production
 ```sh
 # define NODE_ENV yourself
