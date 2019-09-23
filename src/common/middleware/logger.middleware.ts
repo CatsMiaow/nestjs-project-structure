@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 
 @Injectable()
 export class LoggerMiddleware implements NestMiddleware {
+  private readonly logger = new Logger();
   private readonly passUrl: string[] = ['/health'];
 
   public use(req: Request, res: Response, next: () => void) {
@@ -11,7 +12,7 @@ export class LoggerMiddleware implements NestMiddleware {
     }
 
     const user = req.user ? req.user.id : '';
-    Logger.log(`${req.method} ${req.originalUrl} - ${req.ip.replace('::ffff:', '')} ${user}`);
+    this.logger.log(`${req.method} ${req.originalUrl} - ${req.ip.replace('::ffff:', '')} ${user}`);
 
     next();
   }
