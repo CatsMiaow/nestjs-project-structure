@@ -30,7 +30,8 @@ import { SampleModule } from './sample/sample.module';
     // https://docs.nestjs.com/recipes/serve-static
     // https://docs.nestjs.com/techniques/mvc
     ServeStaticModule.forRoot({
-      rootPath: `${__dirname}/../public`
+      rootPath: `${__dirname}/../public`,
+      renderPath: '/'
     }),
     // Module Router
     // https://github.com/nestjsx/nest-router
