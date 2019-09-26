@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('tablename', { schema: 'dbname', database: 'dbname' })
-export class Tablename {
+@Entity('tablename2', { schema: 'dbname2', database: 'dbname2' })
+export class Tablename2 {
   @PrimaryGeneratedColumn({
     type: 'int',
     unsigned: true,

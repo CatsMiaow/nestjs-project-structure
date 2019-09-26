@@ -15,7 +15,7 @@
     "member-access": true,
     "member-ordering": [true, { "order": "fields-first" }],
     "ordered-imports": true,
-    "prefer-array-literal": true,
+    "prefer-array-literal": [true, { "allow-type-parameters": true }],
     "prefer-const": true,
     "prefer-for-of": true,
     "prefer-method-signature": true,
