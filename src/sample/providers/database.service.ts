@@ -62,13 +62,13 @@ export class DatabaseService {
   public async joinQuery(): Promise<boolean> {
     await this.tablename1.createQueryBuilder('tb1')
       // tslint:disable-next-line: no-duplicate-string
-      .innerJoinAndSelect('tablename2', 'tb2', 'tb2.id = tb1.id') // inner or left
+      .innerJoin('tablename2', 'tb2', 'tb2.id = tb1.id') // inner or left
       .select(['tb1', 'tb2.title'])
       .where('tb1.id = :id', { id: 123 })
       .getRawOne(); // getOne, getMany, getRawMany ...
 
     await this.tablename1.createQueryBuilder('tb1')
-      .innerJoin('tablename2', 'tb2', 'tb2.id = tb1.id')
+      .innerJoinAndSelect('tablename2', 'tb2', 'tb2.id = tb1.id')
       .getOne();
 
     await this.tablename1.createQueryBuilder('tb1')
