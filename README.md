@@ -76,3 +76,4 @@ $ npm start
 * [NestJS](https://docs.nestjs.com)
 * [Nest Sample](https://github.com/nestjs/nest/tree/master/sample)
 * [Awesome Nest](https://github.com/juliandavidmr/awesome-nestjs)
+* [TypeORM](https://typeorm.io)
