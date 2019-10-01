@@ -2,6 +2,7 @@ import { IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-
 
 /**
  * https://github.com/typestack/class-validator#validation-decorators
+ * https://docs.nestjs.com/techniques/serialization
  */
 export class SampleDto {
   @IsNumber()
@@ -12,15 +13,14 @@ export class SampleDto {
 
   @IsOptional()
   @IsString()
-  public content?: string;
+  public content?: string; // optional value
 
   @IsDateString()
-  public date!: string;
+  public date: string = new Date().toISOString(); // default value
 
   @IsNotEmpty()
   public something!: string;
 
-  @IsOptional()
   @IsNumber()
-  public page?: number;
+  public page: number = 1;
 }

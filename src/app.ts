@@ -18,8 +18,8 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   // https://docs.nestjs.com/techniques/validation
   app.useGlobalPipes(new ValidationPipe({
-    disableErrorMessages: true
-    // transform: true // transform object to DTO class
+    disableErrorMessages: true,
+    transform: true // transform object to DTO class
   }));
 
   if (process.env.NODE_ENV === 'production') {
