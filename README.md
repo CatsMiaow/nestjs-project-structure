@@ -71,6 +71,15 @@ $ npm start
   - [Sample](src/sample/controllers/sample.controller.ts) Parameter, [DTO](src/sample/dto/sample.dto.ts)
 * [Database Query](src/sample/providers/database.service.ts) Sample
 
+### File Naming for Class
+```ts
+export class camelCaseSuffix {} //= camel-case.suffix.ts
+// Except for suffix, camelCase to hyphen-case
+class fooBarNaming {} //= foo-bar.naming.ts
+class fooController {} //= foo.controller.ts
+class barQueryDto {} //= bar-query.dto.ts
+```
+
 
 #### Links.
 * [NestJS](https://docs.nestjs.com)
