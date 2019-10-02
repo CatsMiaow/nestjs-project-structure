@@ -1,5 +1,8 @@
-import { BadRequestException, Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Param, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
+import { Request, Response } from 'express';
 
+import { Roles } from '../../common/decorators';
+import { RolesGuard } from '../../common/guards';
 import { ConfigService } from '../../common/providers';
 import { SampleDto } from '../dto';
 import { DatabaseService } from '../providers';
@@ -7,6 +10,7 @@ import { DatabaseService } from '../providers';
 /**
  * route /test/sample/*
  */
+@UseGuards(RolesGuard)
 @Controller('sample')
 export class SampleController {
   constructor(
@@ -14,30 +18,37 @@ export class SampleController {
     private readonly dbquery: DatabaseService) {}
 
   @Get()
-  public hello() {
+  public sample() {
     return {
       hello: this.config.get('hello'),
       foo: this.config.get('foo')
     };
   }
 
-  @Get('foo1')
-  public foo1(@Query('name') name: string) {
+  @Get('hello') // test/sample/hello
+  public hello(@Req() req: Request, @Res() res: Response) {
+    return res.json({
+      message: req.originalUrl
+    });
+  }
+
+  @Get('hello/query') // test/sample/hello/query?name=anything
+  public helloQuery(@Query('name') name: string) {
     if (!name) {
       throw new BadRequestException('InvalidParameter');
     }
 
-    return `bar1: ${name}`;
+    return `hello: ${name}`;
   }
 
-  @Get('foo2/:name')
-  public foo2(@Param('name') name: string) {
-    return `bar2: ${name}`;
+  @Get('hello/param/:name') // test/sample/hello/param/anything
+  public helloParam(@Param('name') name: string) {
+    return `hello: ${name}`;
   }
 
-  @Post('foo3')
-  public foo3(@Body() param: SampleDto) {
-    return `bar3: ${JSON.stringify(param)}`;
+  @Post('hello/body') // test/sample/hello/body
+  public helloBody(@Body() param: SampleDto) {
+    return `hello: ${JSON.stringify(param)}`;
   }
 
   @Get('database')
@@ -45,5 +56,11 @@ export class SampleController {
     // this.dbquery.sample2();
     // this.dbquery.sample3();
     return this.dbquery.sample1();
+  }
+
+  @Roles('admin')
+  @Get('admin')
+  public admin() {
+    return 'Need admin role';
   }
 }

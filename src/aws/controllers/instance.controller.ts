@@ -1,7 +1,7 @@
 import { BadRequestException, Body, Controller, Get, NotFoundException, Post } from '@nestjs/common';
 import { DescribeInstancesResult, DescribeInstanceStatusResult } from 'aws-sdk/clients/ec2';
 
-import { EC2Service } from '../providers/ec2.service';
+import { EC2Service } from '../providers';
 
 /**
  * AWS EC2 Instance

@@ -1,8 +1,10 @@
 // tslint:disable: no-any no-console
 import { Logger } from '@nestjs/common';
 
-// https://docs.nestjs.com/techniques/logger
-// Non-Injectable
+/**
+ * https://docs.nestjs.com/techniques/logger
+ * Non-Injectable
+ */
 export class CustomLogger extends Logger {
   public log(message: any, context?: string) {
     console.log(this.prefix(context), message);

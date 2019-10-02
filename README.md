@@ -65,6 +65,7 @@ $ npm start
 * [Global Logging Middleware](src/common/middleware/logger.middleware.ts)
 * [Session Login with Passport](src/base/providers/local.strategy.ts)
 * [Custom Logger for Production](src/common/providers/custom-logger.service.ts)
+* [Role-based Guard](src/common/guards/roles.guard.ts)
 * [AWS SDK Example](src/aws)
 * Controller Routes
   - [Login](src/base/controllers/login.controller.ts)

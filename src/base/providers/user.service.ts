@@ -12,7 +12,8 @@ export class UserService {
     return {
       id: 'test',
       name: 'foo',
-      email: 'bar'
+      email: 'bar',
+      roles: [] // ['admin', 'etc', ...]
     };
   }
 }
