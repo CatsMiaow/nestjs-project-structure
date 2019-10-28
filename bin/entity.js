@@ -24,16 +24,21 @@ const MODEL_DIR = path.join(__dirname, '../src/entity', db);
 rimraf.sync(`${MODEL_DIR}/*`);
 
 const dbConfig = config.get('db');
-shell.exec('typeorm-model-generator --noConfig --ce pascal '
-  + `-h ${dbConfig.replication.master.host} `
-  + `-p ${dbConfig.replication.master.port} `
+const generatorConfig = [
+  '--noConfig',
+  '--ce pascal',
+  `--namingStrategy ${path.join(__dirname, 'NamingStrategy.js')}`,
+  `-h ${dbConfig.replication.master.host}`,
+  `-p ${dbConfig.replication.master.port}`,
   // https://github.com/Kononnable/typeorm-model-generator/issues/204#issuecomment-533709527
   // If you use multiple databases, add comma.
-  + `-d ${db} ` // + `-d ${db}, `
-  + `-u ${dbConfig.replication.master.username} `
-  + `-x ${dbConfig.replication.master.password} `
-  + `-e ${dbConfig.type} `
-  + `-o ${MODEL_DIR}`);
+  `-d ${db}`, // `-d ${db},`,
+  `-u ${dbConfig.replication.master.username}`,
+  `-x ${dbConfig.replication.master.password}`,
+  `-e ${dbConfig.type}`,
+  `-o ${MODEL_DIR}`
+];
+shell.exec(`typeorm-model-generator ${generatorConfig.join(' ')}`);
 
 const files = [];
 fs.readdirSync(MODEL_DIR).forEach((file) => {
