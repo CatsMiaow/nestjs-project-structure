@@ -23,7 +23,8 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
       return {
         id: result.id,
         name: result.name,
-        email: result.email
+        email: result.email,
+        roles: result.roles
       };
     } catch (err) {
       if (err.code) {
