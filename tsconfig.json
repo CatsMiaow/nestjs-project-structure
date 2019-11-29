@@ -30,7 +30,7 @@
   ],
   "exclude": [
     "node_modules",
-    "src/entity"
+    "src/entity/**/*"
   ],
   "references": [
     { "path": "src/entity" }
