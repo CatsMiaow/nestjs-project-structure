@@ -12,9 +12,7 @@ Node.js framework NestJS project structure
 ```sh
 # 1. node_modules
 $ npm i
-# 2. edit env config
-$ vim ./config/*.json
-# 3. database model entity generate
+# 2. database model entity generate
 $ npm run entity dbname
 # OR
 $ npm run entity dbname skip
