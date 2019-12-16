@@ -1,4 +1,5 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -10,11 +11,17 @@ import { CommonModule } from './common/common.module';
 import { ExceptionsFilter } from './common/filters';
 import { AuthenticatedGuard } from './common/guards';
 import { LoggerMiddleware } from './common/middleware';
-import { ConfigService } from './common/providers';
+import { configuration } from './config';
 import { SampleModule } from './sample/sample.module';
 
 @Module({
   imports: [
+    // Configuration
+    // https://docs.nestjs.com/techniques/configuration
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configuration]
+    }),
     // Database
     // https://docs.nestjs.com/techniques/database
     TypeOrmModule.forRootAsync({
@@ -22,7 +29,7 @@ import { SampleModule } from './sample/sample.module';
         entities: [`${__dirname}/entity/**/*.{js,ts}`],
         subscribers: [`${__dirname}/subscriber/**/*.{js,ts}`],
         migrations: [`${__dirname}/migration/**/*.{js,ts}`],
-        ...config.util.cloneDeep(config.get('db'))
+        ...config.get('db')
       }),
       inject: [ConfigService]
     }),

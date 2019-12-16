@@ -1,8 +1,13 @@
-const config = require('config');
+const dotenv = require('dotenv');
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('rimraf');
 const shell = require('shelljs');
+
+dotenv.config();
+if (!process.env.DB_HOST) {
+  throw new Error('Create a .env file');
+}
 
 /**
  * npm run entity dbname [skip]
@@ -23,19 +28,18 @@ if (!DATABASE.includes(db)) {
 const MODEL_DIR = path.join(__dirname, '../src/entity', db);
 rimraf.sync(`${MODEL_DIR}/*`);
 
-const dbConfig = config.get('db');
 const generatorConfig = [
   '--noConfig',
   '--ce pascal',
   `--namingStrategy ${path.join(__dirname, 'NamingStrategy.js')}`,
-  `-h ${dbConfig.replication.master.host}`,
-  `-p ${dbConfig.replication.master.port}`,
+  `-h ${process.env.DB_HOST}`,
+  `-p ${process.env.DB_PORT}`,
   // https://github.com/Kononnable/typeorm-model-generator/issues/204#issuecomment-533709527
   // If you use multiple databases, add comma.
   `-d ${db}`, // `-d ${db},`,
-  `-u ${dbConfig.replication.master.username}`,
-  `-x ${dbConfig.replication.master.password}`,
-  `-e ${dbConfig.type}`,
+  `-u ${process.env.DB_USER}`,
+  `-x ${process.env.DB_PASSWORD}`,
+  `-e ${process.env.DB_TYPE}`,
   `-o ${MODEL_DIR}`
 ];
 shell.exec(`typeorm-model-generator ${generatorConfig.join(' ')}`);

@@ -1,6 +1,13 @@
 # node-nestjs-structure
 Node.js framework NestJS project structure
 
+### Configuration
+1. Create a `.env` file
+    - Rename the [.env.sample](.env.sample) file to `.env` to fix it.
+2. Edit env config
+    - Edit the file in the [config](src/config) folder.
+    - `default`, `development`, `production`
+
 ### Installation
 ```sh
 # 1. node_modules
@@ -13,7 +20,7 @@ $ npm run entity dbname
 $ npm run entity dbname skip
 $ npm run build:entity
 ```
-If you use multiple databases, [modify them.](bin/entity.js#L35)
+If you use multiple databases, [modify them.](bin/entity.js#L39)
 
 ### Development
 ```sh

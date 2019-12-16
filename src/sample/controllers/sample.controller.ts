@@ -1,9 +1,9 @@
 import { BadRequestException, Body, Controller, Get, Param, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { Request, Response } from 'express';
 
 import { Roles } from '../../common/decorators';
 import { RolesGuard } from '../../common/guards';
-import { ConfigService } from '../../common/providers';
 import { SampleDto } from '../dto';
 import { DatabaseService } from '../providers';
 
