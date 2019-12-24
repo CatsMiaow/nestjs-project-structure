@@ -37,10 +37,10 @@ $ npm start
 ### Folders
 ```js
 +-- bin // Custom tasks
-+-- config // Env config files for `config` module
 +-- dist // Source build
 +-- public // Static Files
 +-- src
+|   +-- config // Environments config files
 |   +-- common // Nest Module, global
 |   |   +-- controllers // Nest Controllers
 |   |   +-- decorators // Nest Decorators
