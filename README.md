@@ -40,8 +40,8 @@ $ npm start
 +-- dist // Source build
 +-- public // Static Files
 +-- src
-|   +-- config // Environments config files
-|   +-- common // Nest Module, global
+|   +-- config // Environment Configuration
+|   +-- common // Global Nest Module
 |   |   +-- controllers // Nest Controllers
 |   |   +-- decorators // Nest Decorators
 |   |   +-- dto // DTO (Data Transfer Object) Schema, Validation
