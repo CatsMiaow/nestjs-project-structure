@@ -1,1 +1,1 @@
-export * from './tablename2';
+export * from './tablename2.entity';

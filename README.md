@@ -77,6 +77,14 @@ $ npm start
   - [Sample](src/sample/controllers/sample.controller.ts) Parameter, [DTO](src/sample/dto/sample.dto.ts)
 * [Database Query](src/sample/providers/database.service.ts) Sample
 
+### Documentation
+```sh
+# APP, Compodoc
+$ npm run doc #> http://localhost:8080
+# API, Swagger - src/swagger.ts
+$ npm run doc:api #> http://localhost:8000/api
+```
+
 ### File Naming for Class
 ```ts
 export class camelCaseSuffix {} //= camel-case.suffix.ts

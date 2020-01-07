@@ -1,0 +1,8 @@
+{
+  "sourceRoot": "src",
+  "entryFile": "app",
+  "compilerOptions": {
+    "tsConfigPath": "tsconfig.json",
+    "plugins": ["@nestjs/swagger/plugin"]
+  }
+}

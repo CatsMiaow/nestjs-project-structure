@@ -1,13 +1,11 @@
 {
+  "extends": "../../tsconfig",
   "compilerOptions": {
     "composite": true,
-    "target": "es2017",
-    "outDir": "../../dist/entity",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "declaration": true,
-    "sourceMap": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  }
+    "rootDir": "../../src",
+    "noUnusedLocals": false,
+    "strictPropertyInitialization": false
+  },
+  "include": ["./**/*"],
+  "exclude": ["node_modules"]
 }
