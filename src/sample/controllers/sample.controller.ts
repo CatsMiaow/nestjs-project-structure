@@ -6,6 +6,7 @@ import { Roles } from '../../common/decorators';
 import { RolesGuard } from '../../common/guards';
 import { SampleDto } from '../dto';
 import { DatabaseService } from '../providers';
+import { Tablename1 } from '../../entity/dbname1';
 
 /**
  * route /test/sample/*
@@ -15,25 +16,26 @@ import { DatabaseService } from '../providers';
 export class SampleController {
   constructor(
     private readonly config: ConfigService,
-    private readonly dbquery: DatabaseService) {}
+    private readonly dbquery: DatabaseService,
+  ) {}
 
   @Get()
-  public sample() {
+  public sample(): object {
     return {
       hello: this.config.get('hello'),
-      foo: this.config.get('foo')
+      foo: this.config.get('foo'),
     };
   }
 
   @Get('hello') // test/sample/hello
-  public hello(@Req() req: Request, @Res() res: Response) {
-    return res.json({
-      message: req.originalUrl
+  public hello(@Req() req: Request, @Res() res: Response): void {
+    res.json({
+      message: req.originalUrl,
     });
   }
 
   @Get('hello/query') // test/sample/hello/query?name=anything
-  public helloQuery(@Query('name') name: string) {
+  public helloQuery(@Query('name') name: string): string {
     if (!name) {
       throw new BadRequestException('InvalidParameter');
     }
@@ -42,17 +44,17 @@ export class SampleController {
   }
 
   @Get('hello/param/:name') // test/sample/hello/param/anything
-  public helloParam(@Param('name') name: string) {
+  public helloParam(@Param('name') name: string): string {
     return `hello: ${name}`;
   }
 
   @Post('hello/body') // test/sample/hello/body
-  public helloBody(@Body() param: SampleDto) {
+  public helloBody(@Body() param: SampleDto): string {
     return `hello: ${JSON.stringify(param)}`;
   }
 
   @Get('database')
-  public database() {
+  public database(): Promise<Tablename1[]> {
     // this.dbquery.sample2();
     // this.dbquery.sample3();
     return this.dbquery.sample1();
@@ -60,7 +62,7 @@ export class SampleController {
 
   @Roles('admin')
   @Get('admin')
-  public admin() {
+  public admin(): string {
     return 'Need admin role';
   }
 }

@@ -17,20 +17,20 @@ export class EC2Service {
     return this.instance.describeInstances({
       Filters: [
         // { Name: 'tag:Team', Values: ['test'] }
-      ]
+      ],
     }).promise();
   }
 
   public async describeInstanceAttribute(instanceId: string, attribute: InstanceAttributeName = 'userData'): Promise<InstanceAttribute> {
     return this.instance.describeInstanceAttribute({
       InstanceId: instanceId,
-      Attribute: attribute
+      Attribute: attribute,
     }).promise();
   }
 
   public async describeInstanceStatus(instanceIds: string[]): Promise<DescribeInstanceStatusResult> {
     return this.instance.describeInstanceStatus({
-      InstanceIds: instanceIds
+      InstanceIds: instanceIds,
     }).promise();
   }
 }

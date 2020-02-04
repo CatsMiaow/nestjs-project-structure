@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 
-// tslint:disable-next-line: no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type TemplateParameter = any[];
 
 @Injectable()
 export class UtilService {
-  public template<T>(templateData: TemplateStringsArray, param: T[], delimiter: string = '\n'): string {
-    let output: string = '';
-    for (let i: number = 0; i < param.length; i += 1) {
+  public template<T>(templateData: TemplateStringsArray, param: T[], delimiter = '\n'): string {
+    let output = '';
+    for (let i = 0; i < param.length; i += 1) {
       output += templateData[i] + param[i];
     }
     output += templateData[param.length];

@@ -6,7 +6,7 @@ import { Request } from 'express';
 export class AuthenticatedGuard implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
 
-  public canActivate(context: ExecutionContext) {
+  public canActivate(context: ExecutionContext): boolean {
     // https://github.com/nestjs/nest/issues/964#issuecomment-480834786
     const isPublic = this.reflector.get<boolean>('isPublic', context.getHandler());
     if (isPublic) {

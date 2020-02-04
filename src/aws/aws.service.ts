@@ -13,7 +13,7 @@ export class AWSService {
     this.options = {
       accessKeyId: config.get('aws.access_key_id'),
       secretAccessKey: config.get('aws.secret_access_key'),
-      region: config.get('aws.region')
+      region: config.get('aws.region'),
     };
   }
 }

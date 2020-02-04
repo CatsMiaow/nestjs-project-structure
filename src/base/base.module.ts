@@ -5,6 +5,6 @@ import * as providers from './providers';
 
 @Module({
   controllers: Object.values(controllers),
-  providers: Object.values(providers)
+  providers: Object.values(providers),
 })
 export class BaseModule {}

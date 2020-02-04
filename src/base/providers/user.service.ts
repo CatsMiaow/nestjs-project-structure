@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 
-import { IUser } from '../interfaces';
+import { SessionUser } from '../interfaces';
 
 @Injectable()
 export class UserService {
-  public async getUserData(username: string, password: string): Promise<IUser | null> {
+  public getUserData(username: string, password: string): SessionUser | null {
     if (!username || !password) {
       return null;
     }
@@ -13,7 +13,7 @@ export class UserService {
       id: 'test',
       name: 'foo',
       email: 'bar',
-      roles: [] // ['admin', 'etc', ...]
+      roles: [], // ['admin', 'etc', ...]
     };
   }
 }

@@ -6,6 +6,6 @@ import * as providers from './providers';
 
 @Module({
   controllers: Object.values(controllers),
-  providers: [AWSService, ...Object.values(providers)]
+  providers: [AWSService, ...Object.values(providers)],
 })
 export class AWSModule {}

@@ -11,14 +11,14 @@ export class RolesGuard implements CanActivate {
       // Controller Roles
       ...(this.reflector.get<string[]>('roles', context.getClass()) || []),
       // Method Roles
-      ...(this.reflector.get<string[]>('roles', context.getHandler()) || [])
+      ...(this.reflector.get<string[]>('roles', context.getHandler()) || []),
     ];
     if (roles.length < 1) {
       return true;
     }
 
     const request = context.switchToHttp().getRequest<Request>();
-    const user = request.user;
+    const { user } = request;
     if (!user) {
       return false;
     }

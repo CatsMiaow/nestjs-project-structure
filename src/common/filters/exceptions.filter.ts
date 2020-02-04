@@ -3,7 +3,7 @@ import { BaseExceptionFilter } from '@nestjs/core';
 
 @Catch()
 export class ExceptionsFilter extends BaseExceptionFilter {
-  public catch(exception: unknown, host: ArgumentsHost) {
+  public catch(exception: unknown, host: ArgumentsHost): void {
     super.catch(exception, host);
 
     const status = exception instanceof HttpException

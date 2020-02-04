@@ -1,8 +1,10 @@
-import { IUser } from "../src/base/interfaces";
+// https://github.com/typescript-eslint/typescript-eslint/issues/1479
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { SessionUser } from '../src/base/interfaces';
 
 declare global {
   namespace Express {
-    // tslint:disable-next-line: no-empty-interface
-    interface User extends IUser {}
+    // eslint-disable-next-line @typescript-eslint/no-empty-interface
+    interface User extends SessionUser {}
   }
 }

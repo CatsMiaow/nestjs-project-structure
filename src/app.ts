@@ -14,12 +14,12 @@ import { CustomLogger } from './common/providers';
  * https://github.com/nestjs/nest/tree/master/sample
  * https://github.com/nestjs/nest/issues/2249#issuecomment-494734673
  */
-async function bootstrap() {
+async function bootstrap(): Promise<void> {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   // https://docs.nestjs.com/techniques/validation
   app.useGlobalPipes(new ValidationPipe({
     disableErrorMessages: true,
-    transform: true // transform object to DTO class
+    transform: true, // transform object to DTO class
   }));
 
   if (process.env.NODE_ENV === 'production') {
@@ -33,7 +33,7 @@ async function bootstrap() {
     secret: 'tEsTeD',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: 'auto' }
+    cookie: { secure: 'auto' },
   }));
   app.use(passport.initialize());
   app.use(passport.session());

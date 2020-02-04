@@ -1,5 +1,5 @@
 import { BadRequestException, Body, Controller, Get, NotFoundException, Post } from '@nestjs/common';
-import { DescribeInstancesResult, DescribeInstanceStatusResult } from 'aws-sdk/clients/ec2';
+import { DescribeInstancesResult, DescribeInstanceStatusResult, ReservationList, InstanceStatusList } from 'aws-sdk/clients/ec2';
 
 import { EC2Service } from '../providers';
 
@@ -11,7 +11,7 @@ export class InstanceController {
   constructor(private readonly instance: EC2Service) {}
 
   @Get('list')
-  public async list() {
+  public async list(): Promise<ReservationList> {
     const result: DescribeInstancesResult = await this.instance.describeInstances();
 
     if (!result.Reservations) {
@@ -22,7 +22,7 @@ export class InstanceController {
   }
 
   @Post('status')
-  public async status(@Body('ids') ids: string[]) {
+  public async status(@Body('ids') ids: string[]): Promise<InstanceStatusList> {
     if (!ids || !Array.isArray(ids)) {
       throw new BadRequestException('InvalidParameter');
     }

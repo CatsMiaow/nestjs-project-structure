@@ -19,14 +19,11 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true, // https://github.com/Microsoft/TypeScript/issues/2577
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "plugins": [
-      { "name": "typescript-tslint-plugin" }
-    ]
+    "skipLibCheck": true
   },
   "include": [
-    "src/**/*",
-    "typings/global.d.ts"
+    "typings/global.d.ts",
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",

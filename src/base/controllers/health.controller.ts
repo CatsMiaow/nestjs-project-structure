@@ -7,10 +7,9 @@ import { Public } from '../../common/decorators';
  */
 @Controller()
 export class HealthController {
-
   @Public()
   @Get('health')
-  public health() {
+  public health(): string {
     return 'OK';
   }
 }

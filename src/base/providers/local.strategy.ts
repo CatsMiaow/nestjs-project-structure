@@ -2,7 +2,8 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-local';
 
-import { UserService } from '../providers';
+import { UserService } from '.';
+import { SessionUser } from '../interfaces';
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
@@ -10,10 +11,10 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     super();
   }
 
-  public async validate(username: string, password: string) {
+  public validate(username: string, password: string): SessionUser {
     try {
       // or Cognito
-      const result = await this.user.getUserData(username, password);
+      const result = this.user.getUserData(username, password);
 
       if (!result) {
         throw new UnauthorizedException('InvalidUser');
@@ -24,7 +25,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
         id: result.id,
         name: result.name,
         email: result.email,
-        roles: result.roles
+        roles: result.roles,
       };
     } catch (err) {
       if (err.code) {

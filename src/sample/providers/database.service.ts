@@ -28,9 +28,8 @@ export class DatabaseService {
      * https://typeorm.io/#/entity-manager-api
      */
     @InjectEntityManager()
-    private readonly manager: EntityManager
+    private readonly manager: EntityManager,
   ) {
-
     /**
      * Sample3
      * https://typeorm.io/#/entity-manager-api - getRepository
@@ -61,7 +60,6 @@ export class DatabaseService {
    */
   public async joinQuery(): Promise<boolean> {
     await this.tablename1.createQueryBuilder('tb1')
-      // tslint:disable-next-line: no-duplicate-string
       .innerJoin('tablename2', 'tb2', 'tb2.id = tb1.id') // inner or left
       .select(['tb1', 'tb2.title'])
       .where('tb1.id = :id', { id: 123 })

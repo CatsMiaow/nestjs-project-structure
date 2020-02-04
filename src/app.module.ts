@@ -20,54 +20,54 @@ import { SampleModule } from './sample/sample.module';
     // https://docs.nestjs.com/techniques/configuration
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [configuration]
+      load: [configuration],
     }),
     // Database
     // https://docs.nestjs.com/techniques/database
     TypeOrmModule.forRootAsync({
-      useFactory: async (config: ConfigService) => ({
+      useFactory: (config: ConfigService) => ({
         entities: [`${__dirname}/entity/**/*.{js,ts}`],
         subscribers: [`${__dirname}/subscriber/**/*.{js,ts}`],
         migrations: [`${__dirname}/migration/**/*.{js,ts}`],
-        ...config.get('db')
+        ...config.get('db'),
       }),
-      inject: [ConfigService]
+      inject: [ConfigService],
     }),
     // Static Folder
     // https://docs.nestjs.com/recipes/serve-static
     // https://docs.nestjs.com/techniques/mvc
     ServeStaticModule.forRoot({
       rootPath: `${__dirname}/../public`,
-      renderPath: '/'
+      renderPath: '/',
     }),
     // Module Router
     // https://github.com/nestjsx/nest-router
     RouterModule.forRoutes([{
       path: 'aws',
-      module: AWSModule
+      module: AWSModule,
     }, {
       path: 'test',
-      module: SampleModule
+      module: SampleModule,
     }]),
     // Service Modules
     CommonModule, // Global
     BaseModule,
     AWSModule,
-    SampleModule
+    SampleModule,
   ],
   providers: [{
     // Global Guard, Auth check
     provide: APP_GUARD,
-    useClass: AuthenticatedGuard
+    useClass: AuthenticatedGuard,
   }, {
     // Global Filter, Exception check
     provide: APP_FILTER,
-    useClass: ExceptionsFilter
-  }]
+    useClass: ExceptionsFilter,
+  }],
 })
 export class AppModule implements NestModule {
   // Global Middleware, Inbound logging
-  public configure(consumer: MiddlewareConsumer) {
+  public configure(consumer: MiddlewareConsumer): void {
     consumer.apply(LoggerMiddleware).forRoutes('*');
   }
 }

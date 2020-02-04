@@ -6,7 +6,7 @@ import { AppModule } from './app.module';
 /**
  * https://docs.nestjs.com/recipes/swagger
  */
-async function bootstrap() {
+async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
 
   const options = new DocumentBuilder()

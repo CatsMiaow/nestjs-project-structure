@@ -10,9 +10,9 @@ import * as providers from './providers';
   imports: [TypeOrmModule.forFeature([
     // ...Object.values(tables)
     Tablename1,
-    Tablename2
+    Tablename2,
   ])],
   controllers: Object.values(controllers),
-  providers: Object.values(providers)
+  providers: Object.values(providers),
 })
 export class SampleModule {}

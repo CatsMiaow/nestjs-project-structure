@@ -1,0 +1,9 @@
+{
+  "root": true,
+  "extends": "../.eslintrc",
+  "parserOptions": {
+    "tsconfigRootDir": "test",
+    "project": "tsconfig.json",
+    "sourceType": "module"
+  }
+}

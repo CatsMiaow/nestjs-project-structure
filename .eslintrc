@@ -1,0 +1,40 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "tsconfigRootDir": ".",
+    "project": "tsconfig.json",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "sonarjs", "jest"],
+  "extends": [
+    "eslint:recommended",
+    "airbnb-typescript/base",
+    "plugin:jest/recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "rules": {
+    "class-methods-use-this": "off",
+    // https://github.com/typescript-eslint/typescript-eslint/issues/977
+    "lines-between-class-members": "off",
+    "max-len": ["error", { "code": 140 }],
+    "newline-per-chained-call": "off",
+    "object-curly-newline": "off",
+    "spaced-comment": ["error", "always", { "line": { "markers": ["/", "#region", "#endregion"] } }],
+
+    // https://github.com/benmosher/eslint-plugin-import/issues/1453
+    "import/no-cycle": "off",
+    "import/no-default-export": "error",
+    // https://github.com/benmosher/eslint-plugin-import/issues/903
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+
+    "@typescript-eslint/consistent-type-assertions": ["error", { "assertionStyle": "angle-bracket" }],
+    "@typescript-eslint/prefer-includes": "off",
+
+    "sonarjs/no-duplicate-string": "off"
+  }
+}

@@ -29,5 +29,5 @@ export class SampleDto {
   public something!: string;
 
   @IsNumber()
-  public page: number = 1;
+  public page = 1;
 }
