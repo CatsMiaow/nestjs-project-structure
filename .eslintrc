@@ -18,6 +18,8 @@
   ],
   "rules": {
     "class-methods-use-this": "off",
+    // https://github.com/typescript-eslint/typescript-eslint/issues/1277
+    "consistent-return": "off",
     // https://github.com/typescript-eslint/typescript-eslint/issues/977
     "lines-between-class-members": "off",
     "max-len": ["error", { "code": 140 }],
