@@ -5,7 +5,7 @@ type TemplateParameter = any[];
 
 @Injectable()
 export class UtilService {
-  public template<T>(templateData: TemplateStringsArray, param: T[], delimiter = '\n'): string {
+  public template<T>(templateData: TemplateStringsArray, param: T[], delimiter: string = '\n'): string {
     let output = '';
     for (let i = 0; i < param.length; i += 1) {
       output += templateData[i] + param[i];

@@ -21,9 +21,17 @@
     // https://github.com/typescript-eslint/typescript-eslint/issues/1277
     "consistent-return": "off",
     // https://github.com/typescript-eslint/typescript-eslint/issues/977
+    "func-names": "off",
     "lines-between-class-members": "off",
     "max-len": ["error", { "code": 140 }],
     "newline-per-chained-call": "off",
+    "no-continue": "off",
+    // https://github.com/airbnb/javascript/issues/1342
+    "no-param-reassign": ["error", { "props": false }],
+    // https://github.com/airbnb/javascript/issues/1271
+    // https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L334-L352
+    "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
     "object-curly-newline": "off",
     "spaced-comment": ["error", "always", { "line": { "markers": ["/", "#region", "#endregion"] } }],
 
@@ -35,7 +43,11 @@
     "import/prefer-default-export": "off",
 
     "@typescript-eslint/consistent-type-assertions": ["error", { "assertionStyle": "angle-bracket" }],
+    // https://github.com/typescript-eslint/typescript-eslint/issues/902
+    "@typescript-eslint/no-inferrable-types": ["error", { "ignoreParameters": true, "ignoreProperties": true }],
+    "@typescript-eslint/no-misused-promises": ["error", { "checksVoidReturn": false }],
     "@typescript-eslint/prefer-includes": "off",
+    "@typescript-eslint/typedef": "error",
 
     "sonarjs/no-duplicate-string": "off"
   }

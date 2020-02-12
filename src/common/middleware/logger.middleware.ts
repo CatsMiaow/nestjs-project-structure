@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 
 @Injectable()
 export class LoggerMiddleware implements NestMiddleware {
-  private readonly logger = new Logger();
+  private readonly logger: Logger = new Logger();
   private readonly passUrl: string[] = ['/health'];
 
   public use(req: Request, res: Response, next: () => void): void {

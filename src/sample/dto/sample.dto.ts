@@ -22,12 +22,12 @@ export class SampleDto {
   public date: string = new Date().toISOString(); // default value
 
   @IsString() // Change date format
-  @Transform((value) => DateService.FORMAT(value))
+  @Transform((value: string) => DateService.FORMAT(value))
   public datetime!: string;
 
   @IsNotEmpty()
   public something!: string;
 
   @IsNumber()
-  public page = 1;
+  public page: number = 1;
 }

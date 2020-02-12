@@ -6,7 +6,7 @@ export const util = {
   },
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   merge(target: Record<string, any>, source: Record<string, any>): object {
-    Object.keys(source).forEach((key) => {
+    Object.keys(source).forEach((key: string) => {
       if (this.isObject(target[key]) && this.isObject(source[key])) {
         Object.assign(source[key], this.merge(target[key], source[key]));
       }
