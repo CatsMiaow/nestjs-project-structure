@@ -87,8 +87,8 @@ $ npm run doc:api #> http://localhost:8000/api
 
 #### File Naming for Class
 ```ts
-export class CamelCaseSuffix {} //= camel-case.suffix.ts
-// Except for suffix, camelCase to hyphen-case
+export class PascalCaseSuffix {} //= pascal-case.suffix.ts
+// Except for suffix, PascalCase to hyphen-case
 class FooBarNaming {} //= foo-bar.naming.ts
 class FooController {} //= foo.controller.ts
 class BarQueryDto {} //= bar-query.dto.ts
