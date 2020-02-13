@@ -87,11 +87,11 @@ $ npm run doc:api #> http://localhost:8000/api
 
 #### File Naming for Class
 ```ts
-export class camelCaseSuffix {} //= camel-case.suffix.ts
+export class CamelCaseSuffix {} //= camel-case.suffix.ts
 // Except for suffix, camelCase to hyphen-case
-class fooBarNaming {} //= foo-bar.naming.ts
-class fooController {} //= foo.controller.ts
-class barQueryDto {} //= bar-query.dto.ts
+class FooBarNaming {} //= foo-bar.naming.ts
+class FooController {} //= foo.controller.ts
+class BarQueryDto {} //= bar-query.dto.ts
 ```
 
 #### Interface Naming
