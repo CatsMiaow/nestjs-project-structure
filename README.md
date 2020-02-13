@@ -85,7 +85,7 @@ $ npm run doc #> http://localhost:8080
 $ npm run doc:api #> http://localhost:8000/api
 ```
 
-### File Naming for Class
+#### File Naming for Class
 ```ts
 export class camelCaseSuffix {} //= camel-case.suffix.ts
 // Except for suffix, camelCase to hyphen-case
@@ -94,6 +94,14 @@ class fooController {} //= foo.controller.ts
 class barQueryDto {} //= bar-query.dto.ts
 ```
 
+#### Interface Naming
+```ts
+// https://stackoverflow.com/questions/541912
+// https://stackoverflow.com/questions/2814805 
+interface User {}
+interface CustomeUser extends User {}
+interface ThirdCustomeUser extends CustomeUser {}
+```
 
 #### Links.
 * [NestJS](https://docs.nestjs.com)
