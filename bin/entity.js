@@ -30,7 +30,9 @@ rimraf.sync(`${MODEL_DIR}/*`);
 
 const generatorConfig = [
   '--noConfig',
-  '--ce pascal',
+  '--cf none', // file names
+  '--ce pascal', // class names
+  '--cp none', // property names
   `--namingStrategy ${path.join(__dirname, 'NamingStrategy.js')}`,
   `-h ${process.env.DB_HOST}`,
   `-p ${process.env.DB_PORT}`,
