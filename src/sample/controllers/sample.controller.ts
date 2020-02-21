@@ -4,9 +4,10 @@ import { Request, Response } from 'express';
 
 import { Roles } from '../../common/decorators';
 import { RolesGuard } from '../../common/guards';
+import { Tablename1 } from '../../entity/dbname1';
 import { SampleDto } from '../dto';
 import { DatabaseService } from '../providers';
-import { Tablename1 } from '../../entity/dbname1';
+import { FoobarService } from '../../shared/foobar';
 
 /**
  * route /test/sample/*
@@ -17,6 +18,7 @@ export class SampleController {
   constructor(
     private readonly config: ConfigService,
     private readonly dbquery: DatabaseService,
+    private readonly foobarService: FoobarService,
   ) {}
 
   @Get()
@@ -58,6 +60,11 @@ export class SampleController {
     // this.dbquery.sample2();
     // this.dbquery.sample3();
     return this.dbquery.sample1();
+  }
+
+  @Get('foobars')
+  public foobars(): Promise<Tablename1[]> {
+    return this.foobarService.getFoobars();
   }
 
   @Roles('admin')
