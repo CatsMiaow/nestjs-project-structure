@@ -50,6 +50,11 @@ export class SampleController {
     return `hello: ${name}`;
   }
 
+  @Get('hello/number/:foo')
+  public helloNumber(@Param('foo') foo: number, @Query('bar') bar: number): object {
+    return { foo, bar, fooBar: 'string' };
+  }
+
   @Post('hello/body') // test/sample/hello/body
   public helloBody(@Body() param: SampleDto): string {
     return `hello: ${JSON.stringify(param)}`;
