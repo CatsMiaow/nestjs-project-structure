@@ -64,7 +64,7 @@
     "rimraf": "^3.0.2",
     "shelljs": "^0.8.3",
     "ts-jest": "^25.2.1",
-    "typeorm-model-generator": "^0.4.1",
+    "typeorm-model-generator": "^0.4.1-no-engines.2",
     "typescript": "^3.8.3"
   },
   "repository": {
