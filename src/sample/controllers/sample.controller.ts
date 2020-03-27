@@ -21,7 +21,7 @@ export class SampleController {
     private readonly foobarService: FoobarService,
   ) {}
 
-  @Get()
+  @Get() // http://localhost:3000/test/sample
   public sample(): object {
     return {
       hello: this.config.get('hello'),
@@ -29,35 +29,35 @@ export class SampleController {
     };
   }
 
-  @Get('hello') // test/sample/hello
+  @Get('hello') // http://localhost:3000/test/sample/hello
   public hello(@Req() req: Request, @Res() res: Response): void {
     res.json({
       message: req.originalUrl,
     });
   }
 
-  @Get('hello/query') // test/sample/hello/query?name=anything
+  @Get('hello/query') // http://localhost:3000/test/sample/hello/query?name=anything
   public helloQuery(@Query('name') name: string): string {
     if (!name) {
       throw new BadRequestException('InvalidParameter');
     }
 
-    return `hello: ${name}`;
+    return `helloQuery: ${name}`;
   }
 
-  @Get('hello/param/:name') // test/sample/hello/param/anything
+  @Get('hello/param/:name') // http://localhost:3000/test/sample/hello/param/anything
   public helloParam(@Param('name') name: string): string {
-    return `hello: ${name}`;
+    return `helloParam: ${name}`;
   }
 
-  @Get('hello/number/:foo')
+  @Get('hello/number/:foo') // http://localhost:3000/test/sample/hello/number/123?bar=456
   public helloNumber(@Param('foo') foo: number, @Query('bar') bar: number): object {
     return { foo, bar, fooBar: 'string' };
   }
 
-  @Post('hello/body') // test/sample/hello/body
+  @Post('hello/body') // http://localhost:3000/test/sample/hello/body
   public helloBody(@Body() param: SampleDto): string {
-    return `hello: ${JSON.stringify(param)}`;
+    return `helloBody: ${JSON.stringify(param)}`;
   }
 
   @Get('database')
