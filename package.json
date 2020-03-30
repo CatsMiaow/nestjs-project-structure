@@ -9,7 +9,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "entity": "node bin/entity",
     "build:entity": "rimraf dist/entity && nest build -p ./src/entity/tsconfig.json",
-    "build": "npm run lint && rimraf dist && nest build -p ./src/entity/tsconfig.json && nest build",
+    "build": "npm run lint && rimraf dist && npm run build:entity && nest build",
     "prestart": "npm run build",
     "start": "node dist/app",
     "start:dev": "nest start --watch",
