@@ -1,10 +1,13 @@
 # Shared
+
 Shared Nest Modules
 
-### Note
+## Note
+
 - The module common to all modules is [CommonModule](../common)
 
-### Structure
+## Structure
+
 ```js
 +-- shared
 |   +-- foobar

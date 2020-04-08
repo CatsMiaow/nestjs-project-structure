@@ -1,37 +1,45 @@
 # node-nestjs-structure
+
 Node.js framework NestJS project structure
 
-### Configuration
+## Configuration
+
 1. Create a `.env` file
     - Rename the [.env.sample](.env.sample) file to `.env` to fix it.
 2. Edit env config
     - Edit the file in the [config](src/config) folder.
     - `default`, `development`, `production`
 
-### Installation
+## Installation
+
 ```sh
 # 1. node_modules
-$ npm ci
+npm ci
 # 2. database model entity generate
-$ npm run entity
+npm run entity
 ```
+
 If you use multiple databases, [modify them.](bin/entity.js#L49)
 
-### Development
+## Development
+
 ```sh
-$ npm run start:dev
+npm run start:dev
 ```
+
 Run [http://localhost:3000](http://localhost:3000)
 
-### Production
+## Production
+
 ```sh
 # define NODE_ENV yourself
-$ npm run build
+npm run build
 # OR
-$ npm start
+npm start
 ```
 
-### Folders
+## Folders
+
 ```js
 +-- bin // Custom tasks
 +-- dist // Source build
@@ -57,33 +65,36 @@ $ npm start
 +-- typings // Modules or global type definitions
 ```
 
-### Implements
-* See [app](src/app.ts), [app.module](src/app.module.ts)
+## Implements
+
+- See [app](src/app.ts), [app.module](src/app.module.ts)
   - Database
   - Module Router
   - Static Files
   - Validation
-* [Global Authenticated Guard](src/common/guards/authenticated.guard.ts)
-* [Global Exception Filter](src/common/filters/exceptions.filter.ts)
-* [Global Logging Middleware](src/common/middleware/logger.middleware.ts)
-* [Session Login with Passport](src/base/providers/local.strategy.ts)
-* [Custom Logger for Production](src/common/providers/custom-logger.service.ts)
-* [Role-based Guard](src/common/guards/roles.guard.ts)
-* [AWS SDK Example](src/aws)
-* Controller Routes
+- [Global Authenticated Guard](src/common/guards/authenticated.guard.ts)
+- [Global Exception Filter](src/common/filters/exceptions.filter.ts)
+- [Global Logging Middleware](src/common/middleware/logger.middleware.ts)
+- [Session Login with Passport](src/base/providers/local.strategy.ts)
+- [Custom Logger for Production](src/common/providers/custom-logger.service.ts)
+- [Role-based Guard](src/common/guards/roles.guard.ts)
+- [AWS SDK Example](src/aws)
+- Controller Routes
   - [Login](src/base/controllers/login.controller.ts)
   - [Sample](src/sample/controllers/sample.controller.ts) Parameter, [DTO](src/sample/dto/sample.dto.ts)
-* [Database Query](src/sample/providers/database.service.ts) Sample
+- [Database Query](src/sample/providers/database.service.ts) Sample
 
-### Documentation
+## Documentation
+
 ```sh
 # APP, Compodoc
-$ npm run doc #> http://localhost:8080
+npm run doc #> http://localhost:8080
 # API, Swagger - src/swagger.ts
-$ npm run doc:api #> http://localhost:8000/api
+npm run doc:api #> http://localhost:8000/api
 ```
 
-#### File Naming for Class
+### File Naming for Class
+
 ```ts
 export class PascalCaseSuffix {} //= pascal-case.suffix.ts
 // Except for suffix, PascalCase to hyphen-case
@@ -92,7 +103,8 @@ class FooController {} //= foo.controller.ts
 class BarQueryDto {} //= bar-query.dto.ts
 ```
 
-#### Interface Naming
+### Interface Naming
+
 ```ts
 // https://stackoverflow.com/questions/541912
 // https://stackoverflow.com/questions/2814805
@@ -101,8 +113,9 @@ interface CustomeUser extends User {}
 interface ThirdCustomeUser extends CustomeUser {}
 ```
 
-#### Links.
-* [NestJS](https://docs.nestjs.com)
-* [Nest Sample](https://github.com/nestjs/nest/tree/master/sample)
-* [Awesome Nest](https://github.com/juliandavidmr/awesome-nestjs)
-* [TypeORM](https://typeorm.io)
+### Links
+
+- [NestJS](https://docs.nestjs.com)
+- [Nest Sample](https://github.com/nestjs/nest/tree/master/sample)
+- [Awesome Nest](https://github.com/juliandavidmr/awesome-nestjs)
+- [TypeORM](https://typeorm.io)
