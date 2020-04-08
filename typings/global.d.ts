@@ -1,4 +1,4 @@
-// https://github.com/typescript-eslint/typescript-eslint/issues/1479
+// https://github.com/typescript-eslint/typescript-eslint/issues/1856
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { SessionUser } from '../src/base/interfaces';
 
