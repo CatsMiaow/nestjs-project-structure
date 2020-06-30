@@ -1,4 +1,4 @@
-/* eslint-disable no-console, @typescript-eslint/no-explicit-any */
+/* eslint-disable no-console */
 import { Logger } from '@nestjs/common';
 
 /**
@@ -6,12 +6,12 @@ import { Logger } from '@nestjs/common';
  * Non-Injectable
  */
 export class CustomLogger extends Logger {
-  public log(message: any, context?: string): void {
+  public log(message: unknown, context?: string): void {
     console.log(this.prefix(context), message);
     // super.log(message, context);
   }
 
-  public error(message: any, trace?: string, context?: string): void {
+  public error(message: unknown, trace?: string, context?: string): void {
     console.error(this.prefix(context), message, '\n', trace);
     // super.error(message, trace, context);
   }

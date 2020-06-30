@@ -22,7 +22,7 @@ export class SampleController {
   ) {}
 
   @Get() // http://localhost:3000/test/sample
-  public sample(): object {
+  public sample(): Record<string, unknown> {
     return {
       hello: this.config.get('hello'),
       foo: this.config.get('foo'),
@@ -51,7 +51,7 @@ export class SampleController {
   }
 
   @Get('hello/number/:foo') // http://localhost:3000/test/sample/hello/number/123?bar=456
-  public helloNumber(@Param('foo') foo: number, @Query('bar') bar: number): object {
+  public helloNumber(@Param('foo') foo: number, @Query('bar') bar: number): Record<string, unknown> {
     return { foo, bar, fooBar: 'string' };
   }
 

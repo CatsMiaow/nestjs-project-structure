@@ -8,6 +8,7 @@ export class UtilService {
   public template<T>(templateData: TemplateStringsArray, param: T[], delimiter: string = '\n'): string {
     let output = '';
     for (let i = 0; i < param.length; i += 1) {
+      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       output += templateData[i] + param[i];
     }
     output += templateData[param.length];
@@ -26,7 +27,7 @@ export class UtilService {
   }
 
   public isObject<T>(value: T): boolean {
-    return value !== null && typeof value === 'object' && Array.isArray(value) === false;
+    return value !== null && typeof value === 'object' && !Array.isArray(value);
   }
 
   public escapeRegExp(exp: string): string {
