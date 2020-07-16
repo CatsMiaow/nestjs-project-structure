@@ -16,7 +16,10 @@ Node.js framework NestJS project structure
 # 1. node_modules
 npm ci
 # 2. database model entity generate
+# 2-1. When import from an existing database
 npm run entity
+# 2-2. When build only the entity folder
+npm run build:entity
 ```
 
 If you use multiple databases, [modify them.](bin/entity.js#L49)
