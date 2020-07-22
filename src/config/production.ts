@@ -3,19 +3,20 @@ export const config = {
     type: process.env.DB_TYPE || 'mysql',
     synchronize: false,
     logging: false,
-    database: 'dbname',
     replication: {
       master: {
-        host: process.env.DB_HOST || 'hostMaster',
+        host: process.env.DB_HOST || 'masterHost',
         port: process.env.DB_PORT || 3306,
         username: process.env.DB_USER || 'username',
         password: process.env.DB_PASSWORD || 'password',
+        database: 'dbname',
       },
       slaves: [{
-        host: 'hostSlave',
+        host: 'slaveHost',
         port: 3306,
         username: 'username',
         password: 'password',
+        database: 'dbname',
       }],
     },
     extra: {

@@ -52,7 +52,7 @@ export class SampleController {
 
   @Get('hello/number/:foo') // http://localhost:3000/test/sample/hello/number/123?bar=456
   public helloNumber(@Param('foo') foo: number, @Query('bar') bar: number): Record<string, unknown> {
-    return { foo, bar, fooBar: 'string' };
+    return { foo: typeof foo === 'number', bar, fooBar: 'string' };
   }
 
   @Post('hello/body') // http://localhost:3000/test/sample/hello/body

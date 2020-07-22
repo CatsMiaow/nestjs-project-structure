@@ -11,7 +11,7 @@ export class ExceptionsFilter extends BaseExceptionFilter {
       : HttpStatus.INTERNAL_SERVER_ERROR;
 
     if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
-      // Slack notifications?
+      // Notifications?
       // const request = host.switchToHttp().getRequest<Request>();
       // request.method, request.originalUrl...
     }
