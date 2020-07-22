@@ -2,10 +2,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {},
-    "target": "es2017",
+    "target": "ES2017",
     "outDir": "dist",
     "module": "commonjs",
     "moduleResolution": "node",
+    "incremental": true,
     "declaration": true,
     "strict": true, //= noImplicitAny, noImplicitThis, alwaysStrict, strictBindCallApply, strictNullChecks, strictFunctionTypes, strictPropertyInitialization
     "noImplicitReturns": true,
@@ -26,10 +27,6 @@
     "src/**/*"
   ],
   "exclude": [
-    "node_modules",
-    "src/entity/**/*"
-  ],
-  "references": [
-    { "path": "src/entity" }
+    "node_modules"
   ]
 }

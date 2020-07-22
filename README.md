@@ -15,14 +15,11 @@ Node.js framework NestJS project structure
 ```sh
 # 1. node_modules
 npm ci
-# 2. database model entity generate
-# 2-1. When import from an existing database
+# 2. When import entities from an existing database
 npm run entity
-# 2-2. When build only the entity folder
-npm run build:entity
 ```
 
-If you use multiple databases, [modify them.](bin/entity.js#L49)
+If you use multiple databases, [modify them.](bin/entity.js#L45)
 
 ## Development
 
@@ -35,8 +32,10 @@ Run [http://localhost:3000](http://localhost:3000)
 ## Production
 
 ```sh
-# define NODE_ENV yourself
+# define NODE_ENV and PORT
 npm run build
+# NODE_ENV=production PORT=8000 node dist/app
+node dist/app
 # OR
 npm start
 ```

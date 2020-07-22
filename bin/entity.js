@@ -26,14 +26,9 @@ try {
       { value: 'db1' },
       { value: 'db2' }
     ],
-  }, */ {
-    type: 'confirm',
-    name: 'build',
-    message: 'Choose whether to proceed with the build.',
-    initial: true
-  }]);
+  }, */]);
 
-  const { db, isBuild } = response;
+  const { db } = response;
   const MODEL_DIR = path.join(__dirname, '../src/entity', db);
   rimraf.sync(`${MODEL_DIR}/*`);
 
@@ -42,6 +37,7 @@ try {
     '--cf none', // file names
     '--ce pascal', // class names
     '--cp none', // property names
+    '--strictMode !', // strictPropertyInitialization
     `--namingStrategy ${path.join(__dirname, 'NamingStrategy.js')}`,
     `-h ${process.env.DB_HOST}`,
     `-p ${process.env.DB_PORT}`,
@@ -64,11 +60,6 @@ try {
   // AS-IS import { Tablename } from './entity/dbname/tablename';
   // TO-BE import { Tablename } from './entity/dbname';
   fs.writeFileSync(path.join(MODEL_DIR, 'index.ts'), files.join('\n'));
-
-  // Build skips and builds manually when errors occur
-  if (isBuild) {
-    shell.exec('npm run build:entity');
-  }
 } catch (error) {
   throw new Error(error);
 }
