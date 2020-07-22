@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 
 import { Roles } from '../../common/decorators';
 import { RolesGuard } from '../../common/guards';
-import { Tablename1 } from '../../entity/dbname1';
+import { Sampletable1 } from '../../entity/sampledb1';
 import { SampleDto } from '../dto';
 import { DatabaseService } from '../providers';
 import { FoobarService } from '../../shared/foobar';
@@ -61,14 +61,14 @@ export class SampleController {
   }
 
   @Get('database')
-  public database(): Promise<Tablename1[]> {
+  public database(): Promise<Sampletable1[]> {
     // this.dbquery.sample2();
     // this.dbquery.sample3();
     return this.dbquery.sample1();
   }
 
   @Get('foobars')
-  public foobars(): Promise<Tablename1[]> {
+  public foobars(): Promise<Sampletable1[]> {
     return this.foobarService.getFoobars();
   }
 

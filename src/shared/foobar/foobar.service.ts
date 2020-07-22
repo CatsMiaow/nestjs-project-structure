@@ -2,16 +2,16 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Tablename1 } from '../../entity/dbname1';
+import { Sampletable1 } from '../../entity/sampledb1';
 
 @Injectable()
 export class FoobarService {
   constructor(
-    @InjectRepository(Tablename1)
-    private readonly tablename1: Repository<Tablename1>,
+    @InjectRepository(Sampletable1)
+    private readonly sampletable1: Repository<Sampletable1>,
   ) {}
 
-  public getFoobars(): Promise<Tablename1[]> {
-    return this.tablename1.find({ take: 10 });
+  public getFoobars(): Promise<Sampletable1[]> {
+    return this.sampletable1.find({ take: 10 });
   }
 }

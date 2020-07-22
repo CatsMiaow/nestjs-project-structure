@@ -1,38 +1,38 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('tablename1', { schema: 'dbname1', database: 'dbname1' })
-export class Tablename1 {
+@Entity('sampletable2', { schema: 'sampledb2', database: 'vendor' })
+export class Sampletable2 {
   @PrimaryGeneratedColumn({
     type: 'int',
     unsigned: true,
-    name: 'id'
+    name: 'id',
   })
-  id: number;
+  id!: number;
 
   @Column('varchar', {
     nullable: false,
     length: 255,
-    name: 'title'
+    name: 'title',
   })
-  title: string;
+  title!: string;
 
   @Column('text', {
     nullable: true,
-    name: 'content'
+    name: 'content',
   })
-  content: string | null;
+  content?: string;
 
   @Column('timestamp', {
     nullable: false,
     default: () => 'CURRENT_TIMESTAMP',
-    name: 'updated_at'
+    name: 'updated_at',
   })
-  updated_at: Date;
+  updated_at!: Date;
 
   @Column('timestamp', {
     nullable: false,
     default: () => 'CURRENT_TIMESTAMP',
-    name: 'created_at'
+    name: 'created_at',
   })
-  created_at: Date;
+  created_at!: Date;
 }

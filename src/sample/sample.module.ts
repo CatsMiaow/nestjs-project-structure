@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Tablename1 } from '../entity/dbname1';
-import { Tablename2 } from '../entity/dbname2';
+import { Sampletable1 } from '../entity/sampledb1';
+import { Sampletable2 } from '../entity/sampledb2';
 import { FoobarModule } from '../shared/foobar';
 import * as controllers from './controllers';
 import * as providers from './providers';
@@ -11,7 +11,7 @@ import * as providers from './providers';
   imports: [
     TypeOrmModule.forFeature([
       // ...Object.values(tables)
-      Tablename1, Tablename2,
+      Sampletable1, Sampletable2,
     ]),
     FoobarModule, // Shared Module
   ],
