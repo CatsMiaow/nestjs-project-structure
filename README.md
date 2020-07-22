@@ -8,7 +8,7 @@ Node.js framework NestJS project structure
     - Rename the [.env.sample](.env.sample) file to `.env` to fix it.
 2. Edit env config
     - Edit the file in the [config](src/config) folder.
-    - `default`, `development`, `production`
+    - `default`, `development`, `production`, `test`
 
 ## Installation
 
@@ -28,6 +28,13 @@ npm run start:dev
 ```
 
 Run [http://localhost:3000](http://localhost:3000)
+
+## Test
+
+```sh
+npm test # exclude e2e
+npm run test:e2e
+```
 
 ## Production
 
@@ -84,7 +91,10 @@ npm start
 - Controller Routes
   - [Login](src/base/controllers/login.controller.ts)
   - [Sample](src/sample/controllers/sample.controller.ts) Parameter, [DTO](src/sample/dto/sample.dto.ts)
-- [Database Query](src/sample/providers/database.service.ts) Sample
+  - [CRUD API Sample](src/sample/controllers/crud.controller.ts)
+- [Database Query](src/sample/providers/database.service.ts) Example
+- [Unit Test](src/sample/controllers/crud.controller.spec.ts)
+- [E2E Test](test/e2e/crud.spec.ts)
 
 ## Documentation
 
@@ -117,7 +127,8 @@ interface ThirdCustomeUser extends CustomeUser {}
 
 ### Links
 
-- [NestJS](https://docs.nestjs.com)
+- [Nest Starter](https://github.com/CatsMiaow/nestjs-starter)
 - [Nest Sample](https://github.com/nestjs/nest/tree/master/sample)
 - [Awesome Nest](https://github.com/juliandavidmr/awesome-nestjs)
+- [NestJS](https://docs.nestjs.com)
 - [TypeORM](https://typeorm.io)
