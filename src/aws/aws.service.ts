@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { ConfigurationOptions } from 'aws-sdk/lib/config';
+import { ConfigurationOptions } from 'aws-sdk/lib/config-base';
 
 /**
  * https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/
