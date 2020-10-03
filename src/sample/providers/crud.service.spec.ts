@@ -1,42 +1,27 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConnectionOptions } from 'typeorm';
 
-import { SampleModule } from '../sample.module';
-import { CrudController } from './crud.controller';
+import { CrudService } from '.';
 import { configuration } from '../../config';
 import { Sampletable1 } from '../../entity/sampledb1';
 
 let app: TestingModule;
-let crud: CrudController;
+let crud: CrudService;
 let idx: number;
 
 beforeAll(async () => {
-  // app = await Test.createTestingModule({ imports: [AppModule] }).compile();
   app = await Test.createTestingModule({
     imports: [
-      ConfigModule.forRoot({
-        isGlobal: true,
-        load: [configuration],
-      }),
-      SampleModule,
-      /*
       TypeOrmModule.forRoot({
         ...(<ConnectionOptions>(await configuration()).db),
-        entities: [],
+        entities: [Sampletable1],
       }),
-      */
-      TypeOrmModule.forRootAsync({
-        useFactory: (config: ConfigService) => ({
-          entities: [`${__dirname}/../../entity/**/*.{js,ts}`],
-          ...config.get('db'),
-        }),
-        inject: [ConfigService],
-      }),
+      TypeOrmModule.forFeature([Sampletable1]),
     ],
+    providers: [CrudService],
   }).compile();
-
-  crud = app.get(CrudController);
+  crud = app.get(CrudService);
 });
 
 test('create', async () => {
@@ -50,13 +35,13 @@ test('read', async () => {
 });
 
 test('update', async () => {
-  expect(await crud.update(idx, { title: 'Blahblahblah' })).toHaveProperty('success');
+  expect(await crud.update(idx, { title: 'Blahblahblah' })).toHaveProperty('affected');
 });
 
 test('delete', async () => {
   const result = await crud.remove(idx);
-  expect(result).toHaveProperty('success');
-  expect(result.success).toBeTruthy();
+  expect(result).toHaveProperty('affected');
+  expect(result.affected).toBe(1);
 });
 
 afterAll(async () => {
