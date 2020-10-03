@@ -8,6 +8,7 @@ export class SessionSerializer extends PassportSerializer {
   public serializeUser(user: SessionUser, done: (err: Error | null, data?: SessionUser) => void): void {
     done(null, user);
   }
+
   public deserializeUser(data: SessionUser, done: (err: Error | null, user?: SessionUser) => void): void {
     try {
       // more

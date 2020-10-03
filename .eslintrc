@@ -34,11 +34,10 @@
     "spaced-comment": ["error", "always", { "line": { "markers": ["/", "#region", "#endregion"] } }],
 
     // Change eslint rule to @typescript-eslint rule
+    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
     "no-loop-func": "off",
     "no-return-await": "off",
     "no-unused-expressions": "off",
-    // https://github.com/typescript-eslint/typescript-eslint/issues/977
-    "lines-between-class-members": "off",
 
     // https://github.com/benmosher/eslint-plugin-import/issues/1453
     "import/no-cycle": "off",
