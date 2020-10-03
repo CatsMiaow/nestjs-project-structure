@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('sampletable2', { schema: 'sampledb2', database: 'vendor' })
+@Entity('sampletable2', { schema: 'sampledb2', database: 'sampledb2' })
 export class Sampletable2 {
   @PrimaryGeneratedColumn({
     type: 'int',
