@@ -15,6 +15,7 @@ import { CustomLogger } from './common/providers';
  * https://github.com/nestjs/nest/issues/2249#issuecomment-494734673
  */
 async function bootstrap(): Promise<void> {
+  const isProduction = (process.env.NODE_ENV === 'production');
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   // https://docs.nestjs.com/techniques/validation
   app.useGlobalPipes(new ValidationPipe({
@@ -22,22 +23,24 @@ async function bootstrap(): Promise<void> {
     transform: true, // transform object to DTO class
   }));
 
-  if (process.env.NODE_ENV === 'production') {
+  if (isProduction) {
     app.useLogger(app.get(CustomLogger));
-    app.set('trust proxy', 1);
+    app.enable('trust proxy');
   }
 
   //#region Express Middleware
   app.use(compression());
   app.use(session({
+    // Requires 'store' setup for production
     secret: 'tEsTeD',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: 'auto' },
+    cookie: { secure: isProduction },
   }));
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(helmet());
+  // https://github.com/graphql/graphql-playground/issues/1283#issuecomment-703631091
+  app.use(helmet({ contentSecurityPolicy: isProduction ? undefined : false }));
   //#endregion
 
   await app.listen(process.env.PORT || 3000);

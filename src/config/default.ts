@@ -4,5 +4,17 @@ export const config = {
     secret_access_key: 'secret_access_key',
     region: 'region',
   },
+  graphql: {
+    debug: true,
+    playground: {
+      settings: {
+        'request.credentials': 'include',
+      },
+    },
+    autoSchemaFile: 'schema.gql',
+    // cors: { credentials: true },
+    // sortSchema: true,
+    // installSubscriptionHandlers: true,
+  },
   hello: 'world',
 };

@@ -88,6 +88,7 @@ npm start
 - [Custom Logger for Production](src/common/providers/custom-logger.service.ts)
 - [Role-based Guard](src/common/guards/roles.guard.ts)
 - [AWS SDK Example](src/aws)
+- [GraphQL Structure Example](src/gql)
 - Controller Routes
   - [Login](src/base/controllers/login.controller.ts)
   - [Sample](src/sample/controllers/sample.controller.ts) Parameter, [DTO](src/sample/dto/sample.dto.ts)

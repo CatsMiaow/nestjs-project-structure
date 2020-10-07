@@ -22,6 +22,9 @@ export class Sampletable1 {
   })
   content?: string;
 
+  @Column('simple-array')
+  tags?: string[];
+
   @Column('timestamp', {
     nullable: false,
     default: () => 'CURRENT_TIMESTAMP',

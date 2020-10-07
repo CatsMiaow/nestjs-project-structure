@@ -23,5 +23,10 @@ export const config = {
       connectionLimit: 30,
     },
   },
+  graphql: {
+    debug: false,
+    playground: false,
+    autoSchemaFile: true,
+  },
   foo: 'pro-bar',
 };
