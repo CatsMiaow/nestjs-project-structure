@@ -69,6 +69,7 @@ npm start
 |   |   +-- providers // Nest Providers
 |   |   +-- * // models, repositories, services...
 |   +-- shared // Shared Nest Modules
+|   +-- gql // GraphQL Structure Sample
 |   +-- * // Other Nest Modules, non-global, same as common structure above
 +-- test // Jest testing
 +-- typings // Modules or global type definitions
