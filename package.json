@@ -13,7 +13,7 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "test": "jest --detectOpenHandles",
-    "test:e2e": "jest --config ./test/jest.e2e.js",
+    "test:e2e": "nest build -p tsconfig.e2e.json && jest --config ./test/jest.e2e.js",
     "doc": "compodoc -p tsconfig.json -s -d docs",
     "doc:api": "npm run build && node dist/swagger"
   },
