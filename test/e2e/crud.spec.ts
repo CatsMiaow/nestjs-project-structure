@@ -1,27 +1,26 @@
 import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import request from 'supertest';
+import supertest, { SuperTest, Test as AgentTest } from 'supertest';
 
 import { AppModule } from '../../src/app.module';
 
 let app: INestApplication;
-let httpServer: unknown;
+let request: SuperTest<AgentTest>;
 let idx: number;
 
 beforeAll(async () => {
-  const moduleFixture = await Test.createTestingModule({
+  const moduleRef = await Test.createTestingModule({
     imports: [AppModule],
   }).compile();
 
-  app = moduleFixture.createNestApplication();
+  app = moduleRef.createNestApplication();
   await app.init();
 
-  httpServer = app.getHttpServer();
+  request = supertest(app.getHttpServer());
 });
 
 test('POST: /test/crud', async () => {
-  const { status, body } = await request(httpServer)
-    .post('/test/crud')
+  const { status, body } = await request.post('/test/crud')
     .send({ title: 'FooBar', content: 'Hello World' });
 
   expect([200, 201]).toContain(status);
@@ -31,16 +30,14 @@ test('POST: /test/crud', async () => {
 });
 
 test('GET: /test/crud/:idx', async () => {
-  const { body } = await request(httpServer)
-    .get(`/test/crud/${idx}`)
+  const { body } = await request.get(`/test/crud/${idx}`)
     .expect(200);
 
   expect(body).toHaveProperty('title', 'FooBar');
 });
 
 test('PUT: /test/crud/:idx', async () => {
-  const { body } = await request(httpServer)
-    .put(`/test/crud/${idx}`)
+  const { body } = await request.put(`/test/crud/${idx}`)
     .send({ title: 'Blahblahblah' })
     .expect(200);
 
@@ -48,8 +45,7 @@ test('PUT: /test/crud/:idx', async () => {
 });
 
 test('DELETE: /test/crud/:idx', async () => {
-  const { body } = await request(httpServer)
-    .delete(`/test/crud/${idx}`)
+  const { body } = await request.delete(`/test/crud/${idx}`)
     .expect(200);
 
   expect(body).toHaveProperty('success', true);

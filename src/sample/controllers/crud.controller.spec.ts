@@ -7,13 +7,13 @@ import { CrudController } from './crud.controller';
 import { configuration } from '../../config';
 import { Sampletable1 } from '../../entity/sampledb1';
 
-let app: TestingModule;
+let moduleRef: TestingModule;
 let crud: CrudController;
 let idx: number;
 
 beforeAll(async () => {
-  // app = await Test.createTestingModule({ imports: [AppModule] }).compile();
-  app = await Test.createTestingModule({
+  // moduleRef = await Test.createTestingModule({ imports: [AppModule] }).compile();
+  moduleRef = await Test.createTestingModule({
     imports: [
       ConfigModule.forRoot({
         isGlobal: true,
@@ -36,7 +36,7 @@ beforeAll(async () => {
     ],
   }).compile();
 
-  crud = app.get(CrudController);
+  crud = moduleRef.get(CrudController);
 });
 
 test('create', async () => {
@@ -60,5 +60,5 @@ test('delete', async () => {
 });
 
 afterAll(async () => {
-  await app?.close();
+  await moduleRef?.close();
 });

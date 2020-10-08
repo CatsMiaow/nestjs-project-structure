@@ -6,12 +6,12 @@ import { CrudService } from '.';
 import { configuration } from '../../config';
 import { Sampletable1 } from '../../entity/sampledb1';
 
-let app: TestingModule;
+let moduleRef: TestingModule;
 let crud: CrudService;
 let idx: number;
 
 beforeAll(async () => {
-  app = await Test.createTestingModule({
+  moduleRef = await Test.createTestingModule({
     imports: [
       TypeOrmModule.forRoot({
         ...(<ConnectionOptions>(await configuration()).db),
@@ -21,7 +21,8 @@ beforeAll(async () => {
     ],
     providers: [CrudService],
   }).compile();
-  crud = app.get(CrudService);
+
+  crud = moduleRef.get(CrudService);
 });
 
 test('create', async () => {
@@ -45,5 +46,5 @@ test('delete', async () => {
 });
 
 afterAll(async () => {
-  await app?.close();
+  await moduleRef?.close();
 });
