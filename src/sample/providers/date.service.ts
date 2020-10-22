@@ -3,9 +3,9 @@ export class DateService {
     return new Date(value).toLocaleString();
   }
 
-  /* // Using moment
-  public static FORMAT(value: MomentInput) {
-    return moment(value).format('YYYY-MM-DD HH:mm:ss');
+  /* // Using dayjs
+  public static FORMAT(value: ConfigType) {
+    return dayjs(value).format('YYYY-MM-DD HH:mm:ss');
   }
   */
 }

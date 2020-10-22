@@ -7,7 +7,7 @@ import helmet from 'helmet';
 import passport from 'passport';
 
 import { AppModule } from './app.module';
-import { CustomLogger } from './common/providers';
+import { Logger } from './common/providers';
 
 /**
  * https://docs.nestjs.com
@@ -16,7 +16,9 @@ import { CustomLogger } from './common/providers';
  */
 async function bootstrap(): Promise<void> {
   const isProduction = (process.env.NODE_ENV === 'production');
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    logger: isProduction ? Logger : undefined,
+  });
   // https://docs.nestjs.com/techniques/validation
   app.useGlobalPipes(new ValidationPipe({
     disableErrorMessages: true,
@@ -24,7 +26,6 @@ async function bootstrap(): Promise<void> {
   }));
 
   if (isProduction) {
-    app.useLogger(app.get(CustomLogger));
     app.enable('trust proxy');
   }
 
@@ -47,4 +48,4 @@ async function bootstrap(): Promise<void> {
 }
 
 // eslint-disable-next-line no-console
-bootstrap().catch(console.error);
+bootstrap().then(() => console.log('Bootstrap', new Date().toLocaleString())).catch(console.error);

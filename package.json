@@ -43,7 +43,8 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.6.3",
     "swagger-ui-express": "^4.1.4",
-    "typeorm": "^0.2.28"
+    "typeorm": "^0.2.28",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "@compodoc/compodoc": "^1.1.11",
@@ -57,6 +58,7 @@
     "@types/node": "^14.11.2",
     "@types/passport-local": "^1.0.33",
     "@types/supertest": "^2.0.10",
+    "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
     "@typescript-eslint/parser": "^4.3.0",
     "dtslint": "^4.0.4",

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { UtilService } from '../../common/providers';
+import { Logger, UtilService } from '../../common/providers';
 import { Sampletable1 } from '../../entity/sampledb1';
 import { SimpleInput, SimpleArgs } from '../dto';
 import { Simple } from '../models';
@@ -12,13 +12,20 @@ export class SimpleService {
   constructor(
     @InjectRepository(Sampletable1) private sampletable: Repository<Sampletable1>,
     private util: UtilService,
-  ) {}
+    private logger: Logger,
+  ) {
+    this.logger.setContext(SimpleService.name);
+  }
 
   public async create(data: SimpleInput): Promise<Simple> {
+    this.logger.log('create');
+
     return this.sampletable.save(data);
   }
 
   public async read(id: number): Promise<Simple | null> {
+    this.logger.log('read');
+
     const row = await this.sampletable.findOne(id);
     if (!row) {
       return null;
@@ -28,6 +35,8 @@ export class SimpleService {
   }
 
   public async find(args: SimpleArgs): Promise<Simple[]> {
+    this.logger.log('find');
+
     const result = await this.sampletable.find(this.util.removeUndefined({
       title: args.title,
       content: args.content,
@@ -37,6 +46,8 @@ export class SimpleService {
   }
 
   public async remove(id: number): Promise<boolean> {
+    this.logger.log('remove');
+
     const result = await this.sampletable.delete(id);
 
     return !!result.affected;

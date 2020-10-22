@@ -2,6 +2,7 @@ import { BadRequestException, Body, Controller, Get, Param, Post, Query, Req, Re
 import { ConfigService } from '@nestjs/config';
 import { Request, Response } from 'express';
 
+import { Logger } from '../../common/providers';
 import { Roles } from '../../common/decorators';
 import { RolesGuard } from '../../common/guards';
 import { Sampletable1 } from '../../entity/sampledb1';
@@ -19,10 +20,15 @@ export class SampleController {
     private readonly config: ConfigService,
     private readonly dbquery: DatabaseService,
     private readonly foobarService: FoobarService,
-  ) {}
+    private readonly logger: Logger,
+  ) {
+    this.logger.setContext(SampleController.name);
+  }
 
   @Get() // http://localhost:3000/test/sample
   public sample(): Record<string, unknown> {
+    this.logger.log('this is sample');
+
     return {
       hello: this.config.get('hello'),
       foo: this.config.get('foo'),
