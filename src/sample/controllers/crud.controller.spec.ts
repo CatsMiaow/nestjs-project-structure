@@ -1,11 +1,12 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { SampleModule } from '../sample.module';
-import { CrudController } from './crud.controller';
+import { CommonModule } from '../../common/common.module';
 import { configuration } from '../../config';
 import { Sampletable1 } from '../../entity/sampledb1';
+import { SampleModule } from '../sample.module';
+import { CrudController } from './crud.controller';
 
 let moduleRef: TestingModule;
 let crud: CrudController;
@@ -19,6 +20,7 @@ beforeAll(async () => {
         isGlobal: true,
         load: [configuration],
       }),
+      CommonModule,
       SampleModule,
       /*
       TypeOrmModule.forRoot({

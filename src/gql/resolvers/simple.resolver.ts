@@ -1,10 +1,10 @@
 import { NotFoundException } from '@nestjs/common';
 import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql';
 
+import { Logger } from '../../common/providers';
+import { SimpleInput, SimpleArgs } from '../dto';
 import { Simple } from '../models';
 import { SimpleService } from '../providers';
-import { SimpleInput, SimpleArgs } from '../dto';
-import { Logger } from '../../common/providers';
 
 @Resolver(() => Simple)
 export class SimpleResolver {
