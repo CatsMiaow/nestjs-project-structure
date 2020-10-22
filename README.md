@@ -86,10 +86,8 @@ npm start
 - [Global Exception Filter](src/common/filters/exceptions.filter.ts)
 - [Global Logging Middleware](src/common/middleware/logger.middleware.ts)
 - [Session Login with Passport](src/base/providers/local.strategy.ts)
-- [Custom Logger for Production](src/common/providers/custom-logger.service.ts)
+- [Custom Logger for Production](src/common/providers/logger.service.ts)
 - [Role-based Guard](src/common/guards/roles.guard.ts)
-- [AWS SDK Example](src/aws)
-- [GraphQL Structure Example](src/gql)
 - Controller Routes
   - [Login](src/base/controllers/login.controller.ts)
   - [Sample](src/sample/controllers/sample.controller.ts) Parameter, [DTO](src/sample/dto/sample.dto.ts)
@@ -97,6 +95,9 @@ npm start
 - [Database Query](src/sample/providers/database.service.ts) Example
 - [Unit Test](src/sample/providers/crud.service.spec.ts)
 - [E2E Test](test/e2e)
+- [Shared Modules Example](src/shared)
+- [GraphQL Structure Example](src/gql)
+- [AWS SDK Example](src/aws)
 
 ## Documentation
 
