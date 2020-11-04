@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { SessionUser } from '../src/base/interfaces';
 
 declare global {
