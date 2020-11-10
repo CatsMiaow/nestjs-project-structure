@@ -128,6 +128,15 @@ interface CustomeUser extends User {}
 interface ThirdCustomeUser extends CustomeUser {}
 ```
 
+### Index Exporting
+
+```diff
+# It is recommended to place index.ts in each folder and export.
+# Unless it's a special case, it is import from a folder instead of directly from a file.
+- import { SampleController } from './controllers/sample.controller';
++ import { SampleController } from './controllers';
+```
+
 ### Links
 
 - [Nest Starter](https://github.com/CatsMiaow/nestjs-starter)
