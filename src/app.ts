@@ -17,7 +17,7 @@ import { Logger } from './common/providers';
 async function bootstrap(): Promise<void> {
   const isProduction = (process.env.NODE_ENV === 'production');
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
-    logger: isProduction ? Logger : undefined,
+    logger: isProduction ? false : undefined,
   });
   // https://docs.nestjs.com/techniques/validation
   app.useGlobalPipes(new ValidationPipe({
@@ -26,6 +26,7 @@ async function bootstrap(): Promise<void> {
   }));
 
   if (isProduction) {
+    app.useLogger(await app.resolve(Logger));
     app.enable('trust proxy');
   }
 

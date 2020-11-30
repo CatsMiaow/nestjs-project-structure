@@ -5,6 +5,8 @@ import { ApolloError, ForbiddenError } from 'apollo-server-express';
 
 @Catch()
 export class ExceptionsFilter extends BaseExceptionFilter implements GqlExceptionFilter {
+  private readonly logger: Logger = new Logger();
+
   public catch(exception: unknown, host: ArgumentsHost): void {
     if (host.getType<GqlContextType>() === 'graphql') {
       // const gqlHost = GqlArgumentsHost.create(host);
@@ -20,7 +22,7 @@ export class ExceptionsFilter extends BaseExceptionFilter implements GqlExceptio
         : new Error(String(exception));
 
       if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
-        Logger.error(error.message, error.stack, 'UnhandledException');
+        this.logger.error(error.message, error.stack, 'UnhandledException');
       }
 
       throw new ApolloError(error.message);
