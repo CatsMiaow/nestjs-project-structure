@@ -6,7 +6,7 @@
     "outDir": "dist",
     "module": "commonjs",
     "moduleResolution": "node",
-    "incremental": true,
+    // "incremental": true,
     "declaration": true,
     "strict": true, //= noImplicitAny, noImplicitThis, alwaysStrict, strictBindCallApply, strictNullChecks, strictFunctionTypes, strictPropertyInitialization
     "noFallthroughCasesInSwitch": true,
