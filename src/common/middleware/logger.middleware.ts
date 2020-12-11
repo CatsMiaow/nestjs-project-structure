@@ -6,7 +6,11 @@ import { Logger } from '../providers';
 
 @Injectable()
 export class LoggerMiddleware implements NestMiddleware {
-  private readonly passUrl: string[] = ['/health'];
+  private readonly passUrl: string[] = ['/health', '/graphql'];
+  // GraphQL logging uses the apollo plugins.
+  // https://docs.nestjs.com/graphql/plugins
+  // https://www.apollographql.com/docs/apollo-server/integrations/plugins/
+  // https://github.com/nestjs/graphql/issues/923
 
   constructor(private logger: Logger) {}
 
