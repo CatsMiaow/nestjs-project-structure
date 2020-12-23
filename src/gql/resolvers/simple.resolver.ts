@@ -10,7 +10,7 @@ import { SimpleService } from '../providers';
 
 @Resolver(() => Simple)
 export class SimpleResolver {
-  constructor(private simpleService: SimpleService, private logger: Logger) {
+  constructor(private readonly logger: Logger, private simpleService: SimpleService) {
     this.logger.setContext(SimpleResolver.name);
   }
 

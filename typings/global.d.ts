@@ -1,6 +1,6 @@
 import { SessionUser } from '../src/base/interfaces';
 
-declare global {
+export declare global {
   namespace Express {
     interface Request {
       id: string;

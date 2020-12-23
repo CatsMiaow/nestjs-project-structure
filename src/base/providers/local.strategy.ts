@@ -7,7 +7,7 @@ import { SessionUser } from '../interfaces';
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
-  constructor(private readonly user: UserService) {
+  constructor(private user: UserService) {
     super();
   }
 

@@ -5,7 +5,7 @@ import type { Request } from 'express';
 
 @Injectable()
 export class AuthenticatedGuard implements CanActivate {
-  constructor(private readonly reflector: Reflector) {}
+  constructor(private reflector: Reflector) {}
 
   public canActivate(context: ExecutionContext): boolean {
     // https://github.com/nestjs/nest/issues/964#issuecomment-480834786

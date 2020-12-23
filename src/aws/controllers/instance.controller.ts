@@ -8,7 +8,7 @@ import { EC2Service } from '../providers';
  */
 @Controller('instance')
 export class InstanceController {
-  constructor(private readonly instance: EC2Service) {}
+  constructor(private instance: EC2Service) {}
 
   @Get('list')
   public async list(): Promise<ReservationList> {

@@ -9,9 +9,9 @@ import { AWSService } from '../aws.service';
  */
 @Injectable()
 export class EC2Service {
-  private readonly instance: EC2 = new EC2(this.aws.options);
+  private instance: EC2 = new EC2(this.aws.options);
 
-  constructor(private readonly aws: AWSService) {}
+  constructor(private aws: AWSService) {}
 
   public async describeInstances(): Promise<DescribeInstancesResult> {
     return this.instance.describeInstances({

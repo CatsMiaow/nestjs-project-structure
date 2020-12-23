@@ -10,7 +10,7 @@ import { Sampletable2 } from '../../entity/sampledb2';
  */
 @Injectable()
 export class DatabaseService {
-  private readonly tablerepo: Repository<Sampletable1>;
+  private tablerepo: Repository<Sampletable1>;
 
   constructor(
     /**
@@ -20,7 +20,7 @@ export class DatabaseService {
      * Need TypeOrmModule.forFeature([]) imports
      */
     @InjectRepository(Sampletable1)
-    private readonly sampletable1: Repository<Sampletable1>,
+    private sampletable1: Repository<Sampletable1>,
 
     /**
      * Sample2
@@ -28,7 +28,7 @@ export class DatabaseService {
      * https://typeorm.io/#/entity-manager-api
      */
     @InjectEntityManager()
-    private readonly manager: EntityManager,
+    private manager: EntityManager,
   ) {
     /**
      * Sample3

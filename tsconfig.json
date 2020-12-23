@@ -8,6 +8,7 @@
     "moduleResolution": "node",
     // "incremental": true,
     "declaration": true,
+    "newLine": "lf",
     "strict": true, //= noImplicitAny, noImplicitThis, alwaysStrict, strictBindCallApply, strictNullChecks, strictFunctionTypes, strictPropertyInitialization
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,

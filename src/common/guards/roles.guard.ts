@@ -4,7 +4,7 @@ import type { Request } from 'express';
 
 @Injectable()
 export class RolesGuard implements CanActivate {
-  constructor(private readonly reflector: Reflector) {}
+  constructor(private reflector: Reflector) {}
 
   public canActivate(context: ExecutionContext): boolean {
     const roles = [

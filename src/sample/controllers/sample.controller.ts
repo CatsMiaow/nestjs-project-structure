@@ -17,10 +17,10 @@ import { DatabaseService } from '../providers';
 @Controller('sample')
 export class SampleController {
   constructor(
-    private readonly config: ConfigService,
-    private readonly dbquery: DatabaseService,
-    private readonly foobarService: FoobarService,
     private readonly logger: Logger,
+    private config: ConfigService,
+    private dbquery: DatabaseService,
+    private foobarService: FoobarService,
   ) {
     this.logger.setContext(SampleController.name);
   }

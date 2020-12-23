@@ -10,9 +10,9 @@ import { Simple } from '../models';
 @Injectable()
 export class SimpleService {
   constructor(
+    private readonly logger: Logger,
     @InjectRepository(Sampletable1) private sampletable: Repository<Sampletable1>,
     private util: UtilService,
-    private logger: Logger,
   ) {
     this.logger.setContext(SimpleService.name);
   }
