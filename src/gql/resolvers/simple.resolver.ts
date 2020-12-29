@@ -3,7 +3,7 @@ import { Args, Context, ID, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { ForbiddenError } from 'apollo-server-express';
 import type { Request } from 'express';
 
-import { Logger } from '../../common/providers';
+import { Logger } from '../../common';
 import { SimpleInput, SimpleArgs } from '../dto';
 import { Simple, User } from '../models';
 import { SimpleService } from '../providers';

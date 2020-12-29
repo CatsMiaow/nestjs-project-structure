@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Logger, UtilService } from '../../common/providers';
+import { Logger, UtilService } from '../../common';
 import { Sampletable1 } from '../../entity/sampledb1';
 import { SimpleInput, SimpleArgs } from '../dto';
 import { Simple } from '../models';

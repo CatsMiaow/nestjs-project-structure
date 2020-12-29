@@ -1,8 +1,7 @@
 import { Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common';
 import type { Request, Response } from 'express';
 
-import { Public } from '../../common/decorators';
-import { AuthenticatedGuard } from '../../common/guards';
+import { Public, AuthenticatedGuard } from '../../common';
 import { LoginGuard } from '../guards';
 import { SessionUser } from '../interfaces';
 

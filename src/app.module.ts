@@ -7,10 +7,7 @@ import { RouterModule } from 'nest-router';
 
 import { AWSModule } from './aws/aws.module';
 import { BaseModule } from './base/base.module';
-import { CommonModule } from './common/common.module';
-import { ExceptionsFilter } from './common/filters';
-import { AuthenticatedGuard } from './common/guards';
-import { LoggerMiddleware } from './common/middleware';
+import { CommonModule, ExceptionsFilter, AuthenticatedGuard, LoggerMiddleware } from './common';
 import { configuration } from './config';
 import { GQLModule } from './gql/gql.module';
 import { SampleModule } from './sample/sample.module';

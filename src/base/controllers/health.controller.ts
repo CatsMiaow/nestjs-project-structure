@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 
-import { Public } from '../../common/decorators';
+import { Public } from '../../common';
 
 /**
  * https://docs.nestjs.com/recipes/terminus

@@ -7,7 +7,7 @@ import helmet from 'helmet';
 import passport from 'passport';
 
 import { AppModule } from './app.module';
-import { Logger } from './common/providers';
+import { Logger } from './common';
 
 /**
  * https://docs.nestjs.com
