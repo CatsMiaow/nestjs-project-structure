@@ -77,7 +77,7 @@ export class SampleController {
   }
 
   @Roles('admin')
-  @Get('admin')
+  @Get('admin') // http://localhost:3000/test/sample/admin
   public admin(): string {
     return 'Need admin role';
   }
