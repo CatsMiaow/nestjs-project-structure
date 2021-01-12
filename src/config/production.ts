@@ -9,7 +9,7 @@ export const config = {
         port: process.env.DB_PORT || 3306,
         username: process.env.DB_USER || 'username',
         password: process.env.DB_PASSWORD || 'password',
-        database: 'dbname',
+        database: process.env.DB_NAME || 'dbname',
       },
       slaves: [{ // fix if necessary
         host: 'slaveHost',
