@@ -73,6 +73,7 @@
     "@typescript-eslint/no-unused-expressions": "error",
     "@typescript-eslint/prefer-includes": "off",
     "@typescript-eslint/prefer-optional-chain": "error",
+    "@typescript-eslint/promise-function-async": "error",
     "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/return-await": "error",
     "@typescript-eslint/typedef": ["error", { "arrowParameter": true, "memberVariableDeclaration": true, "parameter": true, "propertyDeclaration": true }],

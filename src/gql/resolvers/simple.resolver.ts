@@ -26,7 +26,7 @@ export class SimpleResolver {
   }
 
   @Mutation(() => Simple)
-  public create(@Args('simpleData') simpleData: SimpleInput): Promise<Simple> {
+  public async create(@Args('simpleData') simpleData: SimpleInput): Promise<Simple> {
     this.logger.log('create');
 
     return this.simpleService.create(simpleData);
@@ -52,7 +52,7 @@ export class SimpleResolver {
   }
 
   @Mutation(() => Boolean)
-  public remove(@Args('id', { type: () => ID }) id: number): Promise<boolean> {
+  public async remove(@Args('id', { type: () => ID }) id: number): Promise<boolean> {
     this.logger.log('remove');
 
     return this.simpleService.remove(id);

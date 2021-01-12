@@ -40,17 +40,17 @@ export class DatabaseService {
   /**
    * https://typeorm.io/#/find-options
    */
-  public sample1(): Promise<Sampletable1[]> {
+  public async sample1(): Promise<Sampletable1[]> {
     // Repository
     return this.sampletable1.find();
   }
 
-  public sample2(): Promise<Sampletable1[]> {
+  public async sample2(): Promise<Sampletable1[]> {
     // EntityManager
     return this.manager.find(Sampletable1);
   }
 
-  public sample3(): Promise<Sampletable1[]> {
+  public async sample3(): Promise<Sampletable1[]> {
     // EntityManagerRepository
     return this.tablerepo.find();
   }

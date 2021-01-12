@@ -11,7 +11,7 @@ export class FoobarService {
     private sampletable1: Repository<Sampletable1>,
   ) {}
 
-  public getFoobars(): Promise<Sampletable1[]> {
+  public async getFoobars(): Promise<Sampletable1[]> {
     return this.sampletable1.find({ take: 10 });
   }
 }

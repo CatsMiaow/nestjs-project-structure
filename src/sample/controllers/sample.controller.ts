@@ -65,14 +65,14 @@ export class SampleController {
   }
 
   @Get('database')
-  public database(): Promise<Sampletable1[]> {
+  public async database(): Promise<Sampletable1[]> {
     // this.dbquery.sample2();
     // this.dbquery.sample3();
     return this.dbquery.sample1();
   }
 
   @Get('foobars')
-  public foobars(): Promise<Sampletable1[]> {
+  public async foobars(): Promise<Sampletable1[]> {
     return this.foobarService.getFoobars();
   }
 
