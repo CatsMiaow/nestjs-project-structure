@@ -36,17 +36,4 @@ export class LoginController {
   public check(@Req() req: Request): SessionUser | undefined {
     return req.user;
   }
-
-  /**
-   * 1. http://localhost:3000/login-test?username=test&password=test
-   * 2. http://localhost:3000/check
-   * 3. http://localhost:3000/logout
-   * 4. http://localhost:3000/check
-   */
-  @Public()
-  @Get('login-test')
-  @UseGuards(LoginGuard)
-  public loginTest(@Req() req: Request): SessionUser | undefined {
-    return req.user;
-  }
 }

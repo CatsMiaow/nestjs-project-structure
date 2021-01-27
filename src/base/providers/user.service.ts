@@ -11,9 +11,9 @@ export class UserService {
 
     return {
       id: 'test',
-      name: 'foo',
-      email: 'bar',
-      roles: [], // ['admin', 'etc', ...]
+      name: username,
+      email: `${username}@test.com`,
+      roles: ['test'], // ['admin', 'etc', ...]
     };
   }
 }
