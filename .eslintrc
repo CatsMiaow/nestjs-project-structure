@@ -41,6 +41,7 @@
     "no-loop-func": "off",
     "no-return-await": "off",
     "no-unused-expressions": "off",
+    "object-curly-spacing": "off",
 
     // https://github.com/benmosher/eslint-plugin-import/issues/1753
     "import/named": "off",
@@ -57,6 +58,16 @@
     // https://github.com/typescript-eslint/typescript-eslint/issues/977
     "@typescript-eslint/lines-between-class-members": "off",
     "@typescript-eslint/member-ordering": "error",
+    "@typescript-eslint/naming-convention": ["error",
+      { "selector": "default", "format": ["strictCamelCase"] },
+      { "selector": "variable", "format": ["strictCamelCase", "StrictPascalCase", "UPPER_CASE"] },
+      // https://github.com/microsoft/TypeScript/issues/9458
+      { "selector": "parameter", "modifiers": ["unused"], "format": ["strictCamelCase"], "leadingUnderscore": "allow" },
+      { "selector": "property", "format": null },
+      { "selector": "typeProperty", "format": null },
+      { "selector": "typeLike", "format": ["PascalCase"] },
+      { "selector": "enumMember", "format": ["UPPER_CASE"] }
+    ],
     "@typescript-eslint/no-dupe-class-members": "error",
     "@typescript-eslint/no-duplicate-imports": "error",
     "@typescript-eslint/no-floating-promises": ["error", { "ignoreIIFE": true, "ignoreVoid": true }],
@@ -71,6 +82,7 @@
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/no-unsafe-member-access": "off",
     "@typescript-eslint/no-unused-expressions": "error",
+    "@typescript-eslint/object-curly-spacing": ["error", "always"],
     "@typescript-eslint/prefer-includes": "off",
     "@typescript-eslint/prefer-optional-chain": "error",
     "@typescript-eslint/promise-function-async": "error",

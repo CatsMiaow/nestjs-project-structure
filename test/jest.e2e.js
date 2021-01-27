@@ -6,4 +6,5 @@ module.exports = {
   ...config,
   rootDir: '../dist',
   testMatch: ['**/e2e/**/*.+(spec|test).js'],
+  testPathIgnorePatterns: ['/node_modules/'],
 };
