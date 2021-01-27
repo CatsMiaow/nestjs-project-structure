@@ -1,5 +1,5 @@
 export class DateService {
-  public static FORMAT(value: string): string {
+  public static format(value: string): string {
     return new Date(value).toLocaleString();
   }
 

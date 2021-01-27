@@ -14,7 +14,7 @@ export class SimpleResolver {
     this.logger.setContext(SimpleResolver.name);
   }
 
-  // access before method call: http://localhost:3000/login-test?username=test&password=test
+  // Need to access it after login
   @Query(() => User)
   public user(@Context('req') req: Request): User {
     this.logger.log('user');

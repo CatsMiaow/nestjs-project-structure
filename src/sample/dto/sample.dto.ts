@@ -1,4 +1,4 @@
-import { Transform } from 'class-transformer';
+import { Transform, TransformFnParams } from 'class-transformer';
 import { IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 import { DateService } from '../providers';
@@ -22,7 +22,7 @@ export class SampleDto {
   public date: string = new Date().toISOString(); // default value
 
   @IsString() // Change date format
-  @Transform((value: string) => DateService.FORMAT(value))
+  @Transform(({ value }: TransformFnParams) => DateService.format(value))
   public datetime!: string;
 
   @IsNotEmpty()
