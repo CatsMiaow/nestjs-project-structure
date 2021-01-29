@@ -1,5 +1,3 @@
-import { config } from './default';
-
 export const util = {
   isObject<T>(value: T): boolean {
     return value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -17,6 +15,7 @@ export const util = {
 };
 
 export const configuration = async (): Promise<Record<string, unknown>> => {
+  const { config } = await import('./default');
   const environment = await import(`./${process.env.NODE_ENV || 'development'}`);
 
   // object deep merge
