@@ -15,7 +15,7 @@ module.exports = {
         before: ['<rootDir>/jest.e2e.transformer.js'],
       },
       // https://kulshekhar.github.io/ts-jest/docs/options/isolatedModules
-      isolatedModules: true,
+      // isolatedModules: true,
     },
   },
 };

@@ -1,19 +1,16 @@
 import { Injectable } from '@nestjs/common';
 
-import { SessionUser } from '../interfaces';
+import { User } from '.';
 
 @Injectable()
 export class UserService {
-  public getUserData(username: string, password: string): SessionUser | null {
-    if (!username || !password) {
-      return null;
-    }
-
-    return {
+  public async fetch(username: string): Promise<User & { password: string }> {
+    return Promise.resolve({
       id: 'test',
+      password: 'crypto',
       name: username,
       email: `${username}@test.com`,
       roles: ['test'], // ['admin', 'etc', ...]
-    };
+    });
   }
 }

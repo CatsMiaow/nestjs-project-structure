@@ -9,23 +9,7 @@ export class ExceptionsFilter extends BaseExceptionFilter implements GqlExceptio
 
   public catch(exception: unknown, host: ArgumentsHost): void {
     if (host.getType<GqlContextType>() === 'graphql') {
-      // const gqlHost = GqlArgumentsHost.create(host);
-
-      // https://www.apollographql.com/docs/apollo-server/data/errors
-      if (exception instanceof ForbiddenException) {
-        throw new ForbiddenError(exception.message);
-      }
-
-      const status = this.getStatus(exception);
-      const error = exception instanceof Error
-        ? exception
-        : new Error(String(exception));
-
-      if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
-        this.logger.error(error.message, error.stack, 'UnhandledException');
-      }
-
-      throw new ApolloError(error.message);
+      return this.gqlException(exception);
     }
 
     super.catch(exception, host);
@@ -42,5 +26,25 @@ export class ExceptionsFilter extends BaseExceptionFilter implements GqlExceptio
     return exception instanceof HttpException
       ? exception.getStatus()
       : HttpStatus.INTERNAL_SERVER_ERROR;
+  }
+
+  private gqlException(exception: unknown): void {
+    // const gqlHost = GqlArgumentsHost.create(host);
+
+    // https://www.apollographql.com/docs/apollo-server/data/errors
+    if (exception instanceof ForbiddenException) {
+      throw new ForbiddenError(exception.message);
+    }
+
+    const status = this.getStatus(exception);
+    const error = exception instanceof Error
+      ? exception
+      : new Error(String(exception));
+
+    if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
+      this.logger.error(error.message, error.stack, 'UnhandledException');
+    }
+
+    throw new ApolloError(error.message);
   }
 }

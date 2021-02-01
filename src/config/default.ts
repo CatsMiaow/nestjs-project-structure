@@ -17,4 +17,5 @@ export const config = {
     // installSubscriptionHandlers: true,
   },
   hello: 'world',
+  jwtSecret: process.env.JWT_SECRET,
 };

@@ -23,6 +23,26 @@ beforeAll(async () => {
   request = supertest(app.getHttpServer());
 });
 
+test('User', async () => {
+  const { status, body: login } = await request.post('/jwt/login')
+    .send({ username: 'foobar', password: 'crypto' });
+
+  expect([200, 201]).toContain(status);
+  expect(login).toHaveProperty('access_token');
+
+  const { body } = await request.post('/graphql')
+    .set('Authorization', `Bearer ${login.access_token}`)
+    .send({ query: gql`
+      query Payload {
+        user {
+          username
+        }
+      }`,
+    }).expect(200);
+
+  expect(body).toHaveProperty('data.user.username', 'foobar');
+});
+
 test('Write', async () => {
   const { body } = await request.post('/graphql').send({
     query: gql`

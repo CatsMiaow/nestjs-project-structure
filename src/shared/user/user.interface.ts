@@ -1,5 +1,4 @@
-// Express Session User
-export interface SessionUser {
+export interface User {
   id: string;
   name: string;
   email: string;

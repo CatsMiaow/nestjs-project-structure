@@ -1,11 +1,11 @@
-import { NotFoundException } from '@nestjs/common';
-import { Args, Context, ID, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { NotFoundException, UseGuards } from '@nestjs/common';
+import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { ForbiddenError } from 'apollo-server-express';
-import type { Request } from 'express';
 
-import { Logger } from '../../common';
+import { JwtAuthGuard } from '../../auth';
+import { Logger, ReqUser } from '../../common';
 import { SimpleInput, SimpleArgs } from '../dto';
-import { Simple, User } from '../models';
+import { Simple, Payload } from '../models';
 import { SimpleService } from '../providers';
 
 @Resolver(() => Simple)
@@ -14,15 +14,15 @@ export class SimpleResolver {
     this.logger.setContext(SimpleResolver.name);
   }
 
-  // Need to access it after login
-  @Query(() => User)
-  public user(@Context('req') req: Request): User {
+  @Query(() => Payload)
+  @UseGuards(JwtAuthGuard)
+  public user(@ReqUser() user: Payload): Payload {
     this.logger.log('user');
-    if (!req.user) {
+    if (!user) {
       throw new ForbiddenError('NotFoundUser');
     }
 
-    return req.user;
+    return user;
   }
 
   @Mutation(() => Simple)

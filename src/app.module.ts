@@ -1,13 +1,13 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { APP_FILTER, APP_GUARD } from '@nestjs/core';
+import { APP_FILTER } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RouterModule } from 'nest-router';
 
 import { AWSModule } from './aws/aws.module';
 import { BaseModule } from './base/base.module';
-import { CommonModule, ExceptionsFilter, AuthenticatedGuard, LoggerMiddleware } from './common';
+import { CommonModule, ExceptionsFilter, LoggerMiddleware } from './common';
 import { configuration } from './config';
 import { GQLModule } from './gql/gql.module';
 import { SampleModule } from './sample/sample.module';
@@ -54,15 +54,12 @@ import { SampleModule } from './sample/sample.module';
     AWSModule,
     GQLModule,
   ],
-  providers: [{
-    // Global Guard, Auth check
-    provide: APP_GUARD,
-    useClass: AuthenticatedGuard,
-  }, {
+  providers: [
+    // Global Guard, Authentication check on all routers
+    // { provide: APP_GUARD, useClass: AuthenticatedGuard },
     // Global Filter, Exception check
-    provide: APP_FILTER,
-    useClass: ExceptionsFilter,
-  }],
+    { provide: APP_FILTER, useClass: ExceptionsFilter },
+  ],
 })
 export class AppModule implements NestModule {
   // Global Middleware, Inbound logging

@@ -1,4 +1,4 @@
-import { SessionUser } from '../src/base/interfaces';
+import { Payload } from '../src/auth';
 
 export declare global {
   namespace Express {
@@ -6,6 +6,6 @@ export declare global {
       id: string;
     }
     // tslint:disable-next-line: no-empty-interface
-    interface User extends SessionUser {}
+    interface User extends Payload {}
   }
 }

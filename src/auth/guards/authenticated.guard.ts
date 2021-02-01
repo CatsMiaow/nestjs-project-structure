@@ -15,15 +15,10 @@ export class AuthenticatedGuard implements CanActivate {
     }
 
     const request = this.getRequest(context);
-    // In the graphql call, the path is passed to '/'
-    if (request.url === '/' || request.url.startsWith('/test/')) {
-      return true;
-    }
-
-    return request.isAuthenticated(); // or token
+    return request.isAuthenticated();
   }
 
-  private getRequest(context: ExecutionContext): Request {
+  public getRequest(context: ExecutionContext): Request {
     if (context.getType<GqlContextType>() === 'graphql') {
       const ctx = GqlExecutionContext.create(context).getContext();
       return <Request>ctx.req;

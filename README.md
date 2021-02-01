@@ -82,14 +82,14 @@ npm start
   - Module Router
   - Static Files
   - Validation
-- [Global Authenticated Guard](src/common/guards/authenticated.guard.ts)
 - [Global Exception Filter](src/common/filters/exceptions.filter.ts)
 - [Global Logging Middleware](src/common/middleware/logger.middleware.ts)
-- [Session Login with Passport](src/base/providers/local.strategy.ts)
 - [Custom Logger for Production](src/common/providers/logger.service.ts)
+- [Configuration](src/cofig)
+- [Authentication](src/auth) - JWT and Session login with Passport
 - [Role-based Guard](src/common/guards/roles.guard.ts)
 - Controller Routes
-  - [Login](src/base/controllers/login.controller.ts)
+  - [Auth Login](src/base/controllers/auth.controller.ts)
   - [Sample](src/sample/controllers/sample.controller.ts) Parameter, [DTO](src/sample/dto/sample.dto.ts)
   - [CRUD API Sample](src/sample/controllers/crud.controller.ts)
 - [Database Query](src/sample/providers/database.service.ts) Example

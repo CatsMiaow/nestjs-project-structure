@@ -25,16 +25,16 @@ beforeAll(async () => {
 
 test('POST: /login', async () => {
   const { status, body } = await request.post('/login')
-    .send({ username: 'foobar', password: 'password' });
+    .send({ username: 'foobar', password: 'crypto' });
 
   expect([200, 201]).toContain(status);
-  expect(body).toHaveProperty('name', 'foobar');
+  expect(body).toHaveProperty('username', 'foobar');
 });
 
 test('GET: /check', async () => {
   const { body } = await request.get('/check').expect(200);
 
-  expect(body).toHaveProperty('email', 'foobar@test.com');
+  expect(body).toHaveProperty('userId', 'test');
 });
 
 test('GET: /logout', async () => {
