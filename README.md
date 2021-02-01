@@ -86,7 +86,7 @@ npm start
 - [Global Exception Filter](src/common/filters/exceptions.filter.ts)
 - [Global Logging Middleware](src/common/middleware/logger.middleware.ts)
 - [Custom Logger for Production](src/common/providers/logger.service.ts)
-- [Configuration](src/cofig)
+- [Configuration](src/config)
 - [Authentication](src/auth) - JWT and Session login with Passport
 - [Role-based Guard](src/common/guards/roles.guard.ts)
 - Controller Routes
