@@ -139,6 +139,10 @@ interface ThirdCustomeUser extends CustomeUser {}
 + import { FooController, BarController } from './controllers';
 ```
 
+### Variables Naming
+
+> Refer to [Naming cheatsheet](https://github.com/kettanaito/naming-cheatsheet)
+
 ### Links
 
 - [Nest Prisma Starter](https://github.com/CatsMiaow/nestjs-prisma-starter)
