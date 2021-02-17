@@ -3,7 +3,7 @@ import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { ForbiddenError } from 'apollo-server-express';
 
 import { JwtAuthGuard } from '../../auth';
-import { Logger, ReqUser } from '../../common';
+import { Logger, ReqUser, Roles, RolesGuard } from '../../common';
 import { SimpleInput, SimpleArgs } from '../dto';
 import { Simple, Payload } from '../models';
 import { SimpleService } from '../providers';
@@ -15,7 +15,8 @@ export class SimpleResolver {
   }
 
   @Query(() => Payload)
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('test')
   public user(@ReqUser() user: Payload): Payload {
     this.logger.log('user');
     if (!user) {
