@@ -10,11 +10,11 @@ module.exports = {
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.e2e.json',
-      // https://kulshekhar.github.io/ts-jest/docs/options/astTransformers
+      // https://kulshekhar.github.io/ts-jest/docs/getting-started/options/astTransformers
       astTransformers: {
         before: ['<rootDir>/jest.e2e.transformer.js'],
       },
-      // https://kulshekhar.github.io/ts-jest/docs/options/isolatedModules
+      // https://kulshekhar.github.io/ts-jest/docs/getting-started/options/isolatedModules
       // isolatedModules: true,
     },
   },
