@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post, Put, Delete,
   NotFoundException, InternalServerErrorException, ParseIntPipe } from '@nestjs/common';
 
 import { Sampletable1 } from '../../entity/sampledb1';
-import { CrudDto } from '../dto';
+import { CreateDto, UpdateDto } from '../dto';
 import { CrudService } from '../providers';
 
 /**
@@ -23,7 +23,7 @@ export class CrudController {
   }
 
   @Post() // POST http://localhost:3000/test/crud
-  public async create(@Body() body: CrudDto): Promise<{ id: number }> {
+  public async create(@Body() body: CreateDto): Promise<{ id: number }> {
     const result = await this.crud.create(body);
     if (!result.id) {
       throw new InternalServerErrorException('NotCreatedData');
@@ -33,7 +33,7 @@ export class CrudController {
   }
 
   @Put(':id') // PUT http://localhost:3000/test/crud/:id
-  public async update(@Param('id', ParseIntPipe) id: number, @Body() body: CrudDto): Promise<{ success: boolean }> {
+  public async update(@Param('id', ParseIntPipe) id: number, @Body() body: UpdateDto): Promise<{ success: boolean }> {
     const result = await this.crud.update(id, body);
 
     return { success: !!result.affected };

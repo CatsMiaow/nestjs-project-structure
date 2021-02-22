@@ -42,7 +42,7 @@ beforeAll(async () => {
 });
 
 test('create', async () => {
-  const result = await crud.create({ title: 'FooBar', content: 'Hello World' });
+  const result = await crud.create({ title: 'FooBar', content: 'Hello World', tags: ['new'] });
   expect(result).toHaveProperty('id');
   idx = result.id;
 });
@@ -52,7 +52,7 @@ test('read', async () => {
 });
 
 test('update', async () => {
-  expect(await crud.update(idx, { title: 'Blahblahblah' })).toHaveProperty('success');
+  expect(await crud.update(idx, { content: 'Blahblahblah', tags: ['update'] })).toHaveProperty('success');
 });
 
 test('delete', async () => {
