@@ -11,7 +11,7 @@ Shared Nest Modules
 ```js
 +-- shared
 |   +-- foobar
-|   |   +-- foobar.dto.ts
+|   |   +-- foobar.constant.ts
 |   |   +-- foobar.interface.ts
 |   |   +-- foobar.service.ts
 |   |   +-- foobar.module.ts
