@@ -79,11 +79,9 @@ npm start
 // Module structure
 // Add folders according to module scale. If it's small, you don't need to add folders.
 +-- src/greeter
-|   +-- controllers
-|   +-- interfaces
-|   +-- services
-|   +-- *
+|   +-- * // folders
 |   +-- greeter.constant.ts
+|   +-- greeter.controller.ts
 |   +-- greeter.service.ts
 |   +-- greeter.module.ts
 |   +-- greeter.*.ts
