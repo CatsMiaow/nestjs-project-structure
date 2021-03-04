@@ -1,6 +1,6 @@
 import { OmitType } from '@nestjs/mapped-types';
 
-import { CreateDto } from '.';
+import { CreateDto } from './create.dto';
 
 /**
  * https://github.com/nestjs/mapped-types

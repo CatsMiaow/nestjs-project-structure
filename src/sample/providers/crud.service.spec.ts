@@ -2,9 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConnectionOptions } from 'typeorm';
 
-import { CrudService } from '.';
 import { configuration } from '../../config';
 import { Sampletable1 } from '../../entity/sampledb1';
+import { CrudService } from './crud.service';
 
 let moduleRef: TestingModule;
 let crud: CrudService;
