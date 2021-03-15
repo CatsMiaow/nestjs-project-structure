@@ -2,16 +2,16 @@ import { Injectable } from '@nestjs/common';
 import { EC2 } from 'aws-sdk';
 import { DescribeInstancesResult, DescribeInstanceStatusResult, InstanceAttribute, InstanceAttributeName } from 'aws-sdk/clients/ec2';
 
-import { AWSService } from '../aws.service';
+import { AwsService } from '../aws.service';
 
 /**
  * https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html
  */
 @Injectable()
-export class EC2Service {
+export class Ec2Service {
   private instance: EC2 = new EC2(this.aws.options);
 
-  constructor(private aws: AWSService) {}
+  constructor(private aws: AwsService) {}
 
   public async describeInstances(): Promise<DescribeInstancesResult> {
     return this.instance.describeInstances({

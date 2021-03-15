@@ -23,6 +23,7 @@
     "func-names": "off",
     "max-len": ["error", { "code": 140, "ignoreTemplateLiterals": true }],
     "newline-per-chained-call": "off",
+    "no-await-in-loop": "off",
     "no-continue": "off",
     // https://github.com/airbnb/javascript/issues/1342
     "no-param-reassign": ["error", { "props": false }],
@@ -57,15 +58,16 @@
     "@typescript-eslint/explicit-member-accessibility": ["error", { "overrides": { "constructors": "no-public" } }],
     // https://github.com/typescript-eslint/typescript-eslint/issues/977
     "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/member-delimiter-style": "error",
     "@typescript-eslint/member-ordering": "error",
     "@typescript-eslint/naming-convention": ["error",
       { "selector": "default", "format": ["strictCamelCase"] },
-      { "selector": "variable", "format": ["strictCamelCase", "StrictPascalCase", "UPPER_CASE"] },
+      { "selector": "variable", "format": ["strictCamelCase", "UPPER_CASE", "StrictPascalCase"] },
       // https://github.com/microsoft/TypeScript/issues/9458
       { "selector": "parameter", "modifiers": ["unused"], "format": ["strictCamelCase"], "leadingUnderscore": "allow" },
       { "selector": "property", "format": null },
       { "selector": "typeProperty", "format": null },
-      { "selector": "typeLike", "format": ["PascalCase"] },
+      { "selector": "typeLike", "format": ["StrictPascalCase"] },
       { "selector": "enumMember", "format": ["UPPER_CASE"] }
     ],
     "@typescript-eslint/no-dupe-class-members": "error",

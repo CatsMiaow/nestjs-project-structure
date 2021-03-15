@@ -1,14 +1,14 @@
 import { BadRequestException, Body, Controller, Get, NotFoundException, Post } from '@nestjs/common';
 import { DescribeInstancesResult, DescribeInstanceStatusResult, ReservationList, InstanceStatusList } from 'aws-sdk/clients/ec2';
 
-import { EC2Service } from '../providers';
+import { Ec2Service } from '../providers';
 
 /**
  * AWS EC2 Instance
  */
 @Controller('instance')
 export class InstanceController {
-  constructor(private instance: EC2Service) {}
+  constructor(private instance: Ec2Service) {}
 
   @Get('list')
   public async list(): Promise<ReservationList> {

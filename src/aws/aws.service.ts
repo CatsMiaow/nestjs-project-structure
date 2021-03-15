@@ -6,7 +6,7 @@ import { ConfigurationOptions } from 'aws-sdk/lib/config-base';
  * https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/
  */
 @Injectable()
-export class AWSService {
+export class AwsService {
   public options: ConfigurationOptions;
 
   constructor(public config: ConfigService) {

@@ -23,4 +23,4 @@ import { DateScalar } from './scalars';
   ],
   providers: [SimpleResolver, SimpleService, DateScalar],
 })
-export class GQLModule {}
+export class GqlModule {}
