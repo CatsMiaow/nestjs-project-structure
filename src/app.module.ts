@@ -5,13 +5,12 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RouterModule } from 'nest-router';
 
-import { AWSModule } from './aws/aws.module';
-import { BaseModule } from './base/base.module';
-import { ExceptionsFilter, LoggerMiddleware } from './common';
-import { CommonModule } from './common/common.module';
+import { AwsModule } from './aws';
+import { BaseModule } from './base';
+import { CommonModule, ExceptionsFilter, LoggerMiddleware } from './common';
 import { configuration } from './config';
-import { GQLModule } from './gql/gql.module';
-import { SampleModule } from './sample/sample.module';
+import { GqlModule } from './gql';
+import { SampleModule } from './sample';
 
 @Module({
   imports: [
@@ -43,7 +42,7 @@ import { SampleModule } from './sample/sample.module';
     // https://github.com/nestjsx/nest-router
     RouterModule.forRoutes([{
       path: 'aws',
-      module: AWSModule,
+      module: AwsModule,
     }, {
       path: 'test',
       module: SampleModule,
@@ -52,8 +51,8 @@ import { SampleModule } from './sample/sample.module';
     CommonModule, // Global
     BaseModule,
     SampleModule,
-    AWSModule,
-    GQLModule,
+    AwsModule,
+    GqlModule,
   ],
   providers: [
     // Global Guard, Authentication check on all routers

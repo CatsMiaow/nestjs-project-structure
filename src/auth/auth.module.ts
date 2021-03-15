@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 
-import { UserModule } from '../shared/user/user.module';
+import { UserModule } from '../shared/user';
 import { AuthSerializer } from './auth.serializer';
 import { AuthService } from './auth.service';
 import { LocalStrategy, JwtStrategy } from './strategies';
