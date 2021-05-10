@@ -90,11 +90,8 @@ npm start
 
 ## Implements
 
-- See [app](src/app.ts), [app.module](src/app.module.ts)
-  - Database
-  - Module Router
-  - Static Files
-  - Validation
+- See [bootstrap](src/app.ts), [app.module](src/app.module.ts)
+  - Database, Module Router, Static Files, Validation
 - [Global Exception Filter](src/common/filters/exceptions.filter.ts)
 - [Global Logging Middleware](src/common/middleware/logger.middleware.ts)
 - [Custom Logger for Production](src/common/providers/logger.service.ts)
@@ -103,7 +100,7 @@ npm start
 - [Role-based Guard](src/common/guards/roles.guard.ts)
 - Controller Routes
   - [Auth Login](src/base/controllers/auth.controller.ts)
-  - [Sample](src/sample/controllers/sample.controller.ts) Parameter, [DTO](src/sample/dto/sample.dto.ts)
+  - [Sample](src/sample/controllers/sample.controller.ts) Parameter and [DTO](src/sample/dto/sample.dto.ts)
   - [CRUD API Sample](src/sample/controllers/crud.controller.ts)
 - [Database Query](src/sample/providers/database.service.ts) Example
 - [Unit Test](src/sample/providers/crud.service.spec.ts)
@@ -153,10 +150,11 @@ interface ThirdCustomeUser extends CustomeUser {}
 
 ### Variables Naming
 
-> Refer to [Naming cheatsheet](https://github.com/kettanaito/naming-cheatsheet)
+> refer to [Naming cheatsheet](https://github.com/kettanaito/naming-cheatsheet)
 
 ### Links
 
+- [Better Nodejs Project](https://github.com/CatsMiaow/better-nodejs-project)
 - [Nest Prisma Starter](https://github.com/CatsMiaow/nestjs-prisma-starter)
 - [Nest TypeORM Starter](https://github.com/CatsMiaow/nestjs-typeorm-starter)
 - [Nest Sample](https://github.com/nestjs/nest/tree/master/sample)
