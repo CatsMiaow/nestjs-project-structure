@@ -5,5 +5,5 @@ const transformer = require('@nestjs/graphql/plugin');
 module.exports = {
   name: 'nestjs-graphql-transformer',
   version: 1,
-  factory: (cs) => transformer.before({}, cs.tsCompiler.program)
+  factory: (tsCompiler) => transformer.before({}, tsCompiler.program)
 };
