@@ -11,6 +11,7 @@
     "newLine": "lf",
     "strict": true, //= noImplicitAny, noImplicitThis, alwaysStrict, strictBindCallApply, strictNullChecks, strictFunctionTypes, strictPropertyInitialization
     "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
     "noImplicitReturns": true,
     // "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,

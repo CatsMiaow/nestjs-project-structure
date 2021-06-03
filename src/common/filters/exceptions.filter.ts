@@ -7,7 +7,7 @@ import { ApolloError, ForbiddenError } from 'apollo-server-express';
 export class ExceptionsFilter extends BaseExceptionFilter implements GqlExceptionFilter {
   private readonly logger: Logger = new Logger();
 
-  public catch(exception: unknown, host: ArgumentsHost): void {
+  public override catch(exception: unknown, host: ArgumentsHost): void {
     if (host.getType<GqlContextType>() === 'graphql') {
       return this.gqlException(exception);
     }

@@ -14,13 +14,13 @@ export class Logger extends BaseLogger {
     super(context);
   }
 
-  public log(message: unknown, context?: string): void {
+  public override log(message: unknown, context?: string): void {
     this.isProduction
       ? console.log(this.prefix(context), message)
       : super.log(message, this.prefixContext(context));
   }
 
-  public error(message: unknown, trace?: string, context?: string): void {
+  public override error(message: unknown, trace?: string, context?: string): void {
     this.isProduction
       ? console.error(this.prefix(context), message, '\n', trace)
       : super.error(message, trace, this.prefixContext(context));
