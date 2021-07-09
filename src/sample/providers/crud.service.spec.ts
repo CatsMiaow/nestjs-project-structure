@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConnectionOptions } from 'typeorm';
+import type { ConnectionOptions } from 'typeorm';
 
 import { configuration } from '../../config';
 import { Sampletable1 } from '../../entity/sampledb1';

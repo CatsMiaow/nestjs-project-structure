@@ -1,9 +1,8 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_FILTER, RouterModule } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { RouterModule } from 'nest-router';
 
 import { AwsModule } from './aws';
 import { BaseModule } from './base';
@@ -24,9 +23,6 @@ import { SampleModule } from './sample';
     // https://docs.nestjs.com/techniques/database
     TypeOrmModule.forRootAsync({
       useFactory: (config: ConfigService) => ({
-        entities: [`${__dirname}/entity/**/*.{js,ts}`],
-        subscribers: [`${__dirname}/subscriber/**/*.{js,ts}`],
-        migrations: [`${__dirname}/migration/**/*.{js,ts}`],
         ...config.get('db'),
       }),
       inject: [ConfigService],
@@ -38,21 +34,21 @@ import { SampleModule } from './sample';
       rootPath: `${__dirname}/../public`,
       renderPath: '/',
     }),
-    // Module Router
-    // https://github.com/nestjsx/nest-router
-    RouterModule.forRoutes([{
-      path: 'aws',
-      module: AwsModule,
-    }, {
-      path: 'test',
-      module: SampleModule,
-    }]),
     // Service Modules
     CommonModule, // Global
     BaseModule,
     SampleModule,
     AwsModule,
     GqlModule,
+    // Module Router
+    // https://docs.nestjs.com/recipes/router-module
+    RouterModule.register([{
+      path: 'aws',
+      module: AwsModule,
+    }, {
+      path: 'test',
+      module: SampleModule,
+    }]),
   ],
   providers: [
     // Global Guard, Authentication check on all routers

@@ -2,10 +2,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { CommonModule } from '../../common';
 import { configuration } from '../../config';
 import { Sampletable1 } from '../../entity/sampledb1';
-import { SampleModule } from '../sample.module';
+import { CrudService } from '../providers';
 import { CrudController } from './crud.controller';
 
 let moduleRef: TestingModule;
@@ -16,12 +15,6 @@ beforeAll(async () => {
   // moduleRef = await Test.createTestingModule({ imports: [AppModule] }).compile();
   moduleRef = await Test.createTestingModule({
     imports: [
-      ConfigModule.forRoot({
-        isGlobal: true,
-        load: [configuration],
-      }),
-      CommonModule,
-      SampleModule,
       /*
       TypeOrmModule.forRoot({
         ...(<ConnectionOptions>(await configuration()).db),
@@ -29,13 +22,17 @@ beforeAll(async () => {
       }),
       */
       TypeOrmModule.forRootAsync({
+        imports: [ConfigModule.forRoot({ load: [configuration] })],
         useFactory: (config: ConfigService) => ({
-          entities: [`${__dirname}/../../entity/**/*.{js,ts}`],
           ...config.get('db'),
+          entities: [Sampletable1],
         }),
         inject: [ConfigService],
       }),
+      TypeOrmModule.forFeature([Sampletable1]),
     ],
+    controllers: [CrudController],
+    providers: [CrudService],
   }).compile();
 
   crud = moduleRef.get(CrudController);

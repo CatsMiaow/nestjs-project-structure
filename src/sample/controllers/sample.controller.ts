@@ -1,8 +1,9 @@
-import { BadRequestException, Body, Controller, Get, Param, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Param, ParseIntPipe, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import type { Request, Response } from 'express';
 
 import { Roles, RolesGuard, Logger } from '../../common';
+import type { Config } from '../../config';
 import { Sampletable1 } from '../../entity/sampledb1';
 import { FoobarService } from '../../shared/foobar';
 import { SampleDto } from '../dto';
@@ -16,7 +17,7 @@ import { DatabaseService } from '../providers';
 export class SampleController {
   constructor(
     private readonly logger: Logger,
-    private config: ConfigService,
+    private config: ConfigService<Config>,
     private dbquery: DatabaseService,
     private foobarService: FoobarService,
   ) {
@@ -54,9 +55,11 @@ export class SampleController {
     return `helloParam: ${name}`;
   }
 
-  @Get('hello/number/:foo') // http://localhost:3000/test/sample/hello/number/123?bar=456
-  public helloNumber(@Param('foo') foo: number, @Query('bar') bar: number): Record<string, unknown> {
-    return { foo: typeof foo === 'number', bar, fooBar: 'string' };
+  @Get('hello/number/:foo') // http://localhost:3000/test/sample/hello/number/123?bar=456&blah=789
+  public helloNumber( // number transform or validation
+    @Param('foo') foo: number, @Query('bar') bar: string, @Query('blah', ParseIntPipe) blah: number,
+  ): Record<string, unknown> {
+    return { foo, bar, blah };
   }
 
   @Post('hello/body') // http://localhost:3000/test/sample/hello/body
