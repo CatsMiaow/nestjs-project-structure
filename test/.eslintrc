@@ -1,11 +1,4 @@
 {
-  "root": true,
-  "extends": "../.eslintrc",
-  "parserOptions": {
-    "tsconfigRootDir": "test",
-    "project": "tsconfig.json",
-    "sourceType": "module"
-  },
   "rules": {
     "jest/expect-expect": ["error", { "assertFunctionNames": ["expect", "request.*.expect"] }]
   }
