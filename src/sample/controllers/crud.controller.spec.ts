@@ -12,21 +12,11 @@ let crud: CrudController;
 let idx: number;
 
 beforeAll(async () => {
-  // moduleRef = await Test.createTestingModule({ imports: [AppModule] }).compile();
   moduleRef = await Test.createTestingModule({
     imports: [
-      /*
-      TypeOrmModule.forRoot({
-        ...(<ConnectionOptions>(await configuration()).db),
-        entities: [],
-      }),
-      */
       TypeOrmModule.forRootAsync({
         imports: [ConfigModule.forRoot({ load: [configuration] })],
-        useFactory: (config: ConfigService) => ({
-          ...config.get('db'),
-          entities: [Sampletable1],
-        }),
+        useFactory: (config: ConfigService) => ({ ...config.get('db') }),
         inject: [ConfigService],
       }),
       TypeOrmModule.forFeature([Sampletable1]),

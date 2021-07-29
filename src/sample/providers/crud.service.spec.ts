@@ -13,10 +13,7 @@ let idx: number;
 beforeAll(async () => {
   moduleRef = await Test.createTestingModule({
     imports: [
-      TypeOrmModule.forRoot({
-        ...(<ConnectionOptions>(await configuration()).db),
-        entities: [Sampletable1],
-      }),
+      TypeOrmModule.forRoot({ ...(<ConnectionOptions>(await configuration()).db) }),
       TypeOrmModule.forFeature([Sampletable1]),
     ],
     providers: [CrudService],
