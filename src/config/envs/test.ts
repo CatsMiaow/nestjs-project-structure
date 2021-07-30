@@ -1,3 +1,4 @@
+// export * from './development';
 export const config = {
   db: {
     type: 'mysql',
@@ -18,6 +19,5 @@ export const config = {
   },
   graphql: {
     playground: false,
-    autoSchemaFile: true,
   },
 };

@@ -11,7 +11,7 @@ export const config = {
         'request.credentials': 'include',
       },
     },
-    autoSchemaFile: 'schema.gql',
+    autoSchemaFile: true,
     // cors: { credentials: true },
     // sortSchema: true,
     // installSubscriptionHandlers: true,

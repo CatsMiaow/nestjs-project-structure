@@ -1,9 +1,7 @@
 import { BadRequestException, Body, Controller, Get, Param, ParseIntPipe, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import type { Request, Response } from 'express';
 
-import { Roles, RolesGuard, Logger } from '../../common';
-import type { Config } from '../../config';
+import { Roles, RolesGuard, Logger, ConfigService } from '../../common';
 import { Sampletable1 } from '../../entity/sampledb1';
 import { FoobarService } from '../../shared/foobar';
 import { SampleDto } from '../dto';
@@ -17,7 +15,7 @@ import { DatabaseService } from '../providers';
 export class SampleController {
   constructor(
     private readonly logger: Logger,
-    private config: ConfigService<Config>,
+    private config: ConfigService,
     private dbquery: DatabaseService,
     private foobarService: FoobarService,
   ) {

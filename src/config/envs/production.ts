@@ -30,7 +30,6 @@ export const config = {
   graphql: {
     debug: false,
     playground: false,
-    autoSchemaFile: true,
   },
   foo: 'pro-bar',
 };

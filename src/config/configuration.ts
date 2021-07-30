@@ -1,9 +1,6 @@
-import type { config as Default } from './default';
-import type { config as Development } from './development';
+import type { Config, Objectype, Production } from './config.interface';
 
-type Objectype = Record<string, unknown>;
-
-export const util = {
+const util = {
   isObject<T>(value: T): value is T & Objectype {
     return value !== null && typeof value === 'object' && !Array.isArray(value);
   },
@@ -20,12 +17,10 @@ export const util = {
   },
 };
 
-export type Config = typeof Default & typeof Development;
-
 export const configuration = async (): Promise<Config> => {
-  const { config } = await import('./default');
-  const environment = <{ config: typeof Development }> await import(`./${process.env.NODE_ENV || 'development'}`);
+  const { config } = await import('./envs/default');
+  const { config: environment } = <{ config: Production }> await import(`./envs/${process.env.NODE_ENV || 'development'}`);
 
   // object deep merge
-  return util.merge(config, environment.config);
+  return util.merge(config, environment);
 };
