@@ -9,6 +9,7 @@
   "plugins": ["@typescript-eslint", "sonarjs", "jest"],
   "extends": [
     "eslint:recommended",
+    "airbnb-base",
     "airbnb-typescript/base",
     "plugin:jest/recommended",
     "plugin:sonarjs/recommended",
