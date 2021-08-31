@@ -12,6 +12,7 @@ export const config = {
       },
     },
     autoSchemaFile: true,
+    autoTransformHttpErrors: true,
     // cors: { credentials: true },
     // sortSchema: true,
     // installSubscriptionHandlers: true,

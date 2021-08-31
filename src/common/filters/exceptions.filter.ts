@@ -1,50 +1,39 @@
-import { ArgumentsHost, Catch, ForbiddenException, HttpException, HttpStatus, Logger } from '@nestjs/common';
+import { ArgumentsHost, Catch, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
-import { GqlContextType, GqlExceptionFilter } from '@nestjs/graphql';
-import { ApolloError, ForbiddenError } from 'apollo-server-express';
+import { GqlArgumentsHost, GqlContextType, GqlExceptionFilter } from '@nestjs/graphql';
+// import { ApolloError } from 'apollo-server-express';
 
 @Catch()
 export class ExceptionsFilter extends BaseExceptionFilter implements GqlExceptionFilter {
   private readonly logger: Logger = new Logger();
 
   public override catch(exception: unknown, host: ArgumentsHost): void {
+    let args: unknown;
     if (host.getType<GqlContextType>() === 'graphql') {
-      return this.gqlException(exception);
+      const gqlHost = GqlArgumentsHost.create(host);
+      const { req: { body: { operationName, variables } } } = gqlHost.getContext();
+      args = `${operationName} ${JSON.stringify(variables)}`;
+    } else {
+      super.catch(exception, host);
+      // const req = host.switchToHttp().getRequest<Request>();
+      // req.method, req.originalUrl...
+      // args = req.body;
     }
 
-    super.catch(exception, host);
-
-    const status = this.getStatus(exception);
+    const status = this.getHttpStatus(exception);
     if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
-      // Error Notifications
-      // const request = host.switchToHttp().getRequest<Request>();
-      // request.method, request.originalUrl...
+      if (exception instanceof Error) {
+        this.logger.error(`${exception.message}: ${args}`, exception.stack);
+      } else {
+        // Error Notifications
+        this.logger.error('UnhandledException', exception);
+      }
     }
   }
 
-  private getStatus(exception: unknown): number {
+  private getHttpStatus(exception: unknown): number {
     return exception instanceof HttpException
       ? exception.getStatus()
       : HttpStatus.INTERNAL_SERVER_ERROR;
-  }
-
-  private gqlException(exception: unknown): void {
-    // const gqlHost = GqlArgumentsHost.create(host);
-
-    // https://www.apollographql.com/docs/apollo-server/data/errors
-    if (exception instanceof ForbiddenException) {
-      throw new ForbiddenError(exception.message);
-    }
-
-    const status = this.getStatus(exception);
-    const error = exception instanceof Error
-      ? exception
-      : new Error(String(exception));
-
-    if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
-      this.logger.error(error.message, error.stack, 'UnhandledException');
-    }
-
-    throw new ApolloError(error.message);
   }
 }
