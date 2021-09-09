@@ -155,8 +155,6 @@ interface ThirdCustomeUser extends CustomeUser {}
 ### Links
 
 - [Better Nodejs Project](https://github.com/CatsMiaow/better-nodejs-project)
-- [Nest Prisma Starter](https://github.com/CatsMiaow/nestjs-prisma-starter)
-- [Nest TypeORM Starter](https://github.com/CatsMiaow/nestjs-typeorm-starter)
 - [Nest Sample](https://github.com/nestjs/nest/tree/master/sample)
 - [Awesome Nest](https://github.com/juliandavidmr/awesome-nestjs)
 - [NestJS](https://docs.nestjs.com)
