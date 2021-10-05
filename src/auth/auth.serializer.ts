@@ -14,7 +14,7 @@ export class AuthSerializer extends PassportSerializer {
       // const user = await fetchMore();
       done(null, data);
     } catch (err) {
-      done(err);
+      done(<Error>err);
     }
   }
 }
