@@ -22,7 +22,7 @@ export class SampleDto {
   public date: string = new Date().toISOString(); // default value
 
   @IsString() // Change date format
-  @Transform(({ value }: TransformFnParams) => DateService.format(value))
+  @Transform(({ value }: TransformFnParams) => DateService.format(String(value)))
   public datetime!: string;
 
   @IsNotEmpty()

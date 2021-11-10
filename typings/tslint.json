@@ -1,4 +1,0 @@
-{
-  "extends": "dtslint/dtslint.json",
-  "rules": {}
-}

@@ -54,9 +54,7 @@ export class SampleController {
   }
 
   @Get('hello/number/:foo') // http://localhost:3000/test/sample/hello/number/123?bar=456&blah=789
-  public helloNumber( // number transform or validation
-    @Param('foo') foo: number, @Query('bar') bar: string, @Query('blah', ParseIntPipe) blah: number,
-  ): Record<string, unknown> {
+  public helloNumber(@Param('foo') foo: number, @Query('bar') bar: string, @Query('blah', ParseIntPipe) blah: number): AnyObject {
     return { foo, bar, blah };
   }
 

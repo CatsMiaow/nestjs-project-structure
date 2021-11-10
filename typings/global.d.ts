@@ -1,6 +1,8 @@
 import { Payload } from '../src/auth';
 
 export declare global {
+  type AnyObject = Record<string, unknown>;
+
   namespace NodeJS {
     interface ProcessEnv {
       NODE_ENV: string;
@@ -21,7 +23,7 @@ export declare global {
     interface Request {
       id: string;
     }
-    // tslint:disable-next-line: no-empty-interface
+    // eslint-disable-next-line @typescript-eslint/no-empty-interface
     interface User extends Payload {}
   }
 }

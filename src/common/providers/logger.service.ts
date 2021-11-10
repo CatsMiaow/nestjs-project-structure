@@ -14,6 +14,10 @@ export class Logger extends ConsoleLogger {
     super(context);
   }
 
+  private get reqContext(): string {
+    return this.req.context?.id || '';
+  }
+
   public override log(message: unknown, context?: string): void {
     this.isProduction
       ? console.log(this.prodContext(context), message)
@@ -24,10 +28,6 @@ export class Logger extends ConsoleLogger {
     this.isProduction
       ? console.error(this.prodContext(context), message, '\n', trace)
       : super.error(message, trace, this.devContext(context));
-  }
-
-  private get reqContext(): string {
-    return this.req.context?.id || '';
   }
 
   private getContext(context?: string): string {

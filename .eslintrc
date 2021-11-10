@@ -16,7 +16,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
-  "ignorePatterns": ["**/node_modules/**", "dist/**", "src/entity/**", "typings/**"],
+  "ignorePatterns": ["**/node_modules/**", "dist/**", "src/entity/**"],
   "rules": {
     "class-methods-use-this": "off",
     // https://github.com/typescript-eslint/typescript-eslint/issues/1277
