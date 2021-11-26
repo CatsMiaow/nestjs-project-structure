@@ -15,6 +15,8 @@ Node.js framework NestJS project structure
 ```sh
 # 1. node_modules
 npm ci
+# 1-1. npm < v7 or Node.js <= v14
+npm i
 # 2. When import entities from an existing database
 npm run entity
 ```
