@@ -1,3 +1,4 @@
+import { Logger as NestLogger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
@@ -6,7 +7,7 @@ import { AppModule } from './app.module';
 /**
  * https://docs.nestjs.com/recipes/swagger
  */
-async function bootstrap(): Promise<void> {
+async function bootstrap(): Promise<string> {
   const app = await NestFactory.create(AppModule);
 
   const options = new DocumentBuilder()
@@ -19,7 +20,15 @@ async function bootstrap(): Promise<void> {
   SwaggerModule.setup('api', app, document);
 
   await app.listen(process.env.PORT || 8000);
+
+  return app.getUrl();
 }
 
-// eslint-disable-next-line no-console
-bootstrap().catch(console.error);
+(async (): Promise<void> => {
+  try {
+    const url = await bootstrap();
+    NestLogger.log(url, 'Bootstrap');
+  } catch (error) {
+    NestLogger.error(error, 'Bootstrap');
+  }
+})();
