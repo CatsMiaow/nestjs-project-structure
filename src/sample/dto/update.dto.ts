@@ -1,10 +1,13 @@
+/**
+ * https://github.com/nestjs/mapped-types
+ * https://docs.nestjs.com/openapi/mapped-types for swagger
+ */
 import { OmitType } from '@nestjs/mapped-types';
+// import { OmitType } from '@nestjs/swagger';
 
 import { CreateDto } from './create.dto';
 
 /**
- * https://github.com/nestjs/mapped-types
- * PartialType, PickType, OmitType, IntersectionType
- * https://docs.nestjs.com/openapi/mapped-types for swagger
+ * Mapped Types: PartialType, PickType, OmitType, IntersectionType
  */
 export class UpdateDto extends OmitType(CreateDto, ['title']) {}
