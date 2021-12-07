@@ -1,5 +1,5 @@
 import { BadRequestException, Body, Controller, Get, NotFoundException, Post } from '@nestjs/common';
-import { DescribeInstancesResult, DescribeInstanceStatusResult, ReservationList, InstanceStatusList } from 'aws-sdk/clients/ec2';
+import type { DescribeInstancesResult, DescribeInstanceStatusResult, ReservationList, InstanceStatusList } from 'aws-sdk/clients/ec2';
 
 import { Ec2Service } from '../providers';
 

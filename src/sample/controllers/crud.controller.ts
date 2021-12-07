@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, Put, Delete,
   NotFoundException, InternalServerErrorException, ParseIntPipe } from '@nestjs/common';
 
-import { Sampletable1 } from '../../entity/sampledb1';
+import type { Sampletable1 } from '../../entity/sampledb1';
 import { CreateDto, UpdateDto } from '../dto';
 import { CrudService } from '../providers';
 

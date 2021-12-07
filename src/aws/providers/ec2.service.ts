@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { EC2 } from 'aws-sdk';
-import { DescribeInstancesResult, DescribeInstanceStatusResult, InstanceAttribute, InstanceAttributeName } from 'aws-sdk/clients/ec2';
+import type { DescribeInstancesResult, DescribeInstanceStatusResult, InstanceAttribute, InstanceAttributeName } from 'aws-sdk/clients/ec2';
 
 import { AwsService } from '../aws.service';
 

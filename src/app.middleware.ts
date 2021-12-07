@@ -1,4 +1,4 @@
-import { INestApplication } from '@nestjs/common';
+import type { INestApplication } from '@nestjs/common';
 import compression from 'compression';
 import session from 'express-session';
 import helmet from 'helmet';

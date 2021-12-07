@@ -12,6 +12,8 @@
     "strict": true, //= alwaysStrict, strictNullChecks, strictBindCallApply, strictFunctionTypes, strictPropertyInitialization, noImplicitAny, noImplicitThis, useUnknownInCatchVariables
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
+    // "exactOptionalPropertyTypes": true,
+    "importsNotUsedAsValues": "error",
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,

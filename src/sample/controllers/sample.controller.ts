@@ -2,7 +2,7 @@ import { BadRequestException, Body, Controller, Get, Param, ParseIntPipe, Post, 
 import type { Request, Response } from 'express';
 
 import { Roles, RolesGuard, Logger, ConfigService } from '../../common';
-import { Sampletable1 } from '../../entity/sampledb1';
+import type { Sampletable1 } from '../../entity/sampledb1';
 import { FoobarService } from '../../shared/foobar';
 import { SampleDto } from '../dto';
 import { DatabaseService } from '../providers';

@@ -1,6 +1,6 @@
 import { Logger as NestLogger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { NestExpressApplication } from '@nestjs/platform-express';
+import type { NestExpressApplication } from '@nestjs/platform-express';
 
 import { middleware } from './app.middleware';
 import { AppModule } from './app.module';
