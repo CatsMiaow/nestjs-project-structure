@@ -151,6 +151,21 @@ interface ThirdCustomeUser extends CustomeUser {}
 + import { FooController, BarController } from './controllers';
 ```
 
+#### Circular dependency
+
+<https://docs.nestjs.com/fundamentals/circular-dependency>
+
+```diff
+# Do not use a path that ends with a dot.
+- import { FooService } from '.';
+- import { BarService } from '..';
++ import { FooService } from './foo.service';
++ import { BarService } from '../providers';
+# My preferred method is to place only one fileOrFolder name at the end of the path.
+- import { UtilService } from '../common/providers/util.service';
++ import { UtilService } from '../common';
+```
+
 ### Variables Naming
 
 > refer to [Naming cheatsheet](https://github.com/kettanaito/naming-cheatsheet)
