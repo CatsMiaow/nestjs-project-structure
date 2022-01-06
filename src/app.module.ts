@@ -8,6 +8,7 @@ import { AwsModule } from './aws';
 import { BaseModule } from './base';
 import { CommonModule, ExceptionsFilter, LoggerMiddleware } from './common';
 import { configuration } from './config';
+import { DebugSampleModule } from './debug';
 import { GqlModule } from './gql';
 import { SampleModule } from './sample';
 
@@ -38,8 +39,9 @@ import { SampleModule } from './sample';
     CommonModule, // Global
     BaseModule,
     SampleModule,
-    AwsModule,
     GqlModule,
+    DebugSampleModule,
+    AwsModule,
     // Module Router
     // https://docs.nestjs.com/recipes/router-module
     RouterModule.register([{
@@ -48,6 +50,9 @@ import { SampleModule } from './sample';
     }, {
       path: 'test',
       module: SampleModule,
+    }, {
+      path: 'test',
+      module: DebugSampleModule,
     }]),
   ],
   providers: [
