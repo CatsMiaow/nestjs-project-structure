@@ -74,7 +74,7 @@ npm start
 |   |   +-- providers // Nest Providers
 |   |   +-- * // models, repositories, services...
 |   +-- shared // Shared Nest Modules
-|   +-- gql // GraphQL Structure Sample
+|   +-- gql // GraphQL Structure
 |   +-- * // Other Nest Modules, non-global, same as common structure above
 +-- test // Jest testing
 +-- typings // Modules and global type definitions
@@ -104,13 +104,14 @@ npm start
 - Controller Routes
   - [Auth Login](src/base/controllers/auth.controller.ts)
   - [Sample](src/sample/controllers/sample.controller.ts) Parameter and [DTO](src/sample/dto/sample.dto.ts)
-  - [CRUD API Sample](src/sample/controllers/crud.controller.ts)
+  - [CRUD API](src/sample/controllers/crud.controller.ts) Sample
 - [Database Query](src/sample/providers/database.service.ts) Example
 - [Unit Test](src/sample/providers/crud.service.spec.ts)
 - [E2E Test](test/e2e)
-- [Shared Modules Example](src/shared)
-- [GraphQL Structure Example](src/gql)
-- [AWS SDK Example](src/aws)
+- [Shared Modules](src/shared) Example
+- [GraphQL Structure](src/gql) Example
+- [Custom Decorators](src/debug) Example at Nest level
+- [AWS SDK](src/aws) Example
 
 ## Documentation
 
@@ -149,6 +150,9 @@ interface ThirdCustomeUser extends CustomeUser {}
 - import { FooController } from './controllers/foo.controller';
 - import { BarController } from './controllers/bar.controller';
 + import { FooController, BarController } from './controllers';
+# My preferred method is to place only one fileOrFolder name at the end of the path.
+- import { UtilService } from '../common/providers/util.service';
++ import { UtilService } from '../common';
 ```
 
 #### Circular dependency
@@ -161,9 +165,6 @@ interface ThirdCustomeUser extends CustomeUser {}
 - import { BarService } from '..';
 + import { FooService } from './foo.service';
 + import { BarService } from '../providers';
-# My preferred method is to place only one fileOrFolder name at the end of the path.
-- import { UtilService } from '../common/providers/util.service';
-+ import { UtilService } from '../common';
 ```
 
 ### Variables Naming

@@ -9,6 +9,6 @@ See [ConfigService](../common/providers/config.service.ts) of [CommonModule](../
 
 ## Usage example
 
-See sample method of [SampleController](../sample/controllers/sample.controller.ts)
+See [sample](../sample/controllers/sample.controller.ts#L29-L32) method of [SampleController](../sample/controllers/sample.controller.ts)
 
 ![example](https://user-images.githubusercontent.com/1300172/127599201-8491e7bb-76f3-4dbc-9a62-97b6832bb882.png)
