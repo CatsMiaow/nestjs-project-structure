@@ -98,6 +98,7 @@ npm start
 - [Global Exception Filter](src/common/filters/exceptions.filter.ts)
 - [Global Logging Middleware](src/common/middleware/logger.middleware.ts)
 - [Custom Logger for Production](src/common/providers/logger.service.ts)
+- [Custom Decorators](src/debug) Example at Nest level
 - [Configuration](src/config)
 - [Authentication](src/auth) - JWT and Session login with Passport
 - [Role-based Guard](src/common/guards/roles.guard.ts)
@@ -110,7 +111,6 @@ npm start
 - [E2E Test](test/e2e)
 - [Shared Modules](src/shared) Example
 - [GraphQL Structure](src/gql) Example
-- [Custom Decorators](src/debug) Example at Nest level
 - [AWS SDK](src/aws) Example
 
 ## Documentation
