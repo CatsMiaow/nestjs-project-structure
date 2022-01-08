@@ -1,7 +1,8 @@
 # Debug
 
-`DebugModule` outputs a log along with execution times when all methods of `controllers` and `providers` in the module (including import modules) in which the decorator is registered are executed. \
-It can be used on a per module/class/method basis.
+`DebugModule` registers a decorator that outputs logs along with the execution time in all methods of the `controllers` and `providers` of the module (including import module) to which the `@Debug` decorator is applied. \
+Instead of adding a log to every method one by one, you can leave a log of execution of all methods with one decorator. \
+It can also be applied only to specific classes or methods.
 
 ## Usage
 
@@ -27,7 +28,7 @@ To exclude a specific class within a module
 
 ### Class
 
-There is no need to import `DebugModule` when using it in class. It works as a separate decorator. \
+You don't need to import `DebugModule` and `@Debug` when using it in class. It works as a separate decorator. \
 Registering `@DebugLog` in a class applies to all methods in the class, so there is no need to register `@DebugLog` in a method.
 
 ```ts
