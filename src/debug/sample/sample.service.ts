@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class DebugSampleService {
+export class SampleService {
   public stepOne(foo: string): string {
     return foo;
   }

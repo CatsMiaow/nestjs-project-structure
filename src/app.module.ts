@@ -8,7 +8,7 @@ import { AwsModule } from './aws';
 import { BaseModule } from './base';
 import { CommonModule, ExceptionsFilter, LoggerMiddleware } from './common';
 import { configuration } from './config';
-import { DebugSampleModule } from './debug';
+import { SampleModule as DebugSampleModule } from './debug';
 import { GqlModule } from './gql';
 import { SampleModule } from './sample';
 

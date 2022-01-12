@@ -1,11 +1,12 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import { Logger } from '@nestjs/common';
 import { performance } from 'perf_hooks';
 // import { isAsyncFunction } from 'util/types'; // >= v15.3.0
 import { types } from 'util';
 
+import type { Func } from './debug.interface';
+
 const MethodLog = (context?: string): MethodDecorator => (
-  (target: Object, propertyKey: string | symbol, descriptor: PropertyDescriptor): void => {
+  (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor): void => {
     const originalMethod: unknown = descriptor.value;
     if (typeof originalMethod !== 'function') {
       return;
@@ -47,7 +48,7 @@ const MethodLog = (context?: string): MethodDecorator => (
  * https://github.com/Papooch/decorate-all
  */
 const ClassLog = (context?: string): ClassDecorator => (
-  (target: Function): void => {
+  (target: Func): void => {
     const descriptors = Object.getOwnPropertyDescriptors(target.prototype);
 
     for (const [propertyKey, descriptor] of Object.entries(descriptors)) {
@@ -62,7 +63,7 @@ const ClassLog = (context?: string): ClassDecorator => (
         const metadataKeys = Reflect.getMetadataKeys(originalMethod);
         for (const key of metadataKeys) {
           const value: unknown = Reflect.getMetadata(key, originalMethod);
-          Reflect.defineMetadata(key, value, <Object>descriptor.value);
+          Reflect.defineMetadata(key, value, <object>descriptor.value);
         }
       }
 
@@ -72,9 +73,9 @@ const ClassLog = (context?: string): ClassDecorator => (
 );
 
 export const DebugLog = (context?: string): ClassDecorator & MethodDecorator => (
-  (target: Object, propertyKey?: string | symbol, descriptor?: PropertyDescriptor): void => {
+  (target: object, propertyKey?: string | symbol, descriptor?: PropertyDescriptor): void => {
     if (!descriptor) {
-      ClassLog(context)(<Function>target);
+      ClassLog(context)(<Func>target);
     } else if (propertyKey) {
       MethodLog(context)(target, propertyKey, descriptor);
     }

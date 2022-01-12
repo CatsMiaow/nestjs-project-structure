@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import type { Type } from '@nestjs/common';
 
 export class ClassRef {
   [index: string]: Type;
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-export type Metatype = Type | Function;
+export type Func = Function;
+export type Metatype = Type | Func;
 
 export interface DebugOptions {
   context?: string;

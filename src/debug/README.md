@@ -43,10 +43,10 @@ export class AppController {
 
 ## Logging
 
-See [Logger](./debug-log.decorator.ts#L22) to edit log format.
+See [Logger](./debug-log.decorator.ts#L15-L21) to edit log format.
 
-Example of log output of [step](./sample/debug-sample.controller.ts#L16) method \
+Example of log output of [step](./sample/sample.controller.ts#L16) method \
 ![step](https://user-images.githubusercontent.com/1300172/148489601-91c5e3be-4122-464d-abfd-997fe9721c0b.png)
 
-Example of log output of [chain](./sample/debug-sample.controller.ts#L24) method \
+Example of log output of [chain](./sample/sample.controller.ts#L24) method \
 ![chain](https://user-images.githubusercontent.com/1300172/148489682-99996cc9-7d9b-4c9e-a74e-1af4eaa184a5.png)

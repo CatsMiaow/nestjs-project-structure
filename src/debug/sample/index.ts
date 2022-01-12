@@ -1,1 +1,1 @@
-export * from './debug-sample.module';
+export * from './sample.module';
