@@ -18,7 +18,11 @@ export function middleware(app: INestApplication): INestApplication {
   app.use(passport.initialize());
   app.use(passport.session());
   // https://github.com/graphql/graphql-playground/issues/1283#issuecomment-703631091
-  app.use(helmet({ contentSecurityPolicy: isProduction ? undefined : false }));
+  // https://github.com/graphql/graphql-playground/issues/1283#issuecomment-1012913186
+  app.use(helmet({
+    contentSecurityPolicy: isProduction ? undefined : false,
+    crossOriginEmbedderPolicy: isProduction ? undefined : false,
+  }));
   // app.enableCors();
 
   return app;
