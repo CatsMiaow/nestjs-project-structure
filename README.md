@@ -111,7 +111,6 @@ npm start
 - [E2E Test](test/e2e)
 - [Shared Modules](src/shared) Example
 - [GraphQL Structure](src/gql) Example
-- [AWS SDK](src/aws) Example
 
 ## Documentation
 

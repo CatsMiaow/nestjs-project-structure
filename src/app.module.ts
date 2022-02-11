@@ -4,7 +4,6 @@ import { APP_FILTER, RouterModule } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { AwsModule } from './aws';
 import { BaseModule } from './base';
 import { CommonModule, ExceptionsFilter, LoggerMiddleware } from './common';
 import { configuration } from './config';
@@ -41,13 +40,9 @@ import { SampleModule } from './sample';
     SampleModule,
     GqlModule,
     DebugSampleModule,
-    AwsModule,
     // Module Router
     // https://docs.nestjs.com/recipes/router-module
     RouterModule.register([{
-      path: 'aws',
-      module: AwsModule,
-    }, {
       path: 'test',
       module: SampleModule,
     }, {

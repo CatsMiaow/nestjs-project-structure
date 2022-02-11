@@ -32,7 +32,6 @@
     "@nestjs/terminus": "^8.0.4",
     "@nestjs/typeorm": "^8.0.3",
     "apollo-server-express": "^3.6.2",
-    "aws-sdk": "^2.1069.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "compression": "^1.7.4",
