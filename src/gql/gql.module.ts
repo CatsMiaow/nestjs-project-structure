@@ -1,3 +1,4 @@
+import { ApolloDriver } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -14,6 +15,7 @@ import { DateScalar } from './scalars';
 @Module({
   imports: [
     GraphQLModule.forRootAsync({
+      driver: ApolloDriver,
       useFactory: (config: ConfigService) => ({
         ...config.get('graphql'),
       }),

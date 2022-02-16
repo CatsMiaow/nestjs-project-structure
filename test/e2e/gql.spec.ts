@@ -109,7 +109,7 @@ test('Find', async () => {
   expect(body.data.find).toContainEqual(
     expect.objectContaining({
       title: expect.any(String),
-      createdAt: expect.any(Number),
+      createdAt: expect.any(String),
     }),
   );
 });
