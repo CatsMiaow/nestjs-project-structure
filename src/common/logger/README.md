@@ -13,9 +13,11 @@ Implement `LoggerService` with [pino](https://github.com/pinojs/pino) and and ad
 
 ### Usage
 
-1. Check the pino [configuration]('./pino.ts).
-2. [middleware](../middleware/logger.middleware.ts)
-3. [index](./index.ts)
+1. Check the pino [configuration](./pino.ts).
+2. Comment out `ConsoleLogger` and uncomment `PinoLogger`. \
+<https://github.com/CatsMiaow/node-nestjs-structure/blob/9b0a2f7cfc14ff1e552d78930a6a28cb4cb26f04/src/common/logger/index.ts#L3-L5>
+3. Uncomment `Logger.setMetadata`. \
+<https://github.com/CatsMiaow/node-nestjs-structure/blob/9b0a2f7cfc14ff1e552d78930a6a28cb4cb26f04/src/common/middleware/logger.middleware.ts#L22-L25>
 
 **Development**
 ![dev-pino-logger](https://user-images.githubusercontent.com/1300172/155109548-90dd59e7-f0de-404e-8e88-3319e5f2917a.png)
