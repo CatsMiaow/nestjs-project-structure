@@ -97,7 +97,7 @@ npm start
   - Database, Module Router, Static Files, Validation
 - [Global Exception Filter](src/common/filters/exceptions.filter.ts)
 - [Global Logging Middleware](src/common/middleware/logger.middleware.ts)
-- [Custom Logger for Production](src/common/logger)
+- [Custom Logger](src/common/logger) for Production
 - [Custom Decorators](src/debug) Example at Nest level
 - [Configuration](src/config)
 - [Authentication](src/auth) - JWT and Session login with Passport

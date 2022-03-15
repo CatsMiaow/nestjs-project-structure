@@ -9,7 +9,7 @@ Extend the built-in [ConsoleLogger](https://docs.nestjs.com/techniques/logger#ex
 
 ## PinoLogger
 
-Implement `LoggerService` with [pino](https://github.com/pinojs/pino) and and add `req.id` to the log as [AsyncLocalStorage](https://nodejs.org/api/async_context.html#class-asynclocalstorage).
+Implement [LoggerService](https://docs.nestjs.com/techniques/logger#custom-implementation) with [pino](https://github.com/pinojs/pino) and and add `req.id` to the log as [AsyncLocalStorage](https://nodejs.org/api/async_context.html#class-asynclocalstorage).
 
 ### Usage
 
