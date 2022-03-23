@@ -16,6 +16,7 @@ export declare global {
       DB_NAME: string;
 
       JWT_SECRET: string;
+      JWT_REFRESH_SECRET: string;
     }
   }
 
