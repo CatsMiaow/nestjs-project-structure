@@ -26,7 +26,7 @@ export class SimpleService {
   public async read(id: number): Promise<Simple | null> {
     this.logger.log('read');
 
-    const row = await this.sampletable.findOne(id);
+    const row = await this.sampletable.findOneBy({ id });
     if (!row) {
       return null;
     }
