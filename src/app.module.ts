@@ -22,8 +22,8 @@ import { SampleModule } from './sample';
     // Database
     // https://docs.nestjs.com/techniques/database
     TypeOrmModule.forRootAsync({
-      useFactory: (config: ConfigService) => ({
-        ...config.get('db'),
+      useFactory: async (config: ConfigService) => ({
+        ...await config.get('db'),
       }),
       inject: [ConfigService],
     }),

@@ -16,7 +16,7 @@ beforeAll(async () => {
     imports: [
       TypeOrmModule.forRootAsync({
         imports: [ConfigModule.forRoot({ load: [configuration] })],
-        useFactory: (config: ConfigService) => ({ ...config.get('db') }),
+        useFactory: async (config: ConfigService) => ({ ...await config.get('db') }),
         inject: [ConfigService],
       }),
       TypeOrmModule.forFeature([Sampletable1]),

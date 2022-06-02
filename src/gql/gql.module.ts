@@ -16,8 +16,8 @@ import { DateScalar } from './scalars';
   imports: [
     GraphQLModule.forRootAsync({
       driver: ApolloDriver,
-      useFactory: (config: ConfigService) => ({
-        ...config.get('graphql'),
+      useFactory: async (config: ConfigService) => ({
+        ...await config.get('graphql'),
       }),
       inject: [ConfigService],
     }),

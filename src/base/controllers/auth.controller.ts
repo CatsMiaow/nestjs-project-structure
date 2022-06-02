@@ -25,8 +25,9 @@ export class AuthController {
 
   @Get('logout')
   public logout(@Req() req: Request, @Res() res: Response): void {
-    req.logout();
-    res.redirect('/');
+    req.logout(() => {
+      res.redirect('/');
+    });
   }
 
   @Get('check')
