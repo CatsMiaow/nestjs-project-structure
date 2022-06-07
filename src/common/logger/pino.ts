@@ -13,7 +13,7 @@ export const logger = pino({
       },
     }),
 }, pino.multistream([
-  // https://getpino.io/#/docs/asynchronous?id=usage
-  { stream: pino.destination({ dest: process.stdout.fd, sync: false }) },
-  { stream: pino.destination({ dest: process.stderr.fd, sync: false }), level: 'error' },
-], {}));
+  // https://getpino.io/#/docs/help?id=log-to-different-streams
+  { stream: process.stdout },
+  { stream: process.stderr, level: 'error' },
+], { dedupe: true }));
