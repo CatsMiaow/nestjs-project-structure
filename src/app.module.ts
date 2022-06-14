@@ -1,6 +1,6 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, ValidationPipe } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { APP_FILTER, RouterModule } from '@nestjs/core';
+import { APP_FILTER, APP_PIPE, RouterModule } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -55,6 +55,17 @@ import { SampleModule } from './sample';
     // { provide: APP_GUARD, useClass: AuthenticatedGuard },
     // Global Filter, Exception check
     { provide: APP_FILTER, useClass: ExceptionsFilter },
+    // Global Pipe, Validation check
+    // https://docs.nestjs.com/pipes#global-scoped-pipes
+    // https://docs.nestjs.com/techniques/validation
+    {
+      provide: APP_PIPE,
+      useValue: new ValidationPipe({
+        // disableErrorMessages: true,
+        transform: true, // transform object to DTO class
+        whitelist: true,
+      }),
+    },
   ],
 })
 export class AppModule implements NestModule {

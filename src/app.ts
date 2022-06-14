@@ -1,4 +1,4 @@
-import { Logger as NestLogger, ValidationPipe } from '@nestjs/common';
+import { Logger as NestLogger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import type { NestExpressApplication } from '@nestjs/platform-express';
 
@@ -18,11 +18,6 @@ async function bootstrap(): Promise<string> {
   });
 
   app.useLogger(await app.resolve(Logger));
-  // https://docs.nestjs.com/techniques/validation
-  app.useGlobalPipes(new ValidationPipe({
-    disableErrorMessages: true,
-    transform: true, // transform object to DTO class
-  }));
 
   if (isProduction) {
     app.enable('trust proxy');
