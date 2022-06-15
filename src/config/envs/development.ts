@@ -1,8 +1,7 @@
 export const config = {
   db: {
     type: process.env.DB_TYPE || 'mysql',
-    // https://typeorm.io/#/connection-options/common-connection-options
-    synchronize: true,
+    synchronize: false,
     logging: true,
     host: process.env.DB_HOST || '127.0.0.1',
     port: process.env.DB_PORT || 3306,
@@ -13,9 +12,6 @@ export const config = {
       connectionLimit: 10,
     },
     autoLoadEntities: true,
-    // entities: [`${__dirname}/../entity/**/*.{js,ts}`],
-    // subscribers: [`${__dirname}/../subscriber/**/*.{js,ts}`],
-    // migrations: [`${__dirname}/../migration/**/*.{js,ts}`],
   },
   foo: 'dev-bar',
 };

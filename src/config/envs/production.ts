@@ -23,9 +23,6 @@ export const config = {
       connectionLimit: 30,
     },
     autoLoadEntities: true,
-    // entities: [`${__dirname}/../entity/**/*.{js,ts}`],
-    // subscribers: [`${__dirname}/../subscriber/**/*.{js,ts}`],
-    // migrations: [`${__dirname}/../migration/**/*.{js,ts}`],
   },
   graphql: {
     debug: false,
