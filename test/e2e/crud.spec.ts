@@ -21,7 +21,7 @@ beforeAll(async () => {
 
 test('POST: /test/crud', async () => {
   const { status, body } = await request.post('/test/crud')
-    .send({ title: 'FooBar', content: 'Hello World' });
+    .send({ title: 'FooBar', content: 'Hello World', tags: ['new'] });
 
   expect([200, 201]).toContain(status);
   expect(body).toHaveProperty('id');
@@ -38,7 +38,7 @@ test('GET: /test/crud/:idx', async () => {
 
 test('PUT: /test/crud/:idx', async () => {
   const { body } = await request.put(`/test/crud/${idx}`)
-    .send({ title: 'Blahblahblah' })
+    .send({ title: 'Blahblahblah', tags: ['update'] })
     .expect(200);
 
   expect(body).toHaveProperty('success', true);

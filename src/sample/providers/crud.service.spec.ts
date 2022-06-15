@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import type { ConnectionOptions } from 'typeorm';
+import type { DataSourceOptions } from 'typeorm';
 
 import { configuration } from '../../config';
 import { Sampletable1 } from '../../entity/sampledb1';
@@ -13,7 +13,7 @@ let idx: number;
 beforeAll(async () => {
   moduleRef = await Test.createTestingModule({
     imports: [
-      TypeOrmModule.forRoot({ ...(<ConnectionOptions>(await configuration()).db) }),
+      TypeOrmModule.forRoot({ ...(<DataSourceOptions>(await configuration()).db) }),
       TypeOrmModule.forFeature([Sampletable1]),
     ],
     providers: [CrudService],
@@ -23,7 +23,7 @@ beforeAll(async () => {
 });
 
 test('create', async () => {
-  const result = await crud.create({ title: 'FooBar', content: 'Hello World' });
+  const result = await crud.create({ title: 'FooBar', content: 'Hello World', tags: ['new'] });
   expect(result).toHaveProperty('id');
   idx = result.id;
 });
@@ -33,7 +33,7 @@ test('read', async () => {
 });
 
 test('update', async () => {
-  expect(await crud.update(idx, { title: 'Blahblahblah' })).toHaveProperty('affected');
+  expect(await crud.update(idx, { title: 'Blahblahblah', tags: ['update'] })).toHaveProperty('affected');
 });
 
 test('delete', async () => {
