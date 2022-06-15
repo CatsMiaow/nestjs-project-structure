@@ -1,34 +1,35 @@
-const dotenv = require('dotenv');
-const fs = require('fs');
-const path = require('path');
-const prompts = require('prompts');
-const rimraf = require('rimraf');
-const shell = require('shelljs');
+/* eslint-disable import/no-extraneous-dependencies */
+/// <reference types="../typings/global" />
+import * as dotenv from 'dotenv';
+import * as fs from 'fs';
+import * as path from 'path';
+import prompts from 'prompts';
+import * as rimraf from 'rimraf';
+import * as shell from 'shelljs';
 
 dotenv.config();
 if (!process.env.DB_HOST) {
   throw new Error('Create a .env file');
 }
 
-process.env.PATH += (path.delimiter + path.join(process.cwd(), 'node_modules', '.bin'));
-(async () => {
-try {
+process.env['PATH'] += (path.delimiter + path.join(process.cwd(), 'node_modules', '.bin'));
+(async (): Promise<void> => {
   const response = await prompts([{
     type: 'text',
     name: 'db',
     message: 'Please enter a database name.',
-    validate: value => !!value
+    validate: (value: string): boolean => !!value,
   }, /* {
     type: 'select',
     name: 'db',
     message: 'Please select a database name.',
     choices: [
-      { value: 'db1' },
-      { value: 'db2' }
+      { title: 'db1' },
+      { title: 'db2' },
     ],
-  }, */]);
+  } */]);
 
-  const { db } = response;
+  const { db } = <{ db: string }>response;
   const MODEL_DIR = path.join(__dirname, '../src/entity', db);
   rimraf.sync(`${MODEL_DIR}/*`);
 
@@ -47,12 +48,12 @@ try {
     `-u ${process.env.DB_USER}`,
     `-x ${process.env.DB_PASSWORD}`,
     `-e ${process.env.DB_TYPE}`,
-    `-o ${MODEL_DIR}`
+    `-o ${MODEL_DIR}`,
   ];
   shell.exec(`typeorm-model-generator ${generatorConfig.join(' ')}`);
 
   const files = [];
-  fs.readdirSync(MODEL_DIR).forEach((file) => {
+  fs.readdirSync(MODEL_DIR).forEach((file: string) => {
     files.push(`export * from './${file.replace('.ts', '')}';`);
   });
   files.push('');
@@ -60,7 +61,4 @@ try {
   // AS-IS import { Tablename } from './entity/dbname/tablename';
   // TO-BE import { Tablename } from './entity/dbname';
   fs.writeFileSync(path.join(MODEL_DIR, 'index.ts'), files.join('\n'));
-} catch (error) {
-  throw new Error(error);
-}
 })();

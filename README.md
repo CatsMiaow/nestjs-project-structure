@@ -22,7 +22,7 @@ npm i
 npm run entity
 ```
 
-If you use multiple databases, [modify them.](bin/entity.js#L45)
+If you use multiple databases, [modify them.](bin/entity.ts#L46)
 
 ## Development
 

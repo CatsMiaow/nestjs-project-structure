@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint --ext .ts .",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "entity": "node bin/entity",
+    "entity": "ts-node bin/entity",
     "build": "rimraf dist && nest build",
     "prestart": "npm run lint && npm run build",
     "start": "node dist/app",
@@ -64,6 +64,9 @@
     "@types/passport": "^1.0.8",
     "@types/passport-jwt": "^3.0.6",
     "@types/passport-local": "^1.0.34",
+    "@types/prompts": "^2.0.14",
+    "@types/rimraf": "^3.0.2",
+    "@types/shelljs": "^0.8.11",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
@@ -81,6 +84,7 @@
     "shelljs": "^0.8.5",
     "supertest": "^6.2.3",
     "ts-jest": "^28.0.3",
+    "ts-node": "^10.8.1",
     "typeorm-model-generator": "^0.4.6-no-engines",
     "typescript": "^4.7.2"
   },
