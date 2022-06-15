@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint --ext .ts .",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "entity": "ts-node bin/entity",
+    "entity:load": "ts-node bin/entity",
+    "entity:sync": "typeorm-ts-node-commonjs -d bin/ormconfig.ts schema:sync",
     "build": "rimraf dist && nest build",
     "prestart": "npm run lint && npm run build",
     "start": "node dist/app",
