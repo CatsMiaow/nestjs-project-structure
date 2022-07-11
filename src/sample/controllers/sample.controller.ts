@@ -1,8 +1,8 @@
 import { BadRequestException, Body, Controller, Get, Param, ParseIntPipe, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
 import type { Request, Response } from 'express';
 
+import type { Sampletable1 } from '#entity/sampledb1';
 import { Roles, RolesGuard, Logger, ConfigService } from '../../common';
-import type { Sampletable1 } from '../../entity/sampledb1';
 import { FoobarService } from '../../shared/foobar';
 import { SampleDto } from '../dto';
 import { DatabaseService } from '../providers';

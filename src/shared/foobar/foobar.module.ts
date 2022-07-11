@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Sampletable1 } from '../../entity/sampledb1';
+import { Sampletable1 } from '#entity/sampledb1';
 import { FoobarService } from './foobar.service';
 
 @Module({

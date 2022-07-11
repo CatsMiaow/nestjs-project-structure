@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {},
+    "paths": {
+      // https://nodejs.org/api/packages.html#imports
+      "#entity/*": ["./src/entity/*"],
+    },
     "target": "ES2019",
     "outDir": "dist",
     "module": "commonjs",

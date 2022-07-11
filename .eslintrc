@@ -45,6 +45,7 @@
     "no-unused-expressions": "off",
     "object-curly-spacing": "off",
 
+    "import/extensions": ["error", "never"],
     // https://github.com/benmosher/eslint-plugin-import/issues/1753
     "import/named": "off",
     // https://github.com/benmosher/eslint-plugin-import/issues/1453

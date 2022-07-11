@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
 import { EntityManager, Repository } from 'typeorm';
 
-import { Sampletable1 } from '../../entity/sampledb1';
-import { Sampletable2 } from '../../entity/sampledb2';
+import { Sampletable1 } from '#entity/sampledb1';
+import { Sampletable2 } from '#entity/sampledb2';
 
 /**
  * Database Query Execution Example

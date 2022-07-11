@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, UpdateResult, DeleteResult } from 'typeorm';
 
-import { Sampletable1 } from '../../entity/sampledb1';
+import { Sampletable1 } from '#entity/sampledb1';
 
 @Injectable()
 export class CrudService {

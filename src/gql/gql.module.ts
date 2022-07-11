@@ -4,7 +4,7 @@ import { ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Sampletable1 } from '../entity/sampledb1';
+import { Sampletable1 } from '#entity/sampledb1';
 import { SimpleService } from './providers';
 import { SimpleResolver } from './resolvers';
 import { DateScalar } from './scalars';
