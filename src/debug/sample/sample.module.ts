@@ -8,7 +8,7 @@ import { SimpleLogController } from './simple-log.controller';
 
 @Debug('ModuleContext')
 @Module({
-  imports: [DebugModule.forRoot()],
+  imports: [DebugModule.forRoot({})],
   controllers: [SampleController, SimpleLogController],
   providers: [SampleService],
 })

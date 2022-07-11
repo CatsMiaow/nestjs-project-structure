@@ -1,20 +1,24 @@
-import { Injectable, Type } from '@nestjs/common';
+import { Inject, Injectable, Type } from '@nestjs/common';
 import { MODULE_METADATA } from '@nestjs/common/constants';
 import { DiscoveryService, Reflector } from '@nestjs/core';
 import type { InstanceWrapper } from '@nestjs/core/injector/instance-wrapper';
 
 import { DebugLog } from './debug-log.decorator';
 import { DEBUG_METADATA } from './debug.constant';
-import type { DebugOptions, Metatype } from './debug.interface';
+import type { DebugModuleOptions, DebugOptions, Metatype } from './debug.interface';
+import { MODULE_OPTIONS_TOKEN } from './debug.module-definition';
 
 @Injectable()
 export class DebugExplorer {
   private exclude: Set<string> = new Set(['Logger', 'ConfigService']);
 
   constructor(
+    @Inject(MODULE_OPTIONS_TOKEN) private options: DebugModuleOptions,
     private discoveryService: DiscoveryService,
     private reflector: Reflector,
   ) {
+    this.addExcludeOption();
+
     const instanceWrappers: InstanceWrapper[] = [
       ...this.discoveryService.getControllers(),
       ...this.discoveryService.getProviders(),
@@ -33,6 +37,14 @@ export class DebugExplorer {
 
       this.applyDecorator(metatype, metadata);
     }
+  }
+
+  private addExcludeOption(): void {
+    if (!Array.isArray(this.options.exclude)) {
+      return;
+    }
+
+    this.options.exclude.forEach((type: string) => this.exclude.add(type));
   }
 
   private applyDecorator(metatype: Metatype, metadata: DebugOptions): void {

@@ -24,6 +24,8 @@ To exclude a specific class within a module
 
 ```ts
 @Debug({ context: 'ModuleContext', exclude: [AppService] })
+// OR
+DebugModule.forRoot({ exclude: ['SampleService'] })
 ```
 
 ### Class

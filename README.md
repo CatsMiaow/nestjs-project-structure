@@ -30,6 +30,8 @@ If you use multiple databases in `entity:load`, [modify them.](bin/entity.ts#L46
 
 ```sh
 npm run start:dev
+# https://docs.nestjs.com/recipes/repl
+npm run start:repl
 ```
 
 Run [http://localhost:3000](http://localhost:3000)
