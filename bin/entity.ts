@@ -1,18 +1,17 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-console, import/no-extraneous-dependencies */
 /// <reference types="../typings/global" />
+import { execSync } from 'child_process';
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 import * as path from 'path';
 import prompts from 'prompts';
 import * as rimraf from 'rimraf';
-import * as shell from 'shelljs';
 
 dotenv.config();
 if (!process.env.DB_HOST) {
   throw new Error('Create a .env file');
 }
 
-process.env['PATH'] += (path.delimiter + path.join(process.cwd(), 'node_modules', '.bin'));
 (async (): Promise<void> => {
   const response = await prompts([{
     type: 'text',
@@ -50,7 +49,13 @@ process.env['PATH'] += (path.delimiter + path.join(process.cwd(), 'node_modules'
     `-e ${process.env.DB_TYPE}`,
     `-o ${MODEL_DIR}`,
   ];
-  shell.exec(`typeorm-model-generator ${generatorConfig.join(' ')}`);
+
+  try {
+    execSync(`typeorm-model-generator ${generatorConfig.join(' ')}`);
+  } catch {
+    console.error(`> Failed to load '${db}' database.`);
+    return;
+  }
 
   const files = [];
   fs.readdirSync(MODEL_DIR).forEach((file: string) => {
@@ -61,4 +66,6 @@ process.env['PATH'] += (path.delimiter + path.join(process.cwd(), 'node_modules'
   // AS-IS import { Tablename } from './entity/dbname/tablename';
   // TO-BE import { Tablename } from './entity/dbname';
   fs.writeFileSync(path.join(MODEL_DIR, 'index.ts'), files.join('\n'));
+
+  console.log(`> '${db}' database entities has been created: ${MODEL_DIR}`);
 })();
