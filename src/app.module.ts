@@ -1,18 +1,22 @@
-import { MiddlewareConsumer, Module, NestModule, ValidationPipe } from '@nestjs/common';
+import { Module, ValidationPipe } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_FILTER, APP_PIPE, RouterModule } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { LoggerModule } from 'nestjs-pino';
 
 import { BaseModule } from './base';
-import { CommonModule, ExceptionsFilter, LoggerMiddleware } from './common';
-import { configuration } from './config';
+import { CommonModule, ExceptionsFilter } from './common';
+import { configuration, loggerOptions } from './config';
 import { SampleModule as DebugSampleModule } from './debug';
 import { GqlModule } from './gql';
 import { SampleModule } from './sample';
 
 @Module({
   imports: [
+    // https://getpino.io
+    // https://github.com/iamolegga/nestjs-pino
+    LoggerModule.forRoot(loggerOptions),
     // Configuration
     // https://docs.nestjs.com/techniques/configuration
     ConfigModule.forRoot({
@@ -68,9 +72,4 @@ import { SampleModule } from './sample';
     },
   ],
 })
-export class AppModule implements NestModule {
-  // Global Middleware, Inbound logging
-  public configure(consumer: MiddlewareConsumer): void {
-    consumer.apply(LoggerMiddleware).forRoutes('*');
-  }
-}
+export class AppModule {}

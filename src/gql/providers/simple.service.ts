@@ -1,16 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { PinoLogger } from 'nestjs-pino';
 import { Repository } from 'typeorm';
 
 import { Sampletable1 } from '#entity/sampledb1';
-import { Logger, UtilService } from '../../common';
+import { UtilService } from '../../common';
 import type { SimpleInput, SimpleArgs } from '../dto';
 import { Simple } from '../models';
 
 @Injectable()
 export class SimpleService {
   constructor(
-    private readonly logger: Logger,
+    private readonly logger: PinoLogger,
     @InjectRepository(Sampletable1) private sampletable: Repository<Sampletable1>,
     private util: UtilService,
   ) {
@@ -18,13 +19,13 @@ export class SimpleService {
   }
 
   public async create(data: SimpleInput): Promise<Simple> {
-    this.logger.log('create');
+    this.logger.info('create');
 
     return this.sampletable.save(data);
   }
 
   public async read(id: number): Promise<Simple | null> {
-    this.logger.log('read');
+    this.logger.info('read');
 
     const row = await this.sampletable.findOneBy({ id });
     if (!row) {
@@ -35,7 +36,7 @@ export class SimpleService {
   }
 
   public async find(args: SimpleArgs): Promise<Simple[]> {
-    this.logger.log('find');
+    this.logger.info('find');
 
     const result = await this.sampletable.find(this.util.removeUndefined({
       title: args.title,
@@ -46,7 +47,7 @@ export class SimpleService {
   }
 
   public async remove(id: number): Promise<boolean> {
-    this.logger.log('remove');
+    this.logger.info('remove');
 
     const result = await this.sampletable.delete(id);
 

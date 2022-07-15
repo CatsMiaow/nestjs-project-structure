@@ -1,8 +1,9 @@
 import { BadRequestException, Body, Controller, Get, Param, ParseIntPipe, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
 import type { Request, Response } from 'express';
+import { PinoLogger } from 'nestjs-pino';
 
 import type { Sampletable1 } from '#entity/sampledb1';
-import { Roles, RolesGuard, Logger, ConfigService } from '../../common';
+import { Roles, RolesGuard, ConfigService } from '../../common';
 import { FoobarService } from '../../shared/foobar';
 import { SampleDto } from '../dto';
 import { DatabaseService } from '../providers';
@@ -14,7 +15,7 @@ import { DatabaseService } from '../providers';
 @Controller('sample')
 export class SampleController {
   constructor(
-    private readonly logger: Logger,
+    private readonly logger: PinoLogger,
     private config: ConfigService,
     private dbquery: DatabaseService,
     private foobarService: FoobarService,
@@ -24,7 +25,7 @@ export class SampleController {
 
   @Get() // http://localhost:3000/test/sample
   public sample(): Record<string, unknown> {
-    this.logger.log('this is sample');
+    this.logger.info('this is sample');
 
     return {
       hello: this.config.get('hello'),

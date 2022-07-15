@@ -1,10 +1,10 @@
 import { Logger as NestLogger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import type { NestExpressApplication } from '@nestjs/platform-express';
+import { Logger, LoggerErrorInterceptor } from 'nestjs-pino';
 
 import { middleware } from './app.middleware';
 import { AppModule } from './app.module';
-import { Logger } from './common';
 
 /**
  * https://docs.nestjs.com
@@ -17,7 +17,8 @@ async function bootstrap(): Promise<string> {
     bufferLogs: true,
   });
 
-  app.useLogger(await app.resolve(Logger));
+  app.useLogger(app.get(Logger));
+  app.useGlobalInterceptors(new LoggerErrorInterceptor());
 
   if (isProduction) {
     app.enable('trust proxy');
