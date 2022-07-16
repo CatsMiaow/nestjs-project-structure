@@ -1,7 +1,7 @@
 import { NotFoundException, UseGuards } from '@nestjs/common';
 import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { ForbiddenError } from 'apollo-server-express';
-import { PinoLogger } from 'nestjs-pino';
+import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 
 import { JwtAuthGuard } from '../../auth';
 import { ReqUser, Roles, RolesGuard } from '../../common';
@@ -11,9 +11,10 @@ import { SimpleService } from '../providers';
 
 @Resolver(() => Simple)
 export class SimpleResolver {
-  constructor(private readonly logger: PinoLogger, private simpleService: SimpleService) {
-    this.logger.setContext(SimpleResolver.name);
-  }
+  constructor(
+    @InjectPinoLogger(SimpleService.name) private readonly logger: PinoLogger,
+    private simpleService: SimpleService,
+  ) {}
 
   @Query(() => Payload)
   @UseGuards(JwtAuthGuard, RolesGuard)

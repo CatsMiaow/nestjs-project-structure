@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { PinoLogger } from 'nestjs-pino';
+import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 import { Repository } from 'typeorm';
 
 import { Sampletable1 } from '#entity/sampledb1';
@@ -11,12 +11,10 @@ import { Simple } from '../models';
 @Injectable()
 export class SimpleService {
   constructor(
-    private readonly logger: PinoLogger,
+    @InjectPinoLogger(SimpleService.name) private readonly logger: PinoLogger,
     @InjectRepository(Sampletable1) private sampletable: Repository<Sampletable1>,
     private util: UtilService,
-  ) {
-    this.logger.setContext(SimpleService.name);
-  }
+  ) {}
 
   public async create(data: SimpleInput): Promise<Simple> {
     this.logger.info('create');
