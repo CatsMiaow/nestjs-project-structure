@@ -98,10 +98,10 @@ npm start
 ## Implements
 
 - See [bootstrap](src/app.ts), [app.module](src/app.module.ts)
-  - Database, Module Router, Static Files, Validation, [Pino Logger](src/config/logger.config.ts)
+  - Database, Module Router, Static Files, Validation, Pino Logger
 - [Global Exception Filter](src/common/filters/exceptions.filter.ts)
-- [Global Logging Middleware](src/common/middleware/logger.middleware.ts)
-- [Custom Logger](src/common/middleware/logger-context.middleware.ts) with nestjs-pino
+- [Global Logging Context Middleware](src/common/middleware/logger-context.middleware.ts)
+- [Custom Logger](src/config/logger.config.ts) with nestjs-pino
 - [Custom Decorators](src/debug) Example at Nest level
 - [Configuration](src/config)
 - [Authentication](src/auth) - JWT and Session login with Passport
