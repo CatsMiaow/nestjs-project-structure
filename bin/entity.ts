@@ -51,9 +51,9 @@ if (!process.env.DB_HOST) {
   ];
 
   try {
-    execSync(`typeorm-model-generator ${generatorConfig.join(' ')}`);
-  } catch {
-    console.error(`> Failed to load '${db}' database.`);
+    execSync(`typeorm-model-generator ${generatorConfig.join(' ')}`, { stdio: 'pipe' });
+  } catch (error) {
+    console.error(`> Failed to load '${db}' database.\n${error}`);
     return;
   }
 
