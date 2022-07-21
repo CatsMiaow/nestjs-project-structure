@@ -1,4 +1,4 @@
-# node-nestjs-structure
+# nestjs-project-structure
 
 Node.js framework NestJS project structure
 > Started from this issue: [nestjs/nest#2249](https://github.com/nestjs/nest/issues/2249#issuecomment-494734673)

@@ -1,5 +1,5 @@
 {
-  "name": "node-nestjs-structure",
+  "name": "nestjs-project-structure",
   "version": "0.0.0",
   "description": "Node.js framework NestJS project structure",
   "main": "dist/app",
@@ -91,14 +91,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/CatsMiaow/node-nestjs-structure.git"
+    "url": "https://github.com/CatsMiaow/nestjs-project-structure.git"
   },
   "keywords": [
     "Node.js",
     "NestJS",
     "TypeScript"
   ],
-  "homepage": "https://github.com/CatsMiaow/node-nestjs-structure#readme",
+  "homepage": "https://github.com/CatsMiaow/nestjs-project-structure#readme",
   "author": "CatsMiaow",
   "license": "MIT"
 }
