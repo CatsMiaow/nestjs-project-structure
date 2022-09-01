@@ -1,6 +1,6 @@
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 import { Sampletable1 } from '#entity/sampledb1';
 import { configuration } from '../../config';
@@ -16,7 +16,7 @@ beforeAll(async () => {
     imports: [
       TypeOrmModule.forRootAsync({
         imports: [ConfigModule.forRoot({ load: [configuration] })],
-        useFactory: async (config: ConfigService) => ({ ...await config.get('db') }),
+        useFactory: (config: ConfigService) => ({ ...config.get<TypeOrmModuleOptions>('db') }),
         inject: [ConfigService],
       }),
       TypeOrmModule.forFeature([Sampletable1]),

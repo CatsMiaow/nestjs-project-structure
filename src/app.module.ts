@@ -2,7 +2,7 @@ import { Module, ValidationPipe } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_FILTER, APP_PIPE, RouterModule } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { LoggerModule } from 'nestjs-pino';
 
 import { BaseModule } from './base';
@@ -26,8 +26,8 @@ import { SampleModule } from './sample';
     // Database
     // https://docs.nestjs.com/techniques/database
     TypeOrmModule.forRootAsync({
-      useFactory: async (config: ConfigService) => ({
-        ...await config.get('db'),
+      useFactory: (config: ConfigService) => ({
+        ...config.get<TypeOrmModuleOptions>('db'),
       }),
       inject: [ConfigService],
     }),
