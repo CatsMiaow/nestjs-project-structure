@@ -3,6 +3,7 @@
   "entryFile": "app",
   "compilerOptions": {
     "tsConfigPath": "tsconfig.build.json",
+    "deleteOutDir": true,
     "plugins": [{
       "name": "@nestjs/graphql",
       "options": { "introspectComments": true }
