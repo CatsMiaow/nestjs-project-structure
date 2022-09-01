@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      // https://docs.nestjs.com/cli/scripts#build
       // https://nodejs.org/api/packages.html#imports
       "#entity/*": ["./src/entity/*"],
     },
