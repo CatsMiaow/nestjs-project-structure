@@ -7,8 +7,8 @@ module.exports = {
   rootDir: '.',
   testMatch: ['**/e2e/**/*.+(spec|test).[tj]s?(x)'],
   testPathIgnorePatterns: ['/node_modules/'],
-  globals: {
-    'ts-jest': {
+  transform: {
+    '^.+\\.tsx?$': ['ts-jest', {
       tsconfig: '<rootDir>/tsconfig.e2e.json',
       // https://kulshekhar.github.io/ts-jest/docs/getting-started/options/astTransformers
       astTransformers: {
@@ -16,7 +16,7 @@ module.exports = {
       },
       // https://kulshekhar.github.io/ts-jest/docs/getting-started/options/isolatedModules
       // isolatedModules: true,
-    },
+    }],
   },
   moduleNameMapper: {
     '#(.*)': '<rootDir>/../src/$1',
