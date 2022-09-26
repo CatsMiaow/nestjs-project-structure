@@ -21,7 +21,7 @@ export const loggerOptions: Params = {
         // https://github.com/pinojs/pino-pretty
         transport: {
           target: 'pino-pretty',
-          options: { singleLine: true, translateTime: 'SYS:yyyy-mm-dd HH:MM:ss.l' },
+          options: { sync: true, singleLine: true },
         },
       }),
     autoLogging: {
@@ -29,7 +29,8 @@ export const loggerOptions: Params = {
     },
   }, multistream([
     // https://getpino.io/#/docs/help?id=log-to-different-streams
-    { stream: process.stdout },
-    { stream: process.stderr, level: 'error' },
+    { level: 'debug', stream: process.stdout },
+    { level: 'error', stream: process.stderr },
+    { level: 'fatal', stream: process.stderr },
   ], { dedupe: true })],
 };
