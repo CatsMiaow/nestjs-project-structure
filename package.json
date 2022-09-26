@@ -15,7 +15,7 @@
     "start:debug": "nest start --debug --watch",
     "start:repl": "nest start --entryFile repl",
     "test": "jest --detectOpenHandles -i",
-    "test:e2e": "jest --config ./test/jest.e2e.js -i",
+    "test:e2e": "jest --config ./test/jest.e2e.ts -i",
     "doc": "compodoc -p tsconfig.json -s -d docs",
     "doc:api": "npm run build && node dist/swagger"
   },
@@ -72,6 +72,7 @@
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
+    "esbuild": "^0.15.9",
     "eslint": "^8.23.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -84,7 +85,7 @@
     "prompts": "^2.4.2",
     "rimraf": "^3.0.2",
     "supertest": "^6.2.4",
-    "ts-jest": "^29.0.1",
+    "ts-jest": "^29.0.2",
     "ts-node": "^10.9.1",
     "typeorm-model-generator": "^0.4.6-no-engines",
     "typescript": "^4.8.3"

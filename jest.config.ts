@@ -1,21 +1,25 @@
-// For a detailed explanation regarding each configuration property, visit:
-// https://jestjs.io/docs/en/configuration.html
+/* eslint-disable import/no-default-export, max-len */
+import type { Config } from 'jest';
 
-module.exports = {
+/*
+ * For a detailed explanation regarding each configuration property and type check, visit:
+ * https://jestjs.io/docs/configuration
+ */
+const jestConfig: Config = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
   // Stop running tests after `n` failures
-  bail: true,
+  // bail: 0,
 
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "/private/var/folders/hx/d5nhg4153c10j_4mb893l3lm0000gp/T/jest_dy",
 
-  // Automatically clear mock calls and instances between every test
+  // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
-  // collectCoverage: false,
+  // collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
@@ -48,6 +52,11 @@ module.exports = {
   // Make calling deprecated APIs throw helpful error messages
   // errorOnDeprecated: false,
 
+  // The default configuration for fake timers
+  // fakeTimers: {
+  //   "enableGlobally": false
+  // },
+
   // Force coverage collection from ignored files using an array of glob patterns
   // forceCoverageMatch: [],
 
@@ -69,10 +78,16 @@ module.exports = {
   // ],
 
   // An array of file extensions your modules use
-  moduleFileExtensions: [
-    'js',
-    'ts',
-  ],
+  // moduleFileExtensions: [
+  //   "js",
+  //   "mjs",
+  //   "cjs",
+  //   "jsx",
+  //   "ts",
+  //   "tsx",
+  //   "json",
+  //   "node"
+  // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
@@ -97,7 +112,7 @@ module.exports = {
   // Use this configuration option to add custom reporters to Jest
   // reporters: undefined,
 
-  // Automatically reset mock state between every test
+  // Automatically reset mock state before every test
   // resetMocks: false,
 
   // Reset the module registry before running each individual test
@@ -106,7 +121,7 @@ module.exports = {
   // A path to a custom resolver
   // resolver: undefined,
 
-  // Automatically restore mock state between every test
+  // Automatically restore mock state and implementation before every test
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
@@ -143,8 +158,8 @@ module.exports = {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    // "**/test/**/*.[jt]s?(x)",
-    // "**/!(e2e)/*.+(spec|test).[tj]s?(x)"
+    // "**/__tests__/**/*.[jt]s?(x)",
+    // "**/?(*.)+(spec|test).[tj]s?(x)"
     '**/*.+(spec|test).[tj]s?(x)',
   ],
 
@@ -162,15 +177,9 @@ module.exports = {
   // testResultsProcessor: undefined,
 
   // This option allows use of a custom test runner
-  // testRunner: "jasmine2",
+  // testRunner: "jest-circus/runner",
 
   testTimeout: 30000,
-
-  // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
-  // testURL: "http://localhost",
-
-  // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
-  // timers: "real",
 
   // A map from regular expressions to paths to transformers
   transform: {
@@ -198,3 +207,5 @@ module.exports = {
   // Whether to use watchman for file crawling
   // watchman: true,
 };
+
+export default jestConfig;
