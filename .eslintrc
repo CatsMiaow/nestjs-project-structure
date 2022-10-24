@@ -17,7 +17,7 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   "ignorePatterns": ["**/node_modules/**", "dist/**", "src/entity/**"],
-  "rules": {
+  "rules": { // These rules are for reference only.
     "class-methods-use-this": "off",
     // https://github.com/typescript-eslint/typescript-eslint/issues/1277
     "consistent-return": "off",
@@ -48,8 +48,6 @@
     "import/extensions": ["error", "never"],
     // https://github.com/benmosher/eslint-plugin-import/issues/1753
     "import/named": "off",
-    // https://github.com/benmosher/eslint-plugin-import/issues/1453
-    "import/no-cycle": "off",
     "import/no-default-export": "error",
     "import/order": ["error", { "groups": [["builtin", "external", "internal"]], "newlines-between": "always", "alphabetize": { "order": "asc", "caseInsensitive": true } }],
     "import/prefer-default-export": "off",
@@ -58,8 +56,7 @@
     "@typescript-eslint/consistent-type-assertions": ["error", { "assertionStyle": "angle-bracket" }],
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/explicit-member-accessibility": ["error", { "overrides": { "constructors": "no-public" } }],
-    // https://github.com/typescript-eslint/typescript-eslint/issues/977
-    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
     "@typescript-eslint/member-delimiter-style": "error",
     "@typescript-eslint/member-ordering": "error",
     "@typescript-eslint/naming-convention": ["error",
@@ -79,6 +76,7 @@
     "@typescript-eslint/no-loop-func": "error",
     "@typescript-eslint/no-misused-promises": ["error", { "checksVoidReturn": false }],
     "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
+    "@typescript-eslint/no-unnecessary-condition": "error",
     "@typescript-eslint/no-unnecessary-qualifier": "error",
     "@typescript-eslint/no-unnecessary-type-arguments": "error",
     "@typescript-eslint/no-unnecessary-type-assertion": "error",
@@ -92,7 +90,7 @@
     "@typescript-eslint/promise-function-async": "error",
     "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/return-await": "error",
-    "@typescript-eslint/typedef": ["error", { "arrowParameter": true, "memberVariableDeclaration": true, "parameter": true, "propertyDeclaration": true }],
+    "@typescript-eslint/typedef": ["error", { "memberVariableDeclaration": true, "parameter": true, "propertyDeclaration": true }],
     "@typescript-eslint/unbound-method": ["error", { "ignoreStatic": true }],
 
     "sonarjs/no-duplicate-string": "off"

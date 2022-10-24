@@ -4,7 +4,7 @@ import supertest, { SuperTest, Test as AgentTest } from 'supertest';
 
 import { AppModule } from '../../src/app.module';
 
-let app: INestApplication;
+let app: INestApplication | undefined;
 let request: SuperTest<AgentTest>;
 let accessToken: string;
 let refreshToken: string;

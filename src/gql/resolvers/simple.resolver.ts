@@ -1,6 +1,5 @@
 import { NotFoundException, UseGuards } from '@nestjs/common';
 import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { ForbiddenError } from 'apollo-server-express';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 
 import { JwtAuthGuard } from '../../auth';
@@ -21,9 +20,6 @@ export class SimpleResolver {
   @Roles('test')
   public user(@ReqUser() user: Payload): Payload {
     this.logger.info('user');
-    if (!user) {
-      throw new ForbiddenError('NotFoundUser');
-    }
 
     return user;
   }

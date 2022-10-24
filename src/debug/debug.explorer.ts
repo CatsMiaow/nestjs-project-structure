@@ -30,7 +30,7 @@ export class DebugExplorer {
         continue;
       }
 
-      const metadata = this.reflector.get<DebugOptions>(DEBUG_METADATA, metatype);
+      const metadata = this.reflector.get<DebugOptions | undefined>(DEBUG_METADATA, metatype);
       if (!metadata) {
         continue;
       }
@@ -62,7 +62,7 @@ export class DebugExplorer {
       DebugLog(metadata.context)(meta);
     }
 
-    const imports = this.reflector.get<Type[]>('imports', metatype) || [];
+    const imports = this.reflector.get<Type[] | undefined>('imports', metatype) || [];
     for (const module of imports) {
       this.applyDecorator(module, metadata);
     }

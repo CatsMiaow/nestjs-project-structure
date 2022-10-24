@@ -8,7 +8,7 @@ import { AppModule } from '../../src/app.module';
 // As another alternative, can use apollo-server-testing instead of supertest
 
 const gql = String.raw; // for highlighting
-let app: INestApplication;
+let app: INestApplication | undefined;
 let request: SuperTest<AgentTest>;
 let idx: number;
 

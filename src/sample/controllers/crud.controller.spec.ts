@@ -7,7 +7,7 @@ import { configuration } from '../../config';
 import { CrudService } from '../providers';
 import { CrudController } from './crud.controller';
 
-let moduleRef: TestingModule;
+let moduleRef: TestingModule | undefined;
 let crud: CrudController;
 let idx: number;
 

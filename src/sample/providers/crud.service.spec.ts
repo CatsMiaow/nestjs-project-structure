@@ -6,7 +6,7 @@ import { Sampletable1 } from '#entity/sampledb1';
 import { configuration } from '../../config';
 import { CrudService } from './crud.service';
 
-let moduleRef: TestingModule;
+let moduleRef: TestingModule | undefined;
 let crud: CrudService;
 let idx: number;
 

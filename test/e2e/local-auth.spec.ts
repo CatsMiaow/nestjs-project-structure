@@ -5,7 +5,7 @@ import supertest, { SuperTest, Test as AgentTest } from 'supertest';
 import { middleware } from '../../src/app.middleware';
 import { AppModule } from '../../src/app.module';
 
-let app: INestApplication;
+let app: INestApplication | undefined;
 let request: SuperTest<AgentTest>;
 
 beforeAll(async () => {
