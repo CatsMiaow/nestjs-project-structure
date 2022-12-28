@@ -26,7 +26,7 @@ export class UtilService {
     return this.template(templateData, param, ' ');
   }
 
-  public isKeyOfSchema<T>(key: unknown, schema: T): key is keyof T {
+  public isKeyOfSchema<T extends object>(key: unknown, schema: T): key is keyof T {
     return (typeof key === 'string') && key in schema;
   }
 
