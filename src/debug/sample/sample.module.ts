@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 
-import { Debug } from '../debug.decorator';
-import { DebugModule } from '../debug.module';
 import { SampleController } from './sample.controller';
 import { SampleService } from './sample.service';
 import { SimpleLogController } from './simple-log.controller';
+import { Debug } from '../debug.decorator';
+import { DebugModule } from '../debug.module';
 
 @Debug('ModuleContext')
 @Module({

@@ -3,8 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import type { DataSourceOptions } from 'typeorm';
 
 import { Sampletable1 } from '#entity/sampledb1';
-import { configuration } from '../../config';
 import { CrudService } from './crud.service';
+import { configuration } from '../../config';
 
 let moduleRef: TestingModule | undefined;
 let crud: CrudService;

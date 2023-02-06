@@ -1,13 +1,13 @@
 /* eslint-disable no-console, import/no-extraneous-dependencies */
 /// <reference types="../typings/global" />
 import { execSync } from 'child_process';
-import * as dotenv from 'dotenv';
-import * as fs from 'fs';
-import * as path from 'path';
+import { config } from 'dotenv';
+import { readdirSync, writeFileSync } from 'fs';
+import { join as pathJoin } from 'path';
 import prompts from 'prompts';
-import * as rimraf from 'rimraf';
+import { rimrafSync } from 'rimraf';
 
-dotenv.config();
+config();
 if (!process.env.DB_HOST) {
   throw new Error('Create a .env file');
 }
@@ -29,8 +29,8 @@ if (!process.env.DB_HOST) {
   } */]);
 
   const { db } = <{ db: string }>response;
-  const MODEL_DIR = path.join(__dirname, '../src/entity', db);
-  rimraf.sync(`${MODEL_DIR}/*`);
+  const MODEL_DIR = pathJoin(__dirname, '../src/entity', db);
+  rimrafSync(`${MODEL_DIR}/*`);
 
   const generatorConfig = [
     '--noConfig',
@@ -38,7 +38,7 @@ if (!process.env.DB_HOST) {
     '--ce pascal', // class names
     '--cp none', // property names
     '--strictMode !', // strictPropertyInitialization
-    `--namingStrategy ${path.join(__dirname, 'NamingStrategy.js')}`,
+    `--namingStrategy ${pathJoin(__dirname, 'NamingStrategy.js')}`,
     `-h ${process.env.DB_HOST}`,
     `-p ${process.env.DB_PORT}`,
     // https://github.com/Kononnable/typeorm-model-generator/issues/204#issuecomment-533709527
@@ -58,14 +58,14 @@ if (!process.env.DB_HOST) {
   }
 
   const files = [];
-  fs.readdirSync(MODEL_DIR).forEach((file: string) => {
+  readdirSync(MODEL_DIR).forEach((file: string) => {
     files.push(`export * from './${file.replace('.ts', '')}';`);
   });
   files.push('');
   // export entity db tables
   // AS-IS import { Tablename } from './entity/dbname/tablename';
   // TO-BE import { Tablename } from './entity/dbname';
-  fs.writeFileSync(path.join(MODEL_DIR, 'index.ts'), files.join('\n'));
+  writeFileSync(pathJoin(MODEL_DIR, 'index.ts'), files.join('\n'));
 
   console.log(`> '${db}' database entities has been created: ${MODEL_DIR}`);
 })();

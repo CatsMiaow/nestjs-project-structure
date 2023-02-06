@@ -3,9 +3,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 import { Sampletable1 } from '#entity/sampledb1';
+import { CrudController } from './crud.controller';
 import { configuration } from '../../config';
 import { CrudService } from '../providers';
-import { CrudController } from './crud.controller';
 
 let moduleRef: TestingModule | undefined;
 let crud: CrudController;
