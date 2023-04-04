@@ -1,6 +1,6 @@
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import type { DataSourceOptions } from 'typeorm';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 import { Sampletable1 } from '#entity/sampledb1';
 import { CrudService } from './crud.service';
@@ -13,7 +13,11 @@ let idx: number;
 beforeAll(async () => {
   moduleRef = await Test.createTestingModule({
     imports: [
-      TypeOrmModule.forRoot({ ...(<DataSourceOptions>(await configuration()).db) }),
+      TypeOrmModule.forRootAsync({
+        imports: [ConfigModule.forRoot({ load: [configuration] })],
+        useFactory: (config: ConfigService) => ({ ...config.get<TypeOrmModuleOptions>('db') }),
+        inject: [ConfigService],
+      }),
       TypeOrmModule.forFeature([Sampletable1]),
     ],
     providers: [CrudService],
