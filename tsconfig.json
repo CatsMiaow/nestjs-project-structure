@@ -6,18 +6,17 @@
       // https://nodejs.org/api/packages.html#imports
       "#entity/*": ["./src/entity/*"],
     },
-    "target": "ES2019",
+    "target": "ES2021",
     "outDir": "dist",
     "module": "commonjs",
     "moduleResolution": "node",
     "incremental": true,
     "declaration": true,
     "newLine": "lf",
-    "strict": true, //= alwaysStrict, strictNullChecks, strictBindCallApply, strictFunctionTypes, strictPropertyInitialization, noImplicitAny, noImplicitThis, useUnknownInCatchVariables
+    "strict": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     // "exactOptionalPropertyTypes": true,
-    "importsNotUsedAsValues": "error",
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
@@ -29,7 +28,8 @@
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true, // https://github.com/Microsoft/TypeScript/issues/2577
+    // https://github.com/Microsoft/TypeScript/issues/2577
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "skipLibCheck": true
   },

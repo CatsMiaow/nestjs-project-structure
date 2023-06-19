@@ -5,7 +5,8 @@ import type { Request } from 'express';
 
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
-  public getRequest(context: ExecutionContext): Request {
+  // @ts-expect-error: is not assignable to type '<T = any>(context: ExecutionContext) => T'
+  public override getRequest(context: ExecutionContext): Request {
     if (context.getType<GqlContextType>() === 'graphql') {
       const ctx = GqlExecutionContext.create(context).getContext();
       return <Request>ctx.req;
