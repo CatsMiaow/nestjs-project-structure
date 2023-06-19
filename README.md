@@ -175,6 +175,10 @@ interface ThirdCustomeUser extends CustomeUser {}
 
 > refer to [Naming cheatsheet](https://github.com/kettanaito/naming-cheatsheet)
 
+### Alternatives
+
+If you focus on the performance and features of the module, you can consider [Fastify](https://docs.nestjs.com/techniques/performance) instead of `Express`, [Prisma](https://docs.nestjs.com/recipes/prisma) or [Sequelize](https://docs.nestjs.com/techniques/database#sequelize-integration) instead of `TypeORM`.
+
 ### Links
 
 - [Better Nodejs Project](https://github.com/CatsMiaow/better-nodejs-project)
