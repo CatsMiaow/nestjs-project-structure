@@ -1,5 +1,4 @@
 import type { Request } from 'express';
-import type { IncomingMessage } from 'http';
 import { nanoid } from 'nanoid';
 import type { Params } from 'nestjs-pino';
 import { multistream } from 'pino';
@@ -13,7 +12,7 @@ export const loggerOptions: Params = {
     // Change time value in production log.
     // timestamp: stdTimeFunctions.isoTime,
     quietReqLogger: true,
-    genReqId: (req: IncomingMessage): ReqId => (<Request>req).header('X-Request-Id') || nanoid(),
+    genReqId: (req): ReqId => (<Request>req).header('X-Request-Id') || nanoid(),
     ...(process.env.NODE_ENV === 'production'
       ? {}
       : {
@@ -25,8 +24,9 @@ export const loggerOptions: Params = {
         },
       }),
     autoLogging: {
-      ignore: (req: IncomingMessage) => passUrl.has((<Request>req).originalUrl),
+      ignore: (req) => passUrl.has((<Request>req).originalUrl),
     },
+    customProps: (req) => (<Request>req).customProps,
   }, multistream([
     // https://getpino.io/#/docs/help?id=log-to-different-streams
     { level: 'debug', stream: process.stdout },
