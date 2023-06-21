@@ -26,10 +26,6 @@ export class UtilService {
     return this.template(templateData, param, ' ');
   }
 
-  public isKeyOfSchema<T extends object>(key: unknown, schema: T): key is keyof T {
-    return (typeof key === 'string') && key in schema;
-  }
-
   public removeUndefined<T extends object>(argv: T): Record<string, unknown> {
     // https://stackoverflow.com/questions/25421233
     // JSON.parse(JSON.stringify(args));
