@@ -126,6 +126,15 @@ npm run doc #> http://localhost:8080
 npm run doc:api #> http://localhost:8000/api
 ```
 
+### Alternatives
+
+If you focus on the performance or features of the module, you can consider:
+
+- [Fastify](https://docs.nestjs.com/techniques/performance) instead of `Express`
+- [Prisma](https://docs.nestjs.com/recipes/prisma) or [Sequelize](https://docs.nestjs.com/techniques/database#sequelize-integration) instead of `TypeORM`
+- [SWC](https://docs.nestjs.com/recipes/swc#swc) instead of `TypeScript compiler`
+- [Vitest](https://docs.nestjs.com/recipes/swc#vitest) instead of `Jest`
+
 ### File Naming for Class
 
 ```ts
@@ -174,10 +183,6 @@ interface ThirdCustomeUser extends CustomeUser {}
 ### Variables Naming
 
 > refer to [Naming cheatsheet](https://github.com/kettanaito/naming-cheatsheet)
-
-### Alternatives
-
-If you focus on the performance and features of the module, you can consider [Fastify](https://docs.nestjs.com/techniques/performance) instead of `Express`, [Prisma](https://docs.nestjs.com/recipes/prisma) or [Sequelize](https://docs.nestjs.com/techniques/database#sequelize-integration) instead of `TypeORM`.
 
 ### Links
 
