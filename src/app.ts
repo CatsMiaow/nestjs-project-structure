@@ -27,6 +27,7 @@ async function bootstrap(): Promise<string> {
   // Express Middleware
   middleware(app);
 
+  app.enableShutdownHooks();
   await app.listen(process.env.PORT || 3000);
 
   return app.getUrl();
