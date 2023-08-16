@@ -42,6 +42,19 @@ export class AuthService {
     };
   }
 
+  public getPayload(token: string): Payload | void {
+    try {
+      const payload = <JwtPayload | null> this.jwt.decode(token);
+      if (!payload) {
+        return;
+      }
+
+      return { userId: payload.sub, username: payload.username, roles: payload.roles };
+    } catch {
+      // Unexpected token i in JSON at position XX
+    }
+  }
+
   private getRefreshToken(sub: string): string {
     return this.jwt.sign({ sub }, {
       secret: this.config.get('jwtRefreshSecret'),

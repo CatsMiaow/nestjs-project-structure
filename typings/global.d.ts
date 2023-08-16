@@ -1,4 +1,4 @@
-import { Payload } from '../src/auth';
+import type { Payload } from '../src/auth';
 
 export declare global {
   type AnyObject = Record<string, unknown>;

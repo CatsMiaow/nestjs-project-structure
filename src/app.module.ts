@@ -5,6 +5,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { LoggerModule } from 'nestjs-pino';
 
+import { AuthModule } from './auth';
 import { BaseModule } from './base';
 import { CommonModule, ExceptionsFilter } from './common';
 import { configuration, loggerOptions } from './config';
@@ -39,6 +40,7 @@ import { SampleModule } from './sample';
       renderPath: '/',
     }),
     // Service Modules
+    AuthModule, // Global for Middleware
     CommonModule, // Global
     BaseModule,
     SampleModule,

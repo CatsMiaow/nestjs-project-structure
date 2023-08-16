@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 
@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 import { LocalStrategy, JwtStrategy, JwtVerifyStrategy } from './strategies';
 import { UserModule } from '../shared/user';
 
+@Global()
 @Module({
   imports: [
     UserModule,
