@@ -1,6 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
-import { HealthCheck, HealthCheckResult, HealthCheckService,
-  HealthIndicatorResult, HttpHealthIndicator, TypeOrmHealthIndicator } from '@nestjs/terminus';
+import {
+  HealthCheck,
+  HealthCheckResult,
+  HealthCheckService,
+  HealthIndicatorResult,
+  HttpHealthIndicator,
+  TypeOrmHealthIndicator,
+} from '@nestjs/terminus';
 
 import { Public } from '../../common';
 

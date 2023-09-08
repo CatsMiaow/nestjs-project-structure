@@ -5,7 +5,7 @@ type TemplateParameter = any[];
 
 @Injectable()
 export class UtilService {
-  public template<T>(templateData: TemplateStringsArray, param: T[], delimiter: string = '\n'): string {
+  public template<T>(templateData: TemplateStringsArray, param: T[], delimiter = '\n'): string {
     let output = '';
     for (let i = 0; i < param.length; i += 1) {
       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
@@ -15,7 +15,10 @@ export class UtilService {
 
     const lines: string[] = output.split(/(?:\r\n|\n|\r)/);
 
-    return lines.map((text: string) => text.replace(/^\s+/gm, '')).join(delimiter).trim();
+    return lines
+      .map((text: string) => text.replace(/^\s+/gm, ''))
+      .join(delimiter)
+      .trim();
   }
 
   public pre(templateData: TemplateStringsArray, ...param: TemplateParameter): string {

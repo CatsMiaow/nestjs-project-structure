@@ -36,10 +36,12 @@ export class SimpleService {
   public async find(args: SimpleArgs): Promise<Simple[]> {
     this.logger.info('find');
 
-    const result = await this.sampletable.find(this.util.removeUndefined({
-      title: args.title,
-      content: args.content,
-    }));
+    const result = await this.sampletable.find(
+      this.util.removeUndefined({
+        title: args.title,
+        content: args.content,
+      }),
+    );
 
     return result.map((row: Sampletable1) => Object.assign(new Simple(), row, { createdAt: row.created_at }));
   }

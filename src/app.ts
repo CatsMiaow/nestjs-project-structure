@@ -12,7 +12,7 @@ import { AppModule } from './app.module';
  * https://github.com/nestjs/nest/issues/2249#issuecomment-494734673
  */
 async function bootstrap(): Promise<string> {
-  const isProduction = (process.env.NODE_ENV === 'production');
+  const isProduction = process.env.NODE_ENV === 'production';
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     bufferLogs: true,
   });
@@ -33,7 +33,7 @@ async function bootstrap(): Promise<string> {
   return app.getUrl();
 }
 
-(async (): Promise<void> => {
+void (async (): Promise<void> => {
   try {
     const url = await bootstrap();
     NestLogger.log(url, 'Bootstrap');

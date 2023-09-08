@@ -5,7 +5,8 @@ import { types } from 'util';
 
 import type { Func } from './debug.interface';
 
-const MethodLog = (context?: string): MethodDecorator => (
+const MethodLog =
+  (context?: string): MethodDecorator =>
   (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor): void => {
     const originalMethod: unknown = descriptor.value;
     if (typeof originalMethod !== 'function') {
@@ -13,11 +14,11 @@ const MethodLog = (context?: string): MethodDecorator => (
     }
 
     const log = function (time: number, args: unknown[]): void {
-      const ownKey = (typeof target === 'function') ? `${target.name}` : '';
+      const ownKey = typeof target === 'function' ? `${target.name}` : '';
       const name = context ? `${ownKey}.${String(propertyKey)}` : String(propertyKey);
-      const params = (args.length > 0) ? `(${args})` : '';
+      const params = args.length > 0 ? `(${args.toString()})` : '';
 
-      Logger.debug(`${name}${params} +${time.toFixed(2)}ms`, context || ownKey);
+      Logger.debug(`${name}${params} +${time.toFixed(2)}ms`, context ?? ownKey);
     };
 
     if (types.isAsyncFunction(originalMethod)) {
@@ -40,14 +41,14 @@ const MethodLog = (context?: string): MethodDecorator => (
         return result;
       };
     }
-  }
-);
+  };
 
 /**
  * https://stackoverflow.com/questions/47621364
  * https://github.com/Papooch/decorate-all
  */
-const ClassLog = (context?: string): ClassDecorator => (
+const ClassLog =
+  (context?: string): ClassDecorator =>
   (target: Func): void => {
     const descriptors = Object.getOwnPropertyDescriptors(target.prototype);
 
@@ -69,15 +70,14 @@ const ClassLog = (context?: string): ClassDecorator => (
 
       Object.defineProperty(target.prototype, propertyKey, descriptor);
     }
-  }
-);
+  };
 
-export const DebugLog = (context?: string): ClassDecorator & MethodDecorator => (
+export const DebugLog =
+  (context?: string): ClassDecorator & MethodDecorator =>
   (target: object, propertyKey?: string | symbol, descriptor?: PropertyDescriptor): void => {
     if (!descriptor) {
       ClassLog(context)(<Func>target);
     } else if (propertyKey) {
       MethodLog(context)(target, propertyKey, descriptor);
     }
-  }
-);
+  };

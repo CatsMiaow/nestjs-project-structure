@@ -29,8 +29,8 @@ export class AuthService {
       return false;
     }
 
-    const payload = <{ sub: string }> this.jwt.decode(refreshToken);
-    return (payload.sub === data.userId);
+    const payload = <{ sub: string }>this.jwt.decode(refreshToken);
+    return payload.sub === data.userId;
   }
 
   public jwtSign(data: Payload): JwtSign {
@@ -42,23 +42,27 @@ export class AuthService {
     };
   }
 
-  public getPayload(token: string): Payload | void {
+  public getPayload(token: string): Payload | null {
     try {
-      const payload = <JwtPayload | null> this.jwt.decode(token);
+      const payload = <JwtPayload | null>this.jwt.decode(token);
       if (!payload) {
-        return;
+        return null;
       }
 
       return { userId: payload.sub, username: payload.username, roles: payload.roles };
     } catch {
       // Unexpected token i in JSON at position XX
+      return null;
     }
   }
 
   private getRefreshToken(sub: string): string {
-    return this.jwt.sign({ sub }, {
-      secret: this.config.get('jwtRefreshSecret'),
-      expiresIn: '7d', // Set greater than the expiresIn of the access_token
-    });
+    return this.jwt.sign(
+      { sub },
+      {
+        secret: this.config.get('jwtRefreshSecret'),
+        expiresIn: '7d', // Set greater than the expiresIn of the access_token
+      },
+    );
   }
 }

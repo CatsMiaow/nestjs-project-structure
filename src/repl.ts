@@ -10,10 +10,10 @@ async function bootstrap(): Promise<void> {
   await repl(AppModule);
 }
 
-(async (): Promise<void> => {
+void (async (): Promise<void> => {
   try {
-    const url = await bootstrap();
-    NestLogger.log(url, 'Bootstrap');
+    await bootstrap();
+    NestLogger.log('REPLServer', 'Bootstrap');
   } catch (error) {
     NestLogger.error(error, 'Bootstrap');
   }

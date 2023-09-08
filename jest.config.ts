@@ -164,11 +164,7 @@ const jestConfig: Config = {
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: [
-    '/node_modules/',
-    '/dist/',
-    '/e2e/',
-  ],
+  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/e2e/'],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
@@ -183,10 +179,13 @@ const jestConfig: Config = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    '^.+\\.tsx?$': ['ts-jest', {
-      tsconfig: 'tsconfig.json',
-      isolatedModules: true,
-    }],
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        tsconfig: 'tsconfig.json',
+        isolatedModules: true,
+      },
+    ],
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation

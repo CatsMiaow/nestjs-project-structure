@@ -11,13 +11,16 @@ export const config = {
         password: process.env.DB_PASSWORD || 'password',
         database: process.env.DB_NAME || 'dbname',
       },
-      slaves: [{ // fix if necessary
-        host: 'slaveHost',
-        port: 3306,
-        username: 'username',
-        password: 'password',
-        database: 'dbname',
-      }],
+      slaves: [
+        {
+          // fix if necessary
+          host: 'slaveHost',
+          port: 3306,
+          username: 'username',
+          password: 'password',
+          database: 'dbname',
+        },
+      ],
     },
     extra: {
       connectionLimit: 30,

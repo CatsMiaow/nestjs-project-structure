@@ -11,7 +11,7 @@ export class JwtVerifyStrategy extends PassportStrategy(Strategy, 'jwt-verify') 
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: true, // Expiration of the access_token is not checked when processing the refresh_token.
-      secretOrKey: config.get('jwtSecret'),
+      secretOrKey: config.get<string>('jwtSecret'),
     });
   }
 

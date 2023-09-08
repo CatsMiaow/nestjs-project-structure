@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Inject, Injectable, Type } from '@nestjs/common';
 import { MODULE_METADATA } from '@nestjs/common/constants';
 import { DiscoveryService, Reflector } from '@nestjs/core';
@@ -10,7 +11,7 @@ import { MODULE_OPTIONS_TOKEN } from './debug.module-definition';
 
 @Injectable()
 export class DebugExplorer {
-  private exclude: Set<string> = new Set(['Logger', 'ConfigService']);
+  private exclude = new Set<string>(['Logger', 'ConfigService']);
 
   constructor(
     @Inject(MODULE_OPTIONS_TOKEN) private options: DebugModuleOptions,
@@ -19,10 +20,7 @@ export class DebugExplorer {
   ) {
     this.addExcludeOption();
 
-    const instanceWrappers: InstanceWrapper[] = [
-      ...this.discoveryService.getControllers(),
-      ...this.discoveryService.getProviders(),
-    ];
+    const instanceWrappers: InstanceWrapper[] = [...this.discoveryService.getControllers(), ...this.discoveryService.getProviders()];
 
     for (const wrapper of instanceWrappers.filter((wrap: InstanceWrapper) => !wrap.isNotMetatype)) {
       const { instance, metatype } = wrapper;
@@ -62,7 +60,7 @@ export class DebugExplorer {
       DebugLog(metadata.context)(meta);
     }
 
-    const imports = this.reflector.get<Type[] | undefined>('imports', metatype) || [];
+    const imports = this.reflector.get<Type[] | undefined>('imports', metatype) ?? [];
     for (const module of imports) {
       this.applyDecorator(module, metadata);
     }

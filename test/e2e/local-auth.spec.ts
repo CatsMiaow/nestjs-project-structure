@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import supertest, { SuperTest, Test as AgentTest } from 'supertest';
@@ -24,8 +25,7 @@ beforeAll(async () => {
 });
 
 test('POST: /login', async () => {
-  const { status, body } = await request.post('/login')
-    .send({ username: 'foobar', password: 'crypto' });
+  const { status, body } = await request.post('/login').send({ username: 'foobar', password: 'crypto' });
 
   expect([200, 201]).toContain(status);
   expect(body).toHaveProperty('username', 'foobar');

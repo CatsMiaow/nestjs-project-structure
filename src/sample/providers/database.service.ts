@@ -59,27 +59,20 @@ export class DatabaseService {
    * https://typeorm.io/#/select-query-builder
    */
   public async joinQuery(): Promise<boolean> {
-    await this.sampletable1.createQueryBuilder('tb1')
+    await this.sampletable1
+      .createQueryBuilder('tb1')
       .innerJoin('sampletable2', 'tb2', 'tb2.id = tb1.id') // inner or left
       .select(['tb1', 'tb2.title'])
       .where('tb1.id = :id', { id: 123 })
       .getRawOne(); // getOne, getMany, getRawMany ...
 
-    await this.sampletable1.createQueryBuilder('tb1')
-      .innerJoinAndSelect('sampletable2', 'tb2', 'tb2.id = tb1.id')
-      .getOne();
+    await this.sampletable1.createQueryBuilder('tb1').innerJoinAndSelect('sampletable2', 'tb2', 'tb2.id = tb1.id').getOne();
 
-    await this.sampletable1.createQueryBuilder('tb1')
-      .leftJoinAndSelect(Sampletable2, 'tb2', 'tb2.id = tb1.id')
-      .getRawMany();
+    await this.sampletable1.createQueryBuilder('tb1').leftJoinAndSelect(Sampletable2, 'tb2', 'tb2.id = tb1.id').getRawMany();
 
-    await this.sampletable1.createQueryBuilder('tb1')
-      .leftJoinAndMapOne('tb1.tb2row', 'sampletable2', 'tb2', 'tb2.id = tb1.id')
-      .getOne();
+    await this.sampletable1.createQueryBuilder('tb1').leftJoinAndMapOne('tb1.tb2row', 'sampletable2', 'tb2', 'tb2.id = tb1.id').getOne();
 
-    await this.sampletable1.createQueryBuilder('tb1')
-      .leftJoinAndMapMany('tb1.tb2row', Sampletable2, 'tb2', 'tb2.id = tb1.id')
-      .getMany();
+    await this.sampletable1.createQueryBuilder('tb1').leftJoinAndMapMany('tb1.tb2row', Sampletable2, 'tb2', 'tb2.id = tb1.id').getMany();
 
     return true;
   }

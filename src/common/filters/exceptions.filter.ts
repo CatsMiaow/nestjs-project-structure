@@ -1,6 +1,7 @@
 import { ArgumentsHost, Catch, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
 import { GqlArgumentsHost, GqlContextType, GqlExceptionFilter } from '@nestjs/graphql';
+import type { Request } from 'express';
 
 @Catch()
 export class ExceptionsFilter extends BaseExceptionFilter implements GqlExceptionFilter {
@@ -10,7 +11,12 @@ export class ExceptionsFilter extends BaseExceptionFilter implements GqlExceptio
     let args: unknown;
     if (host.getType<GqlContextType>() === 'graphql') {
       const gqlHost = GqlArgumentsHost.create(host);
-      const { req: { body: { operationName, variables } } } = gqlHost.getContext();
+      const {
+        req: {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          body: { operationName, variables },
+        },
+      } = gqlHost.getContext<{ req: Request }>();
       args = `${operationName} ${JSON.stringify(variables)}`;
     } else {
       super.catch(exception, host);
@@ -22,7 +28,7 @@ export class ExceptionsFilter extends BaseExceptionFilter implements GqlExceptio
     const status = this.getHttpStatus(exception);
     if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
       if (exception instanceof Error) {
-        this.logger.error(`${exception.message}: ${args}`, exception.stack);
+        this.logger.error({ err: exception, args });
       } else {
         // Error Notifications
         this.logger.error('UnhandledException', exception);
@@ -30,9 +36,7 @@ export class ExceptionsFilter extends BaseExceptionFilter implements GqlExceptio
     }
   }
 
-  private getHttpStatus(exception: unknown): number {
-    return exception instanceof HttpException
-      ? exception.getStatus()
-      : HttpStatus.INTERNAL_SERVER_ERROR;
+  private getHttpStatus(exception: unknown): HttpStatus {
+    return exception instanceof HttpException ? exception.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR;
   }
 }

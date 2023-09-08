@@ -24,7 +24,7 @@ async function bootstrap(): Promise<string> {
   return app.getUrl();
 }
 
-(async (): Promise<void> => {
+void (async (): Promise<void> => {
   try {
     const url = await bootstrap();
     NestLogger.log(url, 'Bootstrap');

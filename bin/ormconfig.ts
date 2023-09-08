@@ -7,7 +7,7 @@ import { configuration } from '../src/config';
 
 dotenv.config();
 const ormconfig = async (): Promise<DataSource> => {
-  const config = <{ db: DataSourceOptions }> await configuration();
+  const config = <{ db: DataSourceOptions }>await configuration();
 
   return new DataSource({
     ...config.db,

@@ -11,7 +11,8 @@ import { FoobarModule } from '../shared/foobar';
   imports: [
     TypeOrmModule.forFeature([
       // ...Object.values(tables)
-      Sampletable1, Sampletable2,
+      Sampletable1,
+      Sampletable2,
     ]),
     FoobarModule, // Shared Module
   ],

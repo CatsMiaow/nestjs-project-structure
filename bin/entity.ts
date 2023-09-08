@@ -13,12 +13,13 @@ if (!process.env.DB_HOST) {
 }
 
 (async (): Promise<void> => {
-  const response = await prompts([{
-    type: 'text',
-    name: 'db',
-    message: 'Please enter a database name.',
-    validate: (value: string): boolean => !!value,
-  }, /* {
+  const response = await prompts([
+    {
+      type: 'text',
+      name: 'db',
+      message: 'Please enter a database name.',
+      validate: (value: string): boolean => !!value,
+    } /* {
     type: 'select',
     name: 'db',
     message: 'Please select a database name.',
@@ -26,7 +27,8 @@ if (!process.env.DB_HOST) {
       { title: 'db1' },
       { title: 'db2' },
     ],
-  } */]);
+  } */,
+  ]);
 
   const { db } = <{ db: string }>response;
   const MODEL_DIR = pathJoin(__dirname, '../src/entity', db);
@@ -53,7 +55,7 @@ if (!process.env.DB_HOST) {
   try {
     execSync(`typeorm-model-generator ${generatorConfig.join(' ')}`, { stdio: 'pipe' });
   } catch (error) {
-    console.error(`> Failed to load '${db}' database.\n${error}`);
+    console.error(`> Failed to load '${db}' database.`, error);
     return;
   }
 
@@ -68,4 +70,4 @@ if (!process.env.DB_HOST) {
   writeFileSync(pathJoin(MODEL_DIR, 'index.ts'), files.join('\n'));
 
   console.log(`> '${db}' database entities has been created: ${MODEL_DIR}`);
-})();
+})().catch(console.error);
