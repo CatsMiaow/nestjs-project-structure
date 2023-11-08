@@ -1,49 +1,61 @@
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { DeepMocked, createMock } from '@golevelup/ts-jest';
 import { Test, TestingModule } from '@nestjs/testing';
-import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 import { Sampletable1 } from '#entity/sampledb1';
 import { CrudService } from './crud.service';
-import { configuration } from '../../config';
 
 let moduleRef: TestingModule | undefined;
-let crud: CrudService;
-let idx: number;
+let repository: DeepMocked<Repository<Sampletable1>>;
+let service: CrudService;
+let mockValue: Sampletable1;
 
 beforeAll(async () => {
   moduleRef = await Test.createTestingModule({
-    imports: [
-      TypeOrmModule.forRootAsync({
-        imports: [ConfigModule.forRoot({ load: [configuration] })],
-        useFactory: (config: ConfigService) => ({ ...config.get<TypeOrmModuleOptions>('db') }),
-        inject: [ConfigService],
-      }),
-      TypeOrmModule.forFeature([Sampletable1]),
+    providers: [
+      CrudService,
+      {
+        provide: getRepositoryToken(Sampletable1),
+        useValue: createMock<Repository<Sampletable1>>(),
+      },
     ],
-    providers: [CrudService],
   }).compile();
 
-  crud = moduleRef.get(CrudService);
+  repository = moduleRef.get(getRepositoryToken(Sampletable1));
+  service = moduleRef.get(CrudService);
 });
 
 test('create', async () => {
-  const result = await crud.create({ title: 'FooBar', content: 'Hello World', tags: ['new'] });
-  expect(result).toHaveProperty('id');
-  idx = result.id;
+  const data = { title: 'FooBar', content: 'Hello World', tags: ['new'] };
+  mockValue = { id: 1, ...data, created_at: new Date(), updated_at: new Date() };
+  repository.save.mockResolvedValue(mockValue);
+
+  const result = await service.create(data);
+  expect(result).toHaveProperty('id', 1);
 });
 
 test('read', async () => {
-  expect(await crud.read(idx)).toBeInstanceOf(Sampletable1);
+  repository.findOneBy.mockResolvedValue(mockValue);
+
+  const result = await service.read(1);
+  expect(result).toEqual(mockValue);
 });
 
 test('update', async () => {
-  expect(await crud.update(idx, { title: 'Blahblahblah', tags: ['update'] })).toHaveProperty('affected');
+  mockValue.title = 'Blahblahblah';
+  mockValue.tags = ['update'];
+  repository.update.mockResolvedValue({ raw: '-', affected: 1, generatedMaps: [] });
+
+  const result = await service.update(1, { title: mockValue.title, tags: mockValue.tags });
+  expect(result).toHaveProperty('affected', 1);
 });
 
 test('delete', async () => {
-  const result = await crud.remove(idx);
-  expect(result).toHaveProperty('affected');
-  expect(result.affected).toBe(1);
+  repository.delete.mockResolvedValue({ raw: '-', affected: 1 });
+
+  const result = await service.remove(1);
+  expect(result).toHaveProperty('affected', 1);
 });
 
 afterAll(async () => {

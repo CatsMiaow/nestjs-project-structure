@@ -1,51 +1,58 @@
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { DeepMocked, createMock } from '@golevelup/ts-jest';
 import { Test, TestingModule } from '@nestjs/testing';
-import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 import { Sampletable1 } from '#entity/sampledb1';
 import { CrudController } from './crud.controller';
-import { configuration } from '../../config';
 import { CrudService } from '../providers';
 
 let moduleRef: TestingModule | undefined;
-let crud: CrudController;
-let idx: number;
+let controller: CrudController;
+let service: DeepMocked<CrudService>;
+let mockValue: Sampletable1;
 
 beforeAll(async () => {
   moduleRef = await Test.createTestingModule({
-    imports: [
-      TypeOrmModule.forRootAsync({
-        imports: [ConfigModule.forRoot({ load: [configuration] })],
-        useFactory: (config: ConfigService) => ({ ...config.get<TypeOrmModuleOptions>('db') }),
-        inject: [ConfigService],
-      }),
-      TypeOrmModule.forFeature([Sampletable1]),
-    ],
     controllers: [CrudController],
     providers: [CrudService],
-  }).compile();
+  })
+    .overrideProvider(CrudService)
+    .useValue(createMock<CrudService>())
+    .compile();
 
-  crud = moduleRef.get(CrudController);
+  controller = moduleRef.get(CrudController);
+  service = moduleRef.get(CrudService);
 });
 
 test('create', async () => {
-  const result = await crud.create({ title: 'FooBar', content: 'Hello World', tags: ['new'] });
-  expect(result).toHaveProperty('id');
-  idx = result.id;
+  const data = { title: 'FooBar', content: 'Hello World', tags: ['new'] };
+  mockValue = { id: 1, ...data, created_at: new Date(), updated_at: new Date() };
+  service.create.mockResolvedValue(mockValue);
+
+  const result = await controller.create(data);
+  expect(result).toHaveProperty('id', 1);
 });
 
 test('read', async () => {
-  expect(await crud.read(idx)).toBeInstanceOf(Sampletable1);
+  service.read.mockResolvedValue(mockValue);
+
+  const result = await controller.read(1);
+  expect(result).toEqual(mockValue);
 });
 
 test('update', async () => {
-  expect(await crud.update(idx, { content: 'Blahblahblah', tags: ['update'] })).toHaveProperty('success');
+  mockValue.title = 'Blahblahblah';
+  mockValue.tags = ['update'];
+  service.update.mockResolvedValue({ raw: '-', affected: 1, generatedMaps: [] });
+
+  const result = await controller.update(1, { content: mockValue.title, tags: mockValue.tags });
+  expect(result).toHaveProperty('success', true);
 });
 
 test('delete', async () => {
-  const result = await crud.remove(idx);
-  expect(result).toHaveProperty('success');
-  expect(result.success).toBeTruthy();
+  service.remove.mockResolvedValue({ raw: '-', affected: 1 });
+
+  const result = await controller.remove(1);
+  expect(result).toHaveProperty('success', true);
 });
 
 afterAll(async () => {
