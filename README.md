@@ -3,6 +3,17 @@
 Node.js framework NestJS project structure
 > Started from this issue: [nestjs/nest#2249](https://github.com/nestjs/nest/issues/2249#issuecomment-494734673)
 
+## Alternatives
+
+If you focus on the performance or features of the module, you can consider:
+
+- [Fastify](https://docs.nestjs.com/techniques/performance) instead of `Express`
+- [Prisma](https://docs.nestjs.com/recipes/prisma) or [Sequelize](https://docs.nestjs.com/techniques/database#sequelize-integration) instead of `TypeORM`
+- [SWC](https://docs.nestjs.com/recipes/swc#swc) instead of `TypeScript compiler`
+- [Vitest](https://docs.nestjs.com/recipes/swc#vitest) instead of `Jest`
+
+Check out the [nestjs-project-performance](https://github.com/CatsMiaow/nestjs-project-performance) repository for examples using this alternative.
+
 ## Configuration
 
 1. Create a `.env` file
@@ -126,15 +137,6 @@ npm run doc #> http://localhost:8080
 npm run doc:api #> http://localhost:8000/api
 ```
 
-### Alternatives
-
-If you focus on the performance or features of the module, you can consider:
-
-- [Fastify](https://docs.nestjs.com/techniques/performance) instead of `Express`
-- [Prisma](https://docs.nestjs.com/recipes/prisma) or [Sequelize](https://docs.nestjs.com/techniques/database#sequelize-integration) instead of `TypeORM`
-- [SWC](https://docs.nestjs.com/recipes/swc#swc) instead of `TypeScript compiler`
-- [Vitest](https://docs.nestjs.com/recipes/swc#vitest) instead of `Jest`
-
 ### File Naming for Class
 
 ```ts
@@ -188,6 +190,7 @@ interface ThirdCustomeUser extends CustomeUser {}
 
 - [Better Nodejs Project](https://github.com/CatsMiaow/better-nodejs-project)
 - [Monorepo with npm Workspaces](https://github.com/CatsMiaow/node-monorepo-workspaces)
+- [Nest Project Performance](https://github.com/CatsMiaow/node-nestjs-performance)
 - [NestJS](https://docs.nestjs.com)
   - [Nest Sample](https://github.com/nestjs/nest/tree/master/sample)
   - [Awesome Nest](https://github.com/nestjs/awesome-nestjs)
