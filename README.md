@@ -190,7 +190,7 @@ interface ThirdCustomeUser extends CustomeUser {}
 
 - [Better Nodejs Project](https://github.com/CatsMiaow/better-nodejs-project)
 - [Monorepo with npm Workspaces](https://github.com/CatsMiaow/node-monorepo-workspaces)
-- [Nest Project Performance](https://github.com/CatsMiaow/node-nestjs-performance)
+- [Nest Project Performance](https://github.com/CatsMiaow/nestjs-project-performance)
 - [NestJS](https://docs.nestjs.com)
   - [Nest Sample](https://github.com/nestjs/nest/tree/master/sample)
   - [Awesome Nest](https://github.com/nestjs/awesome-nestjs)
