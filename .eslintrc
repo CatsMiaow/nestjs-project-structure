@@ -41,8 +41,7 @@
     //#endregion
 
     //#region import
-    // https://github.com/tportio/tportio.github.io/issues/13
-    "import/extensions": "off",
+    "import/extensions": ["error", "never"],
     // https://github.com/benmosher/eslint-plugin-import/issues/1753
     "import/named": "off",
     "import/no-default-export": "error",
