@@ -1,13 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, new-cap  */
 import type { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import supertest, { SuperTest, Test as AgentTest } from 'supertest';
+import type { Express } from 'express';
+import supertest from 'supertest';
 
 import { middleware } from '../../src/app.middleware';
 import { AppModule } from '../../src/app.module';
 
-let app: INestApplication | undefined;
-let request: SuperTest<AgentTest>;
+let app: INestApplication<Express> | undefined;
+let request: supertest.Agent;
 
 beforeAll(async () => {
   const moduleRef = await Test.createTestingModule({
@@ -21,7 +22,7 @@ beforeAll(async () => {
   await app.init();
 
   // https://github.com/visionmedia/supertest/issues/46#issuecomment-58534736
-  request = supertest.agent(app.getHttpServer());
+  request = new supertest.agent(app.getHttpServer());
 });
 
 test('POST: /login', async () => {

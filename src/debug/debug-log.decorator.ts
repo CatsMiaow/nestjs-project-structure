@@ -14,7 +14,7 @@ const MethodLog =
     }
 
     const log = function (time: number, args: unknown[]): void {
-      const ownKey = typeof target === 'function' ? `${target.name}` : '';
+      const ownKey = typeof target === 'function' ? target.name : '';
       const name = context ? `${ownKey}.${String(propertyKey)}` : String(propertyKey);
       const params = args.length > 0 ? `(${args.toString()})` : '';
 

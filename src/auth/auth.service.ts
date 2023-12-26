@@ -29,7 +29,7 @@ export class AuthService {
       return false;
     }
 
-    const payload = <{ sub: string }>this.jwt.decode(refreshToken);
+    const payload = this.jwt.decode<{ sub: string }>(refreshToken);
     return payload.sub === data.userId;
   }
 
@@ -44,7 +44,7 @@ export class AuthService {
 
   public getPayload(token: string): Payload | null {
     try {
-      const payload = <JwtPayload | null>this.jwt.decode(token);
+      const payload = this.jwt.decode<JwtPayload | null>(token);
       if (!payload) {
         return null;
       }

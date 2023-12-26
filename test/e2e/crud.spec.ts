@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import supertest, { SuperTest, Test as AgentTest } from 'supertest';
+import type { Express } from 'express';
+import supertest from 'supertest';
 
 import { AppModule } from '../../src/app.module';
 
-let app: INestApplication | undefined;
-let request: SuperTest<AgentTest>;
+let app: INestApplication<Express> | undefined;
+let request: supertest.Agent;
 let idx: number;
 
 beforeAll(async () => {
