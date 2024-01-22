@@ -35,7 +35,7 @@ npm run entity:sync
 npm run entity:load
 ```
 
-If you use multiple databases in `entity:load`, [modify them.](bin/entity.ts#L45)
+If you use multiple databases in `entity:load`, [modify them.](bin/entity.ts#L47-L48)
 
 ## Development
 
