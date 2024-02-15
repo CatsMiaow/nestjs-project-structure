@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "Node.js framework NestJS project structure",
   "main": "dist/app",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "lint": "eslint --ext .ts .",
     "lint:fix": "eslint --fix --ext .ts .",
