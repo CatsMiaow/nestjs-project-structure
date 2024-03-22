@@ -8,7 +8,7 @@ Node.js framework NestJS project structure
 If you focus on the performance or features of the module, you can consider:
 
 - [Fastify](https://docs.nestjs.com/techniques/performance) instead of `Express`
-- [Prisma](https://docs.nestjs.com/recipes/prisma) or [Sequelize](https://docs.nestjs.com/techniques/database#sequelize-integration) instead of `TypeORM`
+- [Prisma](https://docs.nestjs.com/recipes/prisma) or [Sequelize](https://docs.nestjs.com/techniques/database#sequelize-integration) or [MikroORM](https://docs.nestjs.com/recipes/mikroorm) instead of `TypeORM`
 - [SWC](https://docs.nestjs.com/recipes/swc#swc) instead of `TypeScript compiler`
 - [Vitest](https://docs.nestjs.com/recipes/swc#vitest) instead of `Jest`
 
@@ -19,7 +19,7 @@ Check out the [nestjs-project-performance](https://github.com/CatsMiaow/nestjs-p
 1. Create a `.env` file
     - Rename the [.env.sample](.env.sample) file to `.env` to fix it.
 2. Edit env config
-    - Edit the file in the [config](src/config) folder.
+    - Edit the file in the [config](src/config)/envs folder.
     - `default`, `development`, `production`, `test`
 
 ## Installation
@@ -106,6 +106,9 @@ npm start
 |   +-- greeter.*.ts
 |   +-- index.ts
 ```
+
+This is the most basic structure to start a NestJS project. \
+You should choose the right architecture<sup>[[1]](https://romanglushach.medium.com/c0f93b8a1b96)</sup> (Layered, Clean, Onion, Hexagonal ...)<sup>[[2]](https://gist.github.com/EliFuzz/8ab693db36ff33ead1445a43c3f0ef7e)</sup> based on the size of your project.
 
 ## Implements
 
