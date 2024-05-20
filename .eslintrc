@@ -72,6 +72,7 @@
     ],
     "@typescript-eslint/no-extraneous-class": "off",
     "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/restrict-template-expressions": ["error", { "allowNumber": true }],
     //#endregion
 
     //#region sonarjs

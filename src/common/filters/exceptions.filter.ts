@@ -1,7 +1,6 @@
 import { ArgumentsHost, Catch, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
 import { GqlArgumentsHost, GqlContextType, GqlExceptionFilter } from '@nestjs/graphql';
-import type { Request } from 'express';
 
 @Catch()
 export class ExceptionsFilter extends BaseExceptionFilter implements GqlExceptionFilter {
@@ -13,10 +12,9 @@ export class ExceptionsFilter extends BaseExceptionFilter implements GqlExceptio
       const gqlHost = GqlArgumentsHost.create(host);
       const {
         req: {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           body: { operationName, variables },
         },
-      } = gqlHost.getContext<{ req: Request }>();
+      } = gqlHost.getContext<{ req: { body: { operationName: string; variables: Record<string, unknown> } } }>();
       args = `${operationName} ${JSON.stringify(variables)}`;
     } else {
       super.catch(exception, host);

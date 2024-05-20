@@ -70,4 +70,6 @@ if (!process.env.DB_HOST) {
   writeFileSync(pathJoin(MODEL_DIR, 'index.ts'), files.join('\n'));
 
   console.log(`> '${db}' database entities has been created: ${MODEL_DIR}`);
-})().catch(console.error);
+})().catch((error: unknown) => {
+  console.error(error);
+});
