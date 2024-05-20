@@ -1,5 +1,5 @@
-import { DeepMocked, createMock } from '@golevelup/ts-jest';
 import { Test, TestingModule } from '@nestjs/testing';
+import { mockDeep, type DeepMockProxy } from 'jest-mock-extended';
 
 import { Sampletable1 } from '#entity/sampledb1';
 import { CrudController } from './crud.controller';
@@ -7,7 +7,7 @@ import { CrudService } from '../providers';
 
 let moduleRef: TestingModule | undefined;
 let controller: CrudController;
-let service: DeepMocked<CrudService>;
+let service: DeepMockProxy<CrudService>;
 let mockValue: Sampletable1;
 
 beforeAll(async () => {
@@ -16,7 +16,7 @@ beforeAll(async () => {
     providers: [CrudService],
   })
     .overrideProvider(CrudService)
-    .useValue(createMock<CrudService>())
+    .useValue(mockDeep<CrudService>())
     .compile();
 
   controller = moduleRef.get(CrudController);

@@ -1,13 +1,13 @@
-import { DeepMocked, createMock } from '@golevelup/ts-jest';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { mockDeep, type DeepMockProxy } from 'jest-mock-extended';
 import { Repository } from 'typeorm';
 
 import { Sampletable1 } from '#entity/sampledb1';
 import { CrudService } from './crud.service';
 
 let moduleRef: TestingModule | undefined;
-let repository: DeepMocked<Repository<Sampletable1>>;
+let repository: DeepMockProxy<Repository<Sampletable1>>;
 let service: CrudService;
 let mockValue: Sampletable1;
 
@@ -17,7 +17,7 @@ beforeAll(async () => {
       CrudService,
       {
         provide: getRepositoryToken(Sampletable1),
-        useValue: createMock<Repository<Sampletable1>>(),
+        useValue: mockDeep<Repository<Sampletable1>>(),
       },
     ],
   }).compile();
