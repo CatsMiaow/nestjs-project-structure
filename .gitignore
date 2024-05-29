@@ -1,4 +1,5 @@
 .vscode
+.idea
 .history
 .DS_Store
 dist
