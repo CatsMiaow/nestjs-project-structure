@@ -27,8 +27,6 @@ Check out the [nestjs-project-performance](https://github.com/CatsMiaow/nestjs-p
 ```sh
 # 1. node_modules
 npm ci
-# 1-1. npm < v7 or Node.js <= v14
-npm i
 # 2. When synchronize database from existing entities
 npm run entity:sync
 # 2-1. When import entities from an existing database

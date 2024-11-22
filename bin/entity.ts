@@ -1,6 +1,6 @@
 /* eslint-disable no-console, import/no-extraneous-dependencies */
 /// <reference types="../typings/global" />
-import { execSync } from 'child_process';
+import { spawnSync } from 'child_process';
 import { config } from 'dotenv';
 import { readdirSync, writeFileSync } from 'fs';
 import { join as pathJoin } from 'path';
@@ -53,7 +53,8 @@ if (!process.env.DB_HOST) {
   ];
 
   try {
-    execSync(`typeorm-model-generator ${generatorConfig.join(' ')}`, { stdio: 'pipe' });
+    // eslint-disable-next-line sonarjs/no-os-command-from-path
+    spawnSync('typeorm-model-generator', generatorConfig, { stdio: 'pipe', shell: true });
   } catch (error) {
     console.error(`> Failed to load '${db}' database.`, error);
     return;

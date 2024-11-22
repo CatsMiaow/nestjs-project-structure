@@ -17,7 +17,7 @@ export const config = {
           host: 'slaveHost',
           port: 3306,
           username: 'username',
-          password: 'password',
+          password: process.env.DB_PASSWORD || 'password',
           database: 'dbname',
         },
       ],
