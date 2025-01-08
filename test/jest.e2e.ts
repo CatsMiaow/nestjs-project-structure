@@ -1,4 +1,3 @@
-/* eslint-disable import/no-default-export */
 import type { Config } from 'jest';
 
 import config from '../jest.config';

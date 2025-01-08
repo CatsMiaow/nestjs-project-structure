@@ -1,7 +1,7 @@
 import { Logger } from '@nestjs/common';
-import { performance } from 'perf_hooks';
+import { performance } from 'node:perf_hooks';
 // import { isAsyncFunction } from 'util/types'; // >= v15.3.0
-import { types } from 'util';
+import { types } from 'node:util';
 
 import type { Func } from './debug.interface';
 

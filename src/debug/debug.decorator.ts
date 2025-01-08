@@ -1,4 +1,4 @@
-import { SetMetadata, CustomDecorator } from '@nestjs/common';
+import { SetMetadata, type CustomDecorator } from '@nestjs/common';
 
 import { DEBUG_METADATA } from './debug.constant';
 import type { DebugOptions } from './debug.interface';

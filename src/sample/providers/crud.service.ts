@@ -12,18 +12,18 @@ export class CrudService {
   ) {}
 
   public async create(data: Partial<Sampletable1>): Promise<Sampletable1> {
-    return this.table.save(data);
+    return await this.table.save(data);
   }
 
   public async read(id: number): Promise<Sampletable1 | null> {
-    return this.table.findOneBy({ id });
+    return await this.table.findOneBy({ id });
   }
 
   public async update(id: number, data: Partial<Sampletable1>): Promise<UpdateResult> {
-    return this.table.update(id, data);
+    return await this.table.update(id, data);
   }
 
   public async remove(id: number): Promise<DeleteResult> {
-    return this.table.delete(id);
+    return await this.table.delete(id);
   }
 }
