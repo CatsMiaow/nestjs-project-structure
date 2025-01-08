@@ -25,6 +25,7 @@ beforeAll(async () => {
 });
 
 test('POST: /login', async () => {
+  // eslint-disable-next-line sonarjs/no-hardcoded-passwords
   const { status, body } = await request.post('/login').send({ username: 'foobar', password: 'crypto' });
 
   expect([200, 201]).toContain(status);

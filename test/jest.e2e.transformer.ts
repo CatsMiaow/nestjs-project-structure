@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-abusive-eslint-disable, eslint-comments/no-unlimited-disable */
 /* eslint-disable */
 // @ts-expect-error type is not supported
 import * as transformer from '@nestjs/graphql/plugin';

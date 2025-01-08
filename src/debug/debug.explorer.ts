@@ -42,7 +42,9 @@ export class DebugExplorer {
       return;
     }
 
-    this.options.exclude.forEach((type: string) => this.exclude.add(type));
+    for (const type of this.options.exclude) {
+      this.exclude.add(type);
+    }
   }
 
   private applyDecorator(metatype: Metatype, metadata: DebugOptions): void {

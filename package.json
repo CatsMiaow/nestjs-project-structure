@@ -7,8 +7,8 @@
     "node": ">=22"
   },
   "scripts": {
-    "lint": "eslint --ext .ts .",
-    "lint:fix": "eslint --fix --ext .ts .",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint --fix src/**/*.ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "entity:load": "ts-node bin/entity",
     "entity:sync": "typeorm-ts-node-commonjs -d bin/ormconfig.ts schema:sync",
@@ -93,7 +93,7 @@
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typeorm-model-generator": "^0.4.6-no-engines",
-    "typescript": "~5.5.4"
+    "typescript": "~5.7.2"
   },
   "repository": {
     "type": "git",

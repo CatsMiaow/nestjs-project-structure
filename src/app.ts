@@ -30,7 +30,7 @@ async function bootstrap(): Promise<string> {
   app.enableShutdownHooks();
   await app.listen(process.env.PORT || 3000);
 
-  return app.getUrl();
+  return await app.getUrl();
 }
 
 void (async (): Promise<void> => {
