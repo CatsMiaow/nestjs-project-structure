@@ -24,7 +24,7 @@ export class DebugExplorer {
 
     for (const wrapper of instanceWrappers.filter((wrap: InstanceWrapper) => !wrap.isNotMetatype)) {
       const { instance, metatype } = wrapper;
-      if (!instance || !Object.getPrototypeOf(instance)) {
+      if (!instance || !Object.getPrototypeOf(instance) || !metatype) {
         continue;
       }
 

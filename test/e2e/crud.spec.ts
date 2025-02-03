@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import type { INestApplication } from '@nestjs/common';
+import type { NestExpressApplication } from '@nestjs/platform-express';
 import { Test } from '@nestjs/testing';
-import type { Express } from 'express';
 import supertest from 'supertest';
 
 import { AppModule } from '../../src/app.module';
 
-let app: INestApplication<Express> | undefined;
+let app: NestExpressApplication | undefined;
 let request: supertest.Agent;
 let idx: number;
 
@@ -15,7 +14,7 @@ beforeAll(async () => {
     imports: [AppModule],
   }).compile();
 
-  app = moduleRef.createNestApplication();
+  app = moduleRef.createNestApplication<NestExpressApplication>();
   await app.init();
 
   request = supertest(app.getHttpServer());

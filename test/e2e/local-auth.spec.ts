@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment, new-cap, sonarjs/new-cap, sonarjs/no-hardcoded-credentials */
-import type { INestApplication } from '@nestjs/common';
+import type { NestExpressApplication } from '@nestjs/platform-express';
 import { Test } from '@nestjs/testing';
-import type { Express } from 'express';
 import supertest from 'supertest';
 
 import { middleware } from '../../src/app.middleware';
 import { AppModule } from '../../src/app.module';
 
-let app: INestApplication<Express> | undefined;
+let app: NestExpressApplication | undefined;
 let request: supertest.Agent;
 
 beforeAll(async () => {
@@ -15,7 +14,7 @@ beforeAll(async () => {
     imports: [AppModule],
   }).compile();
 
-  app = moduleRef.createNestApplication();
+  app = moduleRef.createNestApplication<NestExpressApplication>();
   // https://docs.nestjs.com/fundamentals/lifecycle-events
   // Error: passport.initialize() middleware not in use
   middleware(app);
