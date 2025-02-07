@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { mockDeep, type DeepMockProxy } from 'jest-mock-extended';
 
-import { Sampletable1 } from '#entity/sampledb1';
-import { CrudController } from './crud.controller';
-import { CrudService } from '../providers';
+import { CrudController } from './crud.controller.js';
+import { Sampletable1 } from '../../entity/sampledb1/index.js';
+import { CrudService } from '../providers/index.js';
 
 let moduleRef: TestingModule | undefined;
 let controller: CrudController;

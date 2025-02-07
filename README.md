@@ -163,24 +163,12 @@ interface ThirdCustomeUser extends CustomeUser {}
 ```diff
 # It is recommended to place index.ts in each folder and export.
 # Unless it's a special case, it is import from a folder instead of directly from a file.
-- import { FooController } from './controllers/foo.controller';
-- import { BarController } from './controllers/bar.controller';
-+ import { FooController, BarController } from './controllers';
+- import { FooController } from './controllers/foo.controller.js';
+- import { BarController } from './controllers/bar.controller.js';
++ import { FooController, BarController } from './controllers/index.js';
 # My preferred method is to place only one fileOrFolder name at the end of the path.
-- import { UtilService } from '../common/providers/util.service';
-+ import { UtilService } from '../common';
-```
-
-#### Circular dependency
-
-<https://docs.nestjs.com/fundamentals/circular-dependency>
-
-```diff
-# Do not use a path that ends with a dot.
-- import { FooService } from '.';
-- import { BarService } from '..';
-+ import { FooService } from './foo.service';
-+ import { BarService } from '../providers';
+- import { UtilService } from '../common/providers/util.service.js';
++ import { UtilService } from '../common/index.js';
 ```
 
 ### Variables Naming

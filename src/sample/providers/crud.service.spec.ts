@@ -3,8 +3,8 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { mockDeep, type DeepMockProxy } from 'jest-mock-extended';
 import { Repository } from 'typeorm';
 
-import { Sampletable1 } from '#entity/sampledb1';
-import { CrudService } from './crud.service';
+import { CrudService } from './crud.service.js';
+import { Sampletable1 } from '../../entity/sampledb1/index.js';
 
 let moduleRef: TestingModule | undefined;
 let repository: DeepMockProxy<Repository<Sampletable1>>;

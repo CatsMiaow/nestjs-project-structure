@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigService as NestConfig, Path, PathValue } from '@nestjs/config';
+import { ConfigService as NestConfig, type Path, type PathValue } from '@nestjs/config';
 
-import type { Config } from '../../config';
+import type { Config } from '../../config/index.js';
 
 @Injectable()
 export class ConfigService<K = Config> extends NestConfig<K> {

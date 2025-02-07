@@ -3,8 +3,8 @@ import type { NestExpressApplication } from '@nestjs/platform-express';
 import { Test } from '@nestjs/testing';
 import supertest from 'supertest';
 
-import { middleware } from '../../src/app.middleware';
-import { AppModule } from '../../src/app.module';
+import { middleware } from '../../src/app.middleware.js';
+import { AppModule } from '../../src/app.module.js';
 
 let app: NestExpressApplication | undefined;
 let request: supertest.Agent;

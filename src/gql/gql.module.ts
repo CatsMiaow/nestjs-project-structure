@@ -1,13 +1,13 @@
 import { ApolloDriver } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { GqlModuleOptions, GraphQLModule } from '@nestjs/graphql';
+import { type GqlModuleOptions, GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Sampletable1 } from '#entity/sampledb1';
-import { SimpleService } from './providers';
-import { SimpleResolver } from './resolvers';
-import { DateScalar } from './scalars';
+import { SimpleService } from './providers/index.js';
+import { SimpleResolver } from './resolvers/index.js';
+import { DateScalar } from './scalars/index.js';
+import { Sampletable1 } from '../entity/sampledb1/index.js';
 
 /**
  * https://docs.nestjs.com/graphql/quick-start

@@ -1,14 +1,14 @@
 import { Controller, Get } from '@nestjs/common';
 import {
   HealthCheck,
-  HealthCheckResult,
+  type HealthCheckResult,
   HealthCheckService,
-  HealthIndicatorResult,
+  type HealthIndicatorResult,
   HttpHealthIndicator,
   TypeOrmHealthIndicator,
 } from '@nestjs/terminus';
 
-import { Public } from '../../common';
+import { Public } from '../../common/index.js';
 
 /**
  * https://docs.nestjs.com/recipes/terminus

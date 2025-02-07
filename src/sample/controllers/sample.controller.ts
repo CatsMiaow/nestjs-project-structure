@@ -2,11 +2,11 @@ import { BadRequestException, Body, Controller, Get, Param, ParseIntPipe, Post, 
 import type { Request, Response } from 'express';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 
-import type { Sampletable1 } from '#entity/sampledb1';
-import { Roles, RolesGuard, ConfigService } from '../../common';
-import { FoobarService } from '../../shared/foobar';
-import { SampleDto } from '../dto';
-import { DatabaseService } from '../providers';
+import { Roles, RolesGuard, ConfigService } from '../../common/index.js';
+import type { Sampletable1 } from '../../entity/sampledb1/index.js';
+import { FoobarService } from '../../shared/foobar/index.js';
+import { SampleDto } from '../dto/index.js';
+import { DatabaseService } from '../providers/index.js';
 
 /**
  * route /test/sample/*

@@ -1,5 +1,5 @@
 /* eslint-disable no-console, import/no-extraneous-dependencies */
-/// <reference types="../typings/global" />
+/// <reference types="../typings/global.d.ts" />
 import { spawnSync } from 'child_process';
 import { config } from 'dotenv';
 import { readdirSync, writeFileSync } from 'fs';
@@ -62,12 +62,12 @@ if (!process.env.DB_HOST) {
 
   const files = [];
   readdirSync(MODEL_DIR).forEach((file: string) => {
-    files.push(`export * from './${file.replace('.ts', '')}';`);
+    files.push(`export * from './${file.replace('.ts', '.js')}';`);
   });
   files.push('');
   // export entity db tables
-  // AS-IS import { Tablename } from './entity/dbname/tablename';
-  // TO-BE import { Tablename } from './entity/dbname';
+  // AS-IS import { Tablename } from './entity/dbname/tablename.js';
+  // TO-BE import { Tablename } from './entity/dbname.js';
   writeFileSync(pathJoin(MODEL_DIR, 'index.ts'), files.join('\n'));
 
   console.log(`> '${db}' database entities has been created: ${MODEL_DIR}`);

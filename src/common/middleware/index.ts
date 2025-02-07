@@ -1,1 +1,1 @@
-export * from './logger-context.middleware';
+export * from './logger-context.middleware.js';

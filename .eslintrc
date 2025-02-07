@@ -4,7 +4,8 @@
   "parserOptions": {
     "project": true,
     "tsconfigRootDir": ".",
-    "sourceType": "module"
+    "sourceType": "module",
+    "warnOnUnsupportedTypeScriptVersion": false
   },
   "plugins": ["@typescript-eslint", "sonarjs", "jest", "prettier"],
   "extends": [
@@ -41,7 +42,7 @@
     //#endregion
 
     //#region import
-    "import/extensions": ["error", "never"],
+    "import/extensions": ["error", "always", { "ignorePackages": true} ],
     // https://github.com/benmosher/eslint-plugin-import/issues/1753
     "import/named": "off",
     "import/no-default-export": "error",
