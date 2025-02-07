@@ -1,5 +1,5 @@
 /* eslint-disable no-console, import/no-extraneous-dependencies */
-/// <reference types="../typings/global" />
+/// <reference types="../typings/global.d.ts" />
 import { spawnSync } from 'child_process';
 import { config } from 'dotenv';
 import { readdirSync, writeFileSync } from 'fs';
@@ -31,7 +31,7 @@ if (!process.env.DB_HOST) {
   ]);
 
   const { db } = <{ db: string }>response;
-  const MODEL_DIR = pathJoin(__dirname, '../src/entity', db);
+  const MODEL_DIR = pathJoin(import.meta.dirname, '../src/entity', db);
   rimrafSync(`${MODEL_DIR}/*`);
 
   const generatorConfig = [
@@ -40,7 +40,7 @@ if (!process.env.DB_HOST) {
     '--ce pascal', // class names
     '--cp none', // property names
     '--strictMode !', // strictPropertyInitialization
-    `--namingStrategy ${pathJoin(__dirname, 'NamingStrategy.js')}`,
+    `--namingStrategy ${pathJoin(import.meta.dirname, 'NamingStrategy.js')}`,
     `-h ${process.env.DB_HOST}`,
     `-p ${process.env.DB_PORT}`,
     // https://github.com/Kononnable/typeorm-model-generator/issues/204#issuecomment-533709527
@@ -62,12 +62,12 @@ if (!process.env.DB_HOST) {
 
   const files = [];
   readdirSync(MODEL_DIR).forEach((file: string) => {
-    files.push(`export * from './${file.replace('.ts', '')}';`);
+    files.push(`export * from './${file.replace('.ts', '.js')}';`);
   });
   files.push('');
   // export entity db tables
-  // AS-IS import { Tablename } from './entity/dbname/tablename';
-  // TO-BE import { Tablename } from './entity/dbname';
+  // AS-IS import { Tablename } from './entity/dbname/tablename.js';
+  // TO-BE import { Tablename } from './entity/dbname.js';
   writeFileSync(pathJoin(MODEL_DIR, 'index.ts'), files.join('\n'));
 
   console.log(`> '${db}' database entities has been created: ${MODEL_DIR}`);

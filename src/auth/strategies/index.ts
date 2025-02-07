@@ -1,3 +1,3 @@
-export * from './jwt-verify.strategy';
-export * from './jwt.strategy';
-export * from './local.strategy';
+export * from './jwt-verify.strategy.js';
+export * from './jwt.strategy.js';
+export * from './local.strategy.js';

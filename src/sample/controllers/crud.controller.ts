@@ -11,9 +11,9 @@ import {
   ParseIntPipe,
 } from '@nestjs/common';
 
-import type { Sampletable1 } from '#entity/sampledb1';
-import { CreateDto, UpdateDto } from '../dto';
-import { CrudService } from '../providers';
+import type { Sampletable1 } from '../../entity/sampledb1/index.js';
+import { CreateDto, UpdateDto } from '../dto/index.js';
+import { CrudService } from '../providers/index.js';
 
 /**
  * route /test/crud/*

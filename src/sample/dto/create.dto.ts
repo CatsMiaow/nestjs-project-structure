@@ -1,6 +1,6 @@
 import { ArrayNotEmpty, IsOptional, IsString } from 'class-validator';
 
-import type { Sampletable1 } from '#entity/sampledb1';
+import type { Sampletable1 } from '../../entity/sampledb1/index.js';
 
 export class CreateDto implements Omit<Sampletable1, 'id' | 'updated_at' | 'created_at'> {
   @IsString()

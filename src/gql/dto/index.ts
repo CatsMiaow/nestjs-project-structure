@@ -1,2 +1,2 @@
-export * from './simple.args';
-export * from './simple.input';
+export * from './simple.args.js';
+export * from './simple.input.js';

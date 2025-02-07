@@ -2,7 +2,7 @@ import { Logger as NestLogger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-import { AppModule } from './app.module';
+import { AppModule } from './app.module.js';
 
 /**
  * https://docs.nestjs.com/recipes/swagger

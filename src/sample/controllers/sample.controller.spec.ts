@@ -1,9 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { mockDeep } from 'jest-mock-extended';
 import { getLoggerToken, type PinoLogger } from 'nestjs-pino';
+import { afterAll, beforeAll, expect, test, vi } from 'vitest';
+import { mockDeep } from 'vitest-mock-extended';
 
-import { SampleController } from './sample.controller';
-import { ConfigService } from '../../common';
+import { SampleController } from './sample.controller.js';
+import { ConfigService } from '../../common/index.js';
 
 let moduleRef: TestingModule | undefined;
 let controller: SampleController;
@@ -26,7 +27,7 @@ beforeAll(async () => {
   })
     .overrideProvider(ConfigService)
     .useValue({
-      get: jest.fn((key: keyof typeof config) => config[key]),
+      get: vi.fn((key: keyof typeof config) => config[key]),
     })
     .useMocker(mockDeep)
     .compile();

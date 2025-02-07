@@ -1,6 +1,6 @@
 import { Get } from '@nestjs/common';
 
-import { LogController } from './log-controller.decorator';
+import { LogController } from './log-controller.decorator.js';
 
 /**
  * route /test/debug/log/*

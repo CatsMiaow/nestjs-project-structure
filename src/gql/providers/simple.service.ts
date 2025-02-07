@@ -3,10 +3,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 import { Repository } from 'typeorm';
 
-import { Sampletable1 } from '#entity/sampledb1';
-import { UtilService } from '../../common';
-import type { SimpleInput, SimpleArgs } from '../dto';
-import { Simple } from '../models';
+import { UtilService } from '../../common/index.js';
+import { Sampletable1 } from '../../entity/sampledb1/index.js';
+import type { SimpleInput, SimpleArgs } from '../dto/index.js';
+import { Simple } from '../models/index.js';
 
 @Injectable()
 export class SimpleService {

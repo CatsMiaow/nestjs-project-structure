@@ -1,1 +1,1 @@
-export * from './gql.module';
+export * from './gql.module.js';

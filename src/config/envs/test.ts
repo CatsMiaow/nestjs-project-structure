@@ -1,4 +1,4 @@
-// export * from './development';
+// export * from './development.js';
 export const config = {
   db: {
     type: 'mysql',

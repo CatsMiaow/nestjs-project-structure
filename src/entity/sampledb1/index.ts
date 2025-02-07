@@ -1,1 +1,1 @@
-export * from './sampletable1.entity';
+export * from './sampletable1.entity.js';

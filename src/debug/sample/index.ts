@@ -1,1 +1,1 @@
-export * from './sample.module';
+export * from './sample.module.js';

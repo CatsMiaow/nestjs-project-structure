@@ -1,1 +1,1 @@
-export * from './simple.service';
+export * from './simple.service.js';

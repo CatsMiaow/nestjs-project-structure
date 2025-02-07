@@ -1,7 +1,7 @@
-import { Transform, TransformFnParams } from 'class-transformer';
+import { Transform, type TransformFnParams } from 'class-transformer';
 import { IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
-import { DateService } from '../providers';
+import { DateService } from '../providers/index.js';
 
 /**
  * https://github.com/typestack/class-validator#validation-decorators

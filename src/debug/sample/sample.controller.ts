@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 
-import { SampleService } from './sample.service';
-import { DebugLog } from '../debug-log.decorator';
+import { SampleService } from './sample.service.js';
+import { DebugLog } from '../debug-log.decorator.js';
 
 /**
  * route /test/debug/*

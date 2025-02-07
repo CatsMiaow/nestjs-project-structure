@@ -1,2 +1,2 @@
-export * from './foobar.module';
-export * from './foobar.service';
+export * from './foobar.module.js';
+export * from './foobar.service.js';

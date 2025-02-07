@@ -1,2 +1,2 @@
-export * from './crud.controller';
-export * from './sample.controller';
+export * from './crud.controller.js';
+export * from './sample.controller.js';

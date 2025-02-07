@@ -1,3 +1,3 @@
-export * from './payload.model';
-export * from './simple.model';
-export * from './user.model';
+export * from './payload.model.js';
+export * from './simple.model.js';
+export * from './user.model.js';

@@ -1,2 +1,2 @@
-export * from './config.service';
-export * from './util.service';
+export * from './config.service.js';
+export * from './util.service.js';

@@ -1,1 +1,1 @@
-export * from './simple.resolver';
+export * from './simple.resolver.js';

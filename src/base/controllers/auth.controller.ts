@@ -4,14 +4,14 @@ import type { Request, Response } from 'express';
 import {
   AuthService,
   LocalLoginGuard,
-  Payload,
+  type Payload,
   AuthenticatedGuard,
   LocalAuthGuard,
   JwtAuthGuard,
-  JwtSign,
+  type JwtSign,
   JwtVerifyGuard,
-} from '../../auth';
-import { ReqUser } from '../../common';
+} from '../../auth/index.js';
+import { ReqUser } from '../../common/index.js';
 
 /**
  * https://docs.nestjs.com/techniques/authentication

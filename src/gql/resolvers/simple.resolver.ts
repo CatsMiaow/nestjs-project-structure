@@ -2,11 +2,11 @@ import { NotFoundException, UseGuards } from '@nestjs/common';
 import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 
-import { JwtAuthGuard } from '../../auth';
-import { ReqUser, Roles, RolesGuard } from '../../common';
-import { SimpleInput, SimpleArgs } from '../dto';
-import { Simple, Payload } from '../models';
-import { SimpleService } from '../providers';
+import { JwtAuthGuard } from '../../auth/index.js';
+import { ReqUser, Roles, RolesGuard } from '../../common/index.js';
+import { SimpleInput, SimpleArgs } from '../dto/index.js';
+import { Simple, Payload } from '../models/index.js';
+import { SimpleService } from '../providers/index.js';
 
 @Resolver(() => Simple)
 export class SimpleResolver {

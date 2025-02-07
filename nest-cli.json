@@ -7,9 +7,6 @@
     "plugins": [{
       "name": "@nestjs/graphql",
       "options": { "introspectComments": true }
-    }, {
-      "name": "@nestjs/swagger",
-      "options": { "introspectComments": true }
     }]
   }
 }

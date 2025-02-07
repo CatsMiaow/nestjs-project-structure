@@ -1,7 +1,7 @@
 import { Logger as NestLogger } from '@nestjs/common';
 import { repl } from '@nestjs/core';
 
-import { AppModule } from './app.module';
+import { AppModule } from './app.module.js';
 
 /**
  * https://docs.nestjs.com/recipes/repl

@@ -2,8 +2,9 @@
 import type { NestExpressApplication } from '@nestjs/platform-express';
 import { Test } from '@nestjs/testing';
 import supertest from 'supertest';
+import { afterAll, beforeAll, expect, test } from 'vitest';
 
-import { AppModule } from '../../src/app.module';
+import { AppModule } from '../../src/app.module.js';
 
 // https://www.apollographql.com/docs/apollo-server/testing/testing/
 // As another alternative, can use apollo-server-testing instead of supertest

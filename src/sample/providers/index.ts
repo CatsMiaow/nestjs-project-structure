@@ -1,3 +1,3 @@
-export * from './crud.service';
-export * from './database.service';
-export * from './date.service';
+export * from './crud.service.js';
+export * from './database.service.js';
+export * from './date.service.js';

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PassportSerializer } from '@nestjs/passport';
 
-import type { Payload } from './auth.interface';
+import type { Payload } from './auth.interface.js';
 
 @Injectable()
 export class AuthSerializer extends PassportSerializer {
