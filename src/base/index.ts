@@ -1,1 +1,1 @@
-export * from './base.module';
+export * from './base.module.js';

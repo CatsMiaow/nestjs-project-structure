@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Inject, Injectable, Type } from '@nestjs/common';
-import { MODULE_METADATA } from '@nestjs/common/constants';
+import { Inject, Injectable, type Type } from '@nestjs/common';
+import { MODULE_METADATA } from '@nestjs/common/constants.js';
 import { DiscoveryService, Reflector } from '@nestjs/core';
-import type { InstanceWrapper } from '@nestjs/core/injector/instance-wrapper';
+import type { InstanceWrapper } from '@nestjs/core/injector/instance-wrapper.js';
 
-import { DebugLog } from './debug-log.decorator';
-import { DEBUG_METADATA } from './debug.constant';
-import type { DebugModuleOptions, DebugOptions, Metatype } from './debug.interface';
-import { MODULE_OPTIONS_TOKEN } from './debug.module-definition';
+import { DebugLog } from './debug-log.decorator.js';
+import { DEBUG_METADATA } from './debug.constant.js';
+import type { DebugModuleOptions, DebugOptions, Metatype } from './debug.interface.js';
+import { MODULE_OPTIONS_TOKEN } from './debug.module-definition.js';
 
 @Injectable()
 export class DebugExplorer {

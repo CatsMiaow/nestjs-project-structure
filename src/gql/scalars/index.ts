@@ -1,1 +1,1 @@
-export * from './date.scalar';
+export * from './date.scalar.js';

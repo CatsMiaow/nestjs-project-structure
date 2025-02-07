@@ -3,8 +3,8 @@ import { NestFactory } from '@nestjs/core';
 import type { NestExpressApplication } from '@nestjs/platform-express';
 import { Logger, LoggerErrorInterceptor } from 'nestjs-pino';
 
-import { middleware } from './app.middleware';
-import { AppModule } from './app.module';
+import { middleware } from './app.middleware.js';
+import { AppModule } from './app.module.js';
 
 /**
  * https://docs.nestjs.com

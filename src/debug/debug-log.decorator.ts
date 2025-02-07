@@ -3,7 +3,7 @@ import { performance } from 'perf_hooks';
 // import { isAsyncFunction } from 'util/types'; // >= v15.3.0
 import { types } from 'util';
 
-import type { Func } from './debug.interface';
+import type { Func } from './debug.interface.js';
 
 const MethodLog =
   (context?: string): MethodDecorator =>

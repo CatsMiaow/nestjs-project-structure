@@ -1,8 +1,8 @@
-import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Injectable, type NestMiddleware } from '@nestjs/common';
 import type { Request, Response } from 'express';
 import { PinoLogger } from 'nestjs-pino';
 
-import { AuthService } from '../../auth';
+import { AuthService } from '../../auth/index.js';
 
 @Injectable()
 export class LoggerContextMiddleware implements NestMiddleware {

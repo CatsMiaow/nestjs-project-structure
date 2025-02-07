@@ -1,14 +1,10 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      // https://docs.nestjs.com/cli/scripts#build
-      // https://nodejs.org/api/packages.html#imports
-      "#entity/*": ["./src/entity/*"],
-    },
+    "paths": {},
     "target": "es2022",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "incremental": true,
     "declaration": true,
     "newLine": "lf",
@@ -20,13 +16,15 @@
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedSideEffectImports": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+    "useDefineForClassFields": false,
     "experimentalDecorators": true,
-    // https://github.com/Microsoft/TypeScript/issues/2577
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "skipLibCheck": true

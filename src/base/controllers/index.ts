@@ -1,2 +1,2 @@
-export * from './auth.controller';
-export * from './health.controller';
+export * from './auth.controller.js';
+export * from './health.controller.js';

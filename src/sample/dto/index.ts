@@ -1,3 +1,3 @@
-export * from './create.dto';
-export * from './sample.dto';
-export * from './update.dto';
+export * from './create.dto.js';
+export * from './sample.dto.js';
+export * from './update.dto.js';

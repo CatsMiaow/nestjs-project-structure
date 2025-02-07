@@ -2,8 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { mockDeep } from 'jest-mock-extended';
 import { getLoggerToken, type PinoLogger } from 'nestjs-pino';
 
-import { SampleController } from './sample.controller';
-import { ConfigService } from '../../common';
+import { SampleController } from './sample.controller.js';
+import { ConfigService } from '../../common.js';
 
 let moduleRef: TestingModule | undefined;
 let controller: SampleController;

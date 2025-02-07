@@ -1,6 +1,6 @@
-import { ArgumentsHost, Catch, HttpException, HttpStatus, Logger } from '@nestjs/common';
+import { type ArgumentsHost, Catch, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
-import { GqlArgumentsHost, GqlContextType, GqlExceptionFilter } from '@nestjs/graphql';
+import { GqlArgumentsHost, type GqlContextType, type GqlExceptionFilter } from '@nestjs/graphql';
 
 @Catch()
 export class ExceptionsFilter extends BaseExceptionFilter implements GqlExceptionFilter {

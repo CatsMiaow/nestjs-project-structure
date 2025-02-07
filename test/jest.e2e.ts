@@ -1,7 +1,7 @@
 /* eslint-disable import/no-default-export */
 import type { Config } from 'jest';
 
-import config from '../jest.config';
+import config from '../jest.config.js';
 
 // https://github.com/nestjs/graphql/issues/810#issuecomment-618308354
 const jestConfig: Config = {

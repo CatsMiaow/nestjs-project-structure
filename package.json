@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "description": "Node.js framework NestJS project structure",
   "main": "dist/app",
+  "type": "module",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12.0"
   },
   "scripts": {
     "lint": "eslint --ext .ts .",
@@ -27,15 +28,15 @@
     "@apollo/server": "^4.11.3",
     "@nestjs/apollo": "^13.0.2",
     "@nestjs/axios": "^4.0.0",
-    "@nestjs/common": "^11.0.7",
+    "@nestjs/common": "^11.0.8",
     "@nestjs/config": "^4.0.0",
-    "@nestjs/core": "^11.0.7",
+    "@nestjs/core": "^11.0.8",
     "@nestjs/graphql": "^13.0.2",
     "@nestjs/jwt": "^11.0.0",
     "@nestjs/mapped-types": "^2.1.0",
     "@nestjs/passport": "^11.0.5",
-    "@nestjs/platform-express": "^11.0.7",
-    "@nestjs/serve-static": "^5.0.1",
+    "@nestjs/platform-express": "^11.0.8",
+    "@nestjs/serve-static": "^5.0.2",
     "@nestjs/swagger": "^11.0.3",
     "@nestjs/terminus": "^11.0.0",
     "@nestjs/typeorm": "^11.0.0",
@@ -47,7 +48,7 @@
     "graphql": "^16.10.0",
     "helmet": "^8.0.0",
     "mysql2": "^3.12.0",
-    "nanoid": "^3.3.6",
+    "nanoid": "^5.0.9",
     "nestjs-pino": "^4.3.0",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
@@ -61,12 +62,12 @@
   "devDependencies": {
     "@compodoc/compodoc": "^1.1.26",
     "@nestjs/cli": "^11.0.2",
-    "@nestjs/testing": "^11.0.7",
+    "@nestjs/testing": "^11.0.8",
     "@types/compression": "^1.7.5",
     "@types/express": "^5.0.0",
     "@types/express-session": "^1.18.1",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.13.0",
+    "@types/node": "^22.13.1",
     "@types/passport": "^1.0.17",
     "@types/passport-jwt": "^4.0.1",
     "@types/passport-local": "^1.0.38",
@@ -93,7 +94,7 @@
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typeorm-model-generator": "^0.4.6-no-engines",
-    "typescript": "~5.5.4"
+    "typescript": "~5.7.3"
   },
   "repository": {
     "type": "git",
