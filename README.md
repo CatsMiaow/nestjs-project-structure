@@ -8,7 +8,10 @@ Node.js framework NestJS project structure
 If you focus on the performance or features of the module, you can consider:
 
 - [Fastify](https://docs.nestjs.com/techniques/performance) instead of `Express`
-- [MikroORM](https://docs.nestjs.com/recipes/mikroorm) or [Sequelize](https://docs.nestjs.com/techniques/database#sequelize-integration) or [Prisma](https://docs.nestjs.com/recipes/prisma) instead of `TypeORM`
+- [MikroORM](https://docs.nestjs.com/recipes/mikroorm) instead of `TypeORM`
+  - or [DrizzleORM](https://trilon.io/blog/nestjs-drizzleorm-a-great-match)
+  - or [Sequelize](https://docs.nestjs.com/techniques/database#sequelize-integration)
+  - or [Prisma](https://docs.nestjs.com/recipes/prisma)
 - [SWC](https://docs.nestjs.com/recipes/swc#swc) instead of `TypeScript compiler`
 - [Vitest](https://docs.nestjs.com/recipes/swc#vitest) instead of `Jest`
 
