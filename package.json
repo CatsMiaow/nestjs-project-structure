@@ -62,6 +62,8 @@
     "@compodoc/compodoc": "^1.1.26",
     "@nestjs/cli": "^11.0.2",
     "@nestjs/testing": "^11.0.7",
+    "@swc/cli": "^0.6.0",
+    "@swc/core": "^1.11.13",
     "@types/compression": "^1.7.5",
     "@types/express": "^5.0.0",
     "@types/express-session": "^1.18.1",

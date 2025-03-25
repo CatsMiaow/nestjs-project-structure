@@ -4,6 +4,8 @@
   "compilerOptions": {
     "tsConfigPath": "tsconfig.build.json",
     "deleteOutDir": true,
+    "builder": "swc",
+    "typeCheck": true,
     "plugins": [{
       "name": "@nestjs/graphql",
       "options": { "introspectComments": true }

@@ -5,6 +5,7 @@ import { GqlModuleOptions, GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Sampletable1 } from '#entity/sampledb1';
+import metadata from '../metadata';
 import { SimpleService } from './providers';
 import { SimpleResolver } from './resolvers';
 import { DateScalar } from './scalars';
@@ -18,6 +19,7 @@ import { DateScalar } from './scalars';
       driver: ApolloDriver,
       useFactory: (config: ConfigService) => ({
         ...config.get<GqlModuleOptions>('graphql'),
+        metadata,
       }),
       inject: [ConfigService],
     }),
