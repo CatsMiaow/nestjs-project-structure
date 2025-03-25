@@ -36,7 +36,7 @@
     "@nestjs/passport": "^11.0.5",
     "@nestjs/platform-express": "^11.0.7",
     "@nestjs/serve-static": "^5.0.1",
-    "@nestjs/swagger": "^11.0.3",
+    "@nestjs/swagger": "github:CatsMiaow/swagger#fix/esm-compatible",
     "@nestjs/terminus": "^11.0.0",
     "@nestjs/typeorm": "^11.0.0",
     "axios": "^1.7.9",
