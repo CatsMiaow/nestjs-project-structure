@@ -1,46 +1,56 @@
+/* eslint-disable no-undef, @typescript-eslint/no-require-imports, @typescript-eslint/no-unused-vars */
 const eslint = require('@eslint/js');
-const stylistic = require('@stylistic/eslint-plugin');
+const importPlugin = require('eslint-plugin-import');
+const jest = require('eslint-plugin-jest');
 const prettierRecommended = require('eslint-plugin-prettier/recommended');
 const sonarjs = require('eslint-plugin-sonarjs');
-const unicorn = require('eslint-plugin-unicorn');
-const jest = require('eslint-plugin-jest');
 const tseslint = require('typescript-eslint');
-const importX = require('eslint-plugin-import-x');
 
 // https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files
 module.exports = (async function config() {
+  const { default: stylistic } = await import('@stylistic/eslint-plugin');
   const { default: love } = await import('eslint-config-love');
+  const { default: unicorn } = await import('eslint-plugin-unicorn');
 
   return tseslint.config(
     eslint.configs.recommended,
     tseslint.configs.recommendedTypeChecked,
+    tseslint.configs.strictTypeChecked,
     tseslint.configs.stylisticTypeChecked,
-    importX.flatConfigs.recommended,
-    importX.flatConfigs.typescript,
     love,
-    stylistic.configs['recommended-flat'],
+    stylistic.configs.recommended,
     prettierRecommended,
-    unicorn.configs['flat/recommended'],
+    unicorn.configs.recommended,
     sonarjs.configs.recommended,
     jest.configs['flat/recommended'],
     {
-      ignores: ['**/node_modules/**', 'dist/**', 'src/entity/**', '**/eslint.config.js'],
+      ignores: ['**/node_modules/**', 'dist/**', 'src/entity/**'],
     },
     {
       languageOptions: {
         parserOptions: {
-          projectService: true,
+          // projectService: true,
+          projectService: {
+            allowDefaultProject: ['*.js'],
+          },
           tsconfigRootDir: __dirname,
         },
       },
       plugins: {
         '@typescript-eslint': tseslint.plugin,
-        '@stylistic': stylistic,
         jest,
+      },
+      // https://github.com/import-js/eslint-plugin-import?tab=readme-ov-file#config---flat-with-config-in-typescript-eslint
+      // extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
+      settings: {
+        'import/resolver': {
+          typescript: true,
+          node: true,
+        },
       },
       // These rules are for reference only.
       rules: {
-        //#region eslint
+        // #region eslint
         'class-methods-use-this': 'off',
         complexity: ['error', 20],
         // https://github.com/typescript-eslint/typescript-eslint/issues/1277
@@ -60,20 +70,25 @@ module.exports = (async function config() {
         'no-void': ['error', { allowAsStatement: true }],
         'object-curly-newline': 'off',
         'spaced-comment': ['error', 'always', { line: { markers: ['/', '#region', '#endregion'] } }],
-        //#endregion
+        // #endregion
 
-        //#region import-x
-        'import-x/order': [
+        // #region import
+        'import/no-default-export': 'error',
+        'import/order': [
           'error',
           {
-            groups: [['builtin', 'external'], ['internal', 'parent', 'sibling', 'index']],
+            groups: [
+              ['builtin', 'external'],
+              ['internal', 'parent', 'sibling', 'index'],
+            ],
             'newlines-between': 'always',
             alphabetize: { order: 'asc', caseInsensitive: true },
           },
         ],
-        //#endregion
+        'import/prefer-default-export': 'off',
+        // #endregion
 
-        //#region @typescript-eslint
+        // #region @typescript-eslint
         '@typescript-eslint/class-methods-use-this': 'off',
         '@typescript-eslint/consistent-type-assertions': ['error', { assertionStyle: 'angle-bracket' }],
         '@typescript-eslint/init-declarations': ['error', 'never', { ignoreForLoopInit: true }],
@@ -99,13 +114,12 @@ module.exports = (async function config() {
         '@typescript-eslint/prefer-destructuring': 'off',
         '@typescript-eslint/prefer-readonly': 'off',
         '@typescript-eslint/strict-boolean-expressions': 'off',
-        //#endregion
+        // #endregion
 
-        //#region stylistic
+        // #region stylistic
         '@stylistic/arrow-parens': ['error', 'always'],
         '@stylistic/brace-style': ['error', '1tbs'],
         '@stylistic/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
-        '@stylistic/member-delimiter-style': 'error',
         '@stylistic/no-extra-parens': ['error', 'functions'],
         '@stylistic/object-curly-spacing': ['error', 'always'],
         '@stylistic/semi': ['error', 'always'],
@@ -115,21 +129,21 @@ module.exports = (async function config() {
         '@stylistic/keyword-spacing': 'off',
         '@stylistic/member-delimiter-style': 'off',
         '@stylistic/operator-linebreak': 'off',
-        //#endregion
+        // #endregion
 
-        //#region sonarjs
+        // #region sonarjs
         'sonarjs/cognitive-complexity': ['error', 25],
         'sonarjs/no-duplicate-string': 'off',
         'sonarjs/no-nested-assignment': 'off',
-        //#endregion
+        // #endregion
 
-        //#region unicorn
+        // #region unicorn
         'unicorn/no-null': 'off',
         'unicorn/prevent-abbreviations': 'off',
         'unicorn/prefer-module': 'off',
         'unicorn/prefer-ternary': ['error', 'only-single-line'],
         'unicorn/prefer-top-level-await': 'off',
-        //#endregion
+        // #endregion
       },
     },
   );
