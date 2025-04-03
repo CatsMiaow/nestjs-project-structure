@@ -42,17 +42,17 @@ export class DatabaseService {
    */
   public async sample1(): Promise<Sampletable1[]> {
     // Repository
-    return this.sampletable1.find();
+    return await this.sampletable1.find();
   }
 
   public async sample2(): Promise<Sampletable1[]> {
     // EntityManager
-    return this.manager.find(Sampletable1);
+    return await this.manager.find(Sampletable1);
   }
 
   public async sample3(): Promise<Sampletable1[]> {
     // EntityManagerRepository
-    return this.tablerepo.find();
+    return await this.tablerepo.find();
   }
 
   /**

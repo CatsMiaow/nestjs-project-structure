@@ -42,13 +42,15 @@ export class DebugExplorer {
       return;
     }
 
-    this.options.exclude.forEach((type: string) => this.exclude.add(type));
+    for (const type of this.options.exclude) {
+      this.exclude.add(type);
+    }
   }
 
   private applyDecorator(metatype: Metatype, metadata: DebugOptions): void {
     const instanceMetatypes: Type[] = [
-      ...(this.reflector.get(MODULE_METADATA.CONTROLLERS, metatype) || []),
-      ...(this.reflector.get(MODULE_METADATA.PROVIDERS, metatype) || []),
+      ...(this.reflector.get(MODULE_METADATA.CONTROLLERS, metatype) ?? []),
+      ...(this.reflector.get(MODULE_METADATA.PROVIDERS, metatype) ?? []),
     ];
 
     for (const meta of instanceMetatypes) {

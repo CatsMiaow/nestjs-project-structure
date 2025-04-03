@@ -25,9 +25,9 @@ export class HealthController {
   @Get('health')
   @HealthCheck()
   public async check(): Promise<HealthCheckResult> {
-    return this.health.check([
-      async (): Promise<HealthIndicatorResult> => this.http.pingCheck('dns', 'https://1.1.1.1'),
-      async (): Promise<HealthIndicatorResult> => this.db.pingCheck('database'),
+    return await this.health.check([
+      async (): Promise<HealthIndicatorResult> => await this.http.pingCheck('dns', 'https://1.1.1.1'),
+      async (): Promise<HealthIndicatorResult> => await this.db.pingCheck('database'),
     ]);
   }
 }

@@ -7,7 +7,7 @@ export class DateScalar implements CustomScalar<string, Date | null> {
 
   public parseValue(value: unknown): Date {
     if (typeof value !== 'number') {
-      throw new Error('DateScalar can only parse number values');
+      throw new TypeError('DateScalar can only parse number values');
     }
 
     return new Date(value); // from client
@@ -15,7 +15,7 @@ export class DateScalar implements CustomScalar<string, Date | null> {
 
   public serialize(value: unknown): string {
     if (!(value instanceof Date)) {
-      throw new Error('DateScalar can only serialize Date values');
+      throw new TypeError('DateScalar can only serialize Date values');
     }
 
     return value.toISOString(); // to client

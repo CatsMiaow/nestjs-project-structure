@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/no-nested-assignment */
 import { Module, DynamicModule } from '@nestjs/common';
 import { DiscoveryModule } from '@nestjs/core';
 
@@ -11,8 +10,8 @@ export class DebugModule extends ConfigurableModuleClass {
     const module = super.forRoot(options);
 
     if (process.env.NODE_ENV !== 'production') {
-      (module.imports ||= []).push(DiscoveryModule);
-      (module.providers ||= []).push(DebugExplorer);
+      (module.imports ??= []).push(DiscoveryModule);
+      (module.providers ??= []).push(DebugExplorer);
     }
 
     return module;

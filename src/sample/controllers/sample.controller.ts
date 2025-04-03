@@ -66,12 +66,12 @@ export class SampleController {
   public async database(): Promise<Sampletable1[]> {
     // this.dbquery.sample2();
     // this.dbquery.sample3();
-    return this.dbquery.sample1();
+    return await this.dbquery.sample1();
   }
 
   @Get('foobars')
   public async foobars(): Promise<Sampletable1[]> {
-    return this.foobarService.getFoobars();
+    return await this.foobarService.getFoobars();
   }
 
   @Roles('admin')

@@ -13,8 +13,8 @@ export class AuthSerializer extends PassportSerializer {
     try {
       // const user = await fetchMore();
       done(null, data);
-    } catch (err) {
-      done(<Error>err);
+    } catch (error) {
+      done(<Error>error);
     }
   }
 }

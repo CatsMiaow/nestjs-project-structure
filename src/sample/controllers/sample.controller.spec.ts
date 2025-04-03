@@ -1,4 +1,4 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test, type TestingModule } from '@nestjs/testing';
 import { mockDeep } from 'jest-mock-extended';
 import { getLoggerToken, type PinoLogger } from 'nestjs-pino';
 

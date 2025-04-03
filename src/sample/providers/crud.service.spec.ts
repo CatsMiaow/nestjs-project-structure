@@ -1,7 +1,7 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test, type TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { mockDeep, type DeepMockProxy } from 'jest-mock-extended';
-import { Repository } from 'typeorm';
+import type { Repository } from 'typeorm';
 
 import { Sampletable1 } from '#entity/sampledb1';
 import { CrudService } from './crud.service';

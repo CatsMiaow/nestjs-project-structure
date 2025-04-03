@@ -19,7 +19,7 @@ export class SimpleService {
   public async create(data: SimpleInput): Promise<Simple> {
     this.logger.info('create');
 
-    return this.sampletable.save(data);
+    return await this.sampletable.save(data);
   }
 
   public async read(id: number): Promise<Simple | null> {

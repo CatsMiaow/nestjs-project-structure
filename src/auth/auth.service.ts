@@ -17,7 +17,7 @@ export class AuthService {
     const user = await this.user.fetch(username);
 
     if (user.password === password) {
-      // eslint-disable-next-line sonarjs/sonar-no-unused-vars
+      // eslint-disable-next-line sonarjs/no-unused-vars
       const { password: pass, ...result } = user;
       return result;
     }

@@ -5,18 +5,18 @@ type TemplateParameter = any[];
 
 @Injectable()
 export class UtilService {
-  public template<T>(templateData: TemplateStringsArray, param: T[], delimiter = '\n'): string {
+  public template(templateData: TemplateStringsArray, param: TemplateParameter, delimiter = '\n'): string {
+    // eslint-disable-next-line @typescript-eslint/init-declarations
     let output = '';
-    for (let i = 0; i < param.length; i += 1) {
-      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-      output += templateData[i] + param[i];
+    for (const [i, element] of param.entries()) {
+      output += `${templateData[i]}${element}`;
     }
     output += templateData[param.length];
 
     const lines: string[] = output.split(/(?:\r\n|\n|\r)/);
 
     return lines
-      .map((text: string) => text.replace(/^\s+/gm, ''))
+      .map((text: string) => text.replaceAll(/^\s+/gm, ''))
       .join(delimiter)
       .trim();
   }
@@ -29,7 +29,7 @@ export class UtilService {
     return this.template(templateData, param, ' ');
   }
 
-  public removeUndefined<T extends object>(argv: T): Record<string, unknown> {
+  public removeUndefined(argv: object): Record<string, unknown> {
     // https://stackoverflow.com/questions/25421233
     // JSON.parse(JSON.stringify(args));
     return Object.fromEntries(Object.entries(argv).filter(([, value]: [string, unknown]) => value !== undefined));
