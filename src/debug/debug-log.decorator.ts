@@ -54,7 +54,7 @@ const ClassLog =
 
     for (const [propertyKey, descriptor] of Object.entries(descriptors)) {
       const originalMethod: unknown = descriptor.value;
-      if (!(originalMethod instanceof Function) || propertyKey === 'constructor') {
+      if (typeof originalMethod !== 'function' || propertyKey === 'constructor') {
         continue;
       }
 

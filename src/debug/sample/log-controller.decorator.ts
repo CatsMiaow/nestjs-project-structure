@@ -1,4 +1,4 @@
-import { applyDecorators, Controller, ControllerOptions } from '@nestjs/common';
+import { applyDecorators, Controller, type ControllerOptions } from '@nestjs/common';
 
 import { DebugLog } from '../debug-log.decorator';
 import type { Func } from '../debug.interface';

@@ -49,8 +49,8 @@ export class DebugExplorer {
 
   private applyDecorator(metatype: Metatype, metadata: DebugOptions): void {
     const instanceMetatypes: Type[] = [
-      ...(this.reflector.get(MODULE_METADATA.CONTROLLERS, metatype) || []),
-      ...(this.reflector.get(MODULE_METADATA.PROVIDERS, metatype) || []),
+      ...(this.reflector.get(MODULE_METADATA.CONTROLLERS, metatype) ?? []),
+      ...(this.reflector.get(MODULE_METADATA.PROVIDERS, metatype) ?? []),
     ];
 
     for (const meta of instanceMetatypes) {

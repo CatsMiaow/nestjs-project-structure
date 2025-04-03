@@ -1,7 +1,7 @@
-/* eslint-disable import/no-extraneous-dependencies */
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference types="../typings/global" />
 import * as dotenv from 'dotenv';
-import { DataSource, DataSourceOptions } from 'typeorm';
+import { DataSource, type DataSourceOptions } from 'typeorm';
 
 import { configuration } from '../src/config';
 

@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/no-nested-assignment */
 import { Module, DynamicModule } from '@nestjs/common';
 import { DiscoveryModule } from '@nestjs/core';
 

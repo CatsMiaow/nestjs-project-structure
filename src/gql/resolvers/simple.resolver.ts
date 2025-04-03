@@ -28,7 +28,7 @@ export class SimpleResolver {
   public async create(@Args('simpleData') simpleData: SimpleInput): Promise<Simple> {
     this.logger.info('create');
 
-    return this.simpleService.create(simpleData);
+    return await this.simpleService.create(simpleData);
   }
 
   @Query(() => Simple)
@@ -47,13 +47,13 @@ export class SimpleResolver {
   public async find(@Args() simpleArgs: SimpleArgs): Promise<Simple[]> {
     this.logger.info('find');
 
-    return this.simpleService.find(simpleArgs);
+    return await this.simpleService.find(simpleArgs);
   }
 
   @Mutation(() => Boolean)
   public async remove(@Args('id', { type: () => ID }) id: number): Promise<boolean> {
     this.logger.info('remove');
 
-    return this.simpleService.remove(id);
+    return await this.simpleService.remove(id);
   }
 }
