@@ -41,6 +41,7 @@ module.exports = (async function config() {
         jest,
       },
       // https://github.com/import-js/eslint-plugin-import?tab=readme-ov-file#config---flat-with-config-in-typescript-eslint
+      // Config "import/recommended": Key "plugins": Cannot redefine plugin "import".
       // extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
       settings: {
         'import/resolver': {

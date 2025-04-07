@@ -74,7 +74,6 @@
     "@types/passport-local": "^1.0.38",
     "@types/prompts": "^2.4.9",
     "@types/supertest": "^6.0.3",
-    "@vitest/eslint-plugin": "^1.1.38",
     "esbuild": "^0.25.2",
     "eslint": "^9.23.0",
     "eslint-config-love": "^119.0.0",
