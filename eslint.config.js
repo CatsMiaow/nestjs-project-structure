@@ -134,6 +134,8 @@ module.exports = (async function config() {
 
         // #region sonarjs
         'sonarjs/cognitive-complexity': ['error', 25],
+        // https://community.sonarsource.com/t/eslint-plugin-sonarjs-performance-issues-on-large-codebase/138392
+        'sonarjs/no-commented-code': 'off',
         'sonarjs/no-duplicate-string': 'off',
         'sonarjs/no-nested-assignment': 'off',
         // #endregion

@@ -175,7 +175,7 @@ const jestConfig: Config = {
   // This option allows use of a custom test runner
   // testRunner: "jest-circus/runner",
 
-  testTimeout: 30000,
+  testTimeout: 30_000,
 
   // A map from regular expressions to paths to transformers
   transform: {
