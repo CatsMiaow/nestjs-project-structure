@@ -5,6 +5,7 @@ Node.js framework NestJS project structure
 
 ## Alternatives
 
+This example is based on the modules recommended by the NestJS [official documentation](https://docs.nestjs.com) as default (introduced at the top of the section). \
 If you focus on the performance or features of the module, you can consider:
 
 - [Fastify](https://docs.nestjs.com/techniques/performance) instead of `Express`
