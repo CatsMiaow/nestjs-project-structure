@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, sonarjs/no-hardcoded-credentials */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { NestExpressApplication } from '@nestjs/platform-express';
 import { Test } from '@nestjs/testing';
 import supertest from 'supertest';
