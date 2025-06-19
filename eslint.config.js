@@ -147,6 +147,8 @@ module.exports = (async function config() {
         'unicorn/prefer-ternary': ['error', 'only-single-line'],
         'unicorn/prefer-top-level-await': 'off',
         // #endregion
+
+        'jest/expect-expect': ['error', { assertFunctionNames: ['expect', 'request.**.expect'] }],
       },
     },
   );

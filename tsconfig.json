@@ -6,7 +6,7 @@
       // https://nodejs.org/api/packages.html#imports
       "#entity/*": ["./src/entity/*"],
     },
-    "target": "es2022",
+    "target": "es2023",
     "module": "commonjs",
     "moduleResolution": "node",
     "incremental": true,

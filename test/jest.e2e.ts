@@ -18,8 +18,6 @@ const jestConfig: Config = {
         astTransformers: {
           before: ['<rootDir>/jest.e2e.transformer.ts'],
         },
-        // https://kulshekhar.github.io/ts-jest/docs/getting-started/options/isolatedModules
-        // isolatedModules: true,
       },
     ],
   },
