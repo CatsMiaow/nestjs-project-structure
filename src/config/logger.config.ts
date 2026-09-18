@@ -1,4 +1,4 @@
-import type { Request } from 'express';
+import type { Request, Response } from 'express';
 import { nanoid } from 'nanoid';
 import type { Params } from 'nestjs-pino';
 import { multistream } from 'pino';
@@ -6,14 +6,14 @@ import type { ReqId } from 'pino-http';
 
 const passUrl = new Set(['/health', '/graphql']);
 
-export const loggerOptions: Params = {
+export const loggerOptions: Params<Request, Response> = {
   pinoHttp: [
     {
       // https://getpino.io/#/docs/api?id=timestamp-boolean-function
       // Change time value in production log.
       // timestamp: stdTimeFunctions.isoTime,
       quietReqLogger: true,
-      genReqId: (req): ReqId => (<Request>req).header('X-Request-Id') ?? nanoid(),
+      genReqId: (req): ReqId => req.header('X-Request-Id') ?? nanoid(),
       ...(process.env.NODE_ENV === 'production'
         ? {}
         : {
@@ -25,9 +25,9 @@ export const loggerOptions: Params = {
             },
           }),
       autoLogging: {
-        ignore: (req) => passUrl.has((<Request>req).originalUrl),
+        ignore: (req) => passUrl.has(req.originalUrl),
       },
-      customProps: (req) => (<Request>req).customProps,
+      customProps: (req) => req.customProps,
     },
     multistream(
       [

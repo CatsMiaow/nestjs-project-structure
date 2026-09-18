@@ -1,6 +1,6 @@
 import { Test, type TestingModule } from '@nestjs/testing';
-import { mockDeep } from 'jest-mock-extended';
 import { getLoggerToken, type PinoLogger } from 'nestjs-pino';
+import { mockDeep } from 'vitest-mock-extended';
 
 import { SampleController } from './sample.controller';
 import { ConfigService } from '../../common';
@@ -26,7 +26,7 @@ beforeAll(async () => {
   })
     .overrideProvider(ConfigService)
     .useValue({
-      get: jest.fn((key: keyof typeof config) => config[key]),
+      get: vi.fn((key: keyof typeof config) => config[key]),
     })
     .useMocker(mockDeep)
     .compile();

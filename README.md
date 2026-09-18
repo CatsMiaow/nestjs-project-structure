@@ -14,7 +14,6 @@ If you focus on the performance or features of the module, you can consider:
   - or [Sequelize](https://docs.nestjs.com/techniques/database#sequelize-integration)
   - or [Prisma](https://docs.nestjs.com/recipes/prisma)
 - [SWC](https://docs.nestjs.com/recipes/swc#swc) instead of `TypeScript compiler`
-- [Vitest](https://docs.nestjs.com/recipes/swc#vitest) instead of `Jest`
 - [ESM](https://nodejs.org/api/esm.html) instead of `CommonJS`
 
 Check out the [nestjs-project-performance](https://github.com/CatsMiaow/nestjs-project-performance) repository for examples using this alternative.
@@ -95,7 +94,7 @@ npm start
 |   +-- shared // Shared Nest Modules
 |   +-- gql // GraphQL Structure
 |   +-- * // Other Nest Modules, non-global, same as common structure above
-+-- test // Jest testing
++-- test // Vitest testing
 +-- typings // Modules and global type definitions
 
 // Module structure

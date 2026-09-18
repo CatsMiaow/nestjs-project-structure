@@ -20,8 +20,12 @@ const util = {
 };
 
 export const configuration = async (): Promise<Config> => {
-  const { config } = <{ config: Default }>await import(path.join(__dirname, 'envs', 'default'));
-  const { config: environment } = <{ config: Production }>await import(path.join(__dirname, 'envs', process.env.NODE_ENV || 'development'));
+  // `module: nodenext` emits these as native dynamic imports, which need the file extension.
+  // Running from source the file is `.ts`, but Vite maps the `.js` specifier back to it.
+  const { config } = <{ config: Default }>await import(path.join(__dirname, 'envs', 'default.js'));
+  const { config: environment } = <{ config: Production }>(
+    await import(path.join(__dirname, 'envs', `${process.env.NODE_ENV || 'development'}.js`))
+  );
 
   // object deep merge
   return util.merge(config, environment);

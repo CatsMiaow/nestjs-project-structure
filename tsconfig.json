@@ -6,10 +6,13 @@
       "#entity/*": ["./src/entity/*"],
     },
     "target": "es2024",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "types": ["node", "jest"],
-    "ignoreDeprecations": "6.0",
+    // node10 resolution is deprecated in TS 6 and stops working in TS 7.
+    // nodenext is what TypeScript recommends when the output runs on Node directly.
+    // package.json has no "type", so these files still compile to CommonJS.
+    // https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "types": ["node", "vitest/globals"],
     "declaration": true,
     "newLine": "lf",
     "strict": true,
