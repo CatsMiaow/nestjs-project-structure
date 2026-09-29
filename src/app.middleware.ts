@@ -19,8 +19,7 @@ export function middleware(app: INestApplication): INestApplication {
   );
   app.use(passport.initialize());
   app.use(passport.session());
-  // https://github.com/graphql/graphql-playground/issues/1283#issuecomment-703631091
-  // https://github.com/graphql/graphql-playground/issues/1283#issuecomment-1012913186
+  // GraphiQL loads its assets from unpkg.com, which helmet's default CSP blocks.
   app.use(
     helmet({
       contentSecurityPolicy: isProduction ? undefined : false,

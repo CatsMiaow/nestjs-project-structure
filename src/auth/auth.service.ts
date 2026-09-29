@@ -52,7 +52,7 @@ export class AuthService {
 
       return { userId: payload.sub, username: payload.username, roles: payload.roles };
     } catch {
-      // Unexpected token i in JSON at position XX
+      // decode() throws when the payload is not valid JSON.
       return null;
     }
   }

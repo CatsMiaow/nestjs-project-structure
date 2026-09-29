@@ -15,8 +15,8 @@ export class DatabaseService {
   constructor(
     /**
      * Sample1
-     * https://typeorm.io/#/working-with-repository
-     * https://typeorm.io/#/repository-api
+     * https://typeorm.io/docs/working-with-entity-manager/working-with-repository
+     * https://typeorm.io/docs/working-with-entity-manager/repository-api
      * Need TypeOrmModule.forFeature([]) imports
      */
     @InjectRepository(Sampletable1)
@@ -24,21 +24,21 @@ export class DatabaseService {
 
     /**
      * Sample2
-     * https://typeorm.io/#/working-with-entity-manager
-     * https://typeorm.io/#/entity-manager-api
+     * https://typeorm.io/docs/working-with-entity-manager/working-with-entity-manager
+     * https://typeorm.io/docs/working-with-entity-manager/entity-manager-api
      */
     @InjectEntityManager()
     private manager: EntityManager,
   ) {
     /**
      * Sample3
-     * https://typeorm.io/#/entity-manager-api - getRepository
+     * https://typeorm.io/docs/working-with-entity-manager/entity-manager-api - getRepository
      */
     this.tablerepo = this.manager.getRepository(Sampletable1);
   }
 
   /**
-   * https://typeorm.io/#/find-options
+   * https://typeorm.io/docs/working-with-entity-manager/find-options
    */
   public async sample1(): Promise<Sampletable1[]> {
     // Repository
@@ -56,7 +56,7 @@ export class DatabaseService {
   }
 
   /**
-   * https://typeorm.io/#/select-query-builder
+   * https://typeorm.io/docs/query-builder/select-query-builder
    */
   public async joinQuery(): Promise<boolean> {
     await this.sampletable1

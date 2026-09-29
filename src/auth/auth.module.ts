@@ -12,10 +12,8 @@ import { UserModule } from '../shared/user';
 @Module({
   imports: [
     UserModule,
-    // Nest 12 no longer inherits @Optional() from a base class.
-    // So every AuthGuard() subclass now needs AuthModuleOptions.
-    // register() provides it, and this module is global, so one call covers all guards.
-    // Options stay empty: each guard decides about the session by itself.
+    // AuthGuard() subclasses do not inherit its @Optional(), so they need AuthModuleOptions.
+    // One register() here covers every guard because this module is global. Empty options leave the session to each guard.
     // https://docs.nestjs.com/recipes/passport
     PassportModule.register({}),
     JwtModule.registerAsync({

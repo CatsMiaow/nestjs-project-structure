@@ -7,7 +7,6 @@ import { afterAll, beforeAll, expect, test } from 'vitest';
 import { AppModule } from '../../src/app.module';
 
 // https://www.apollographql.com/docs/apollo-server/testing/testing/
-// As another alternative, can use apollo-server-testing instead of supertest
 
 const gql = String.raw; // for highlighting
 let app: NestExpressApplication | undefined;
@@ -26,7 +25,6 @@ beforeAll(async () => {
 });
 
 test('User', async () => {
-  // eslint-disable-next-line sonarjs/no-hardcoded-passwords
   const { status, body: login } = await request.post('/jwt/login').send({ username: 'foobar', password: 'crypto' });
 
   expect([200, 201]).toContain(status);
