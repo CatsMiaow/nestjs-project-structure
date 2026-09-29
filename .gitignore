@@ -2,6 +2,9 @@
 .idea
 .history
 .DS_Store
+.omc
+.omx
+.serena
 dist
 docs
 build
