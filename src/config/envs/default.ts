@@ -6,11 +6,9 @@ export const config = {
   },
   graphql: {
     debug: true,
-    playground: {
-      settings: {
-        'request.credentials': 'include',
-      },
-    },
+    // `playground` is now a deprecated alias for `graphiql`.
+    // https://github.com/nestjs/graphql
+    graphiql: true,
     autoSchemaFile: true,
     autoTransformHttpErrors: true,
     // cors: { credentials: true },

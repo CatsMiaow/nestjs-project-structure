@@ -2,6 +2,7 @@
 import type { NestExpressApplication } from '@nestjs/platform-express';
 import { Test } from '@nestjs/testing';
 import supertest from 'supertest';
+import { afterAll, beforeAll, expect, test } from 'vitest';
 
 import { middleware } from '../../src/app.middleware';
 import { AppModule } from '../../src/app.module';
