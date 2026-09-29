@@ -7,6 +7,8 @@ import type { ReqId } from 'pino-http';
 const passUrl = new Set(['/health', '/graphql']);
 
 export const loggerOptions: Params<Request, Response> = {
+  // Also add the fields of PinoLogger.assign() to the "request completed" log.
+  assignResponse: true,
   pinoHttp: [
     {
       // https://getpino.io/#/docs/api?id=timestamp-boolean-function
@@ -28,7 +30,6 @@ export const loggerOptions: Params<Request, Response> = {
       autoLogging: {
         ignore: (req) => passUrl.has(req.originalUrl),
       },
-      customProps: (req) => req.customProps,
     },
     multistream(
       [
