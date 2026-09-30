@@ -7,7 +7,6 @@ import type { ReqId } from 'pino-http';
 const passUrl = new Set(['/health', '/graphql']);
 
 export const loggerOptions: Params<Request, Response> = {
-  // Also add the fields of PinoLogger.assign() to the "request completed" log.
   assignResponse: true,
   pinoHttp: [
     {
