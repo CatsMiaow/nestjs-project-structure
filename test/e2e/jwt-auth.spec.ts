@@ -2,6 +2,7 @@
 import type { NestExpressApplication } from '@nestjs/platform-express';
 import { Test } from '@nestjs/testing';
 import supertest from 'supertest';
+import { afterAll, beforeAll, expect, test } from 'vitest';
 
 import { AppModule } from '../../src/app.module';
 
@@ -22,7 +23,6 @@ beforeAll(async () => {
 });
 
 test('POST: /jwt/login', async () => {
-  // eslint-disable-next-line sonarjs/no-hardcoded-passwords
   const { status, body } = await request.post('/jwt/login').send({ username: 'foobar', password: 'crypto' });
 
   expect([200, 201]).toContain(status);
@@ -48,6 +48,12 @@ test('POST: /jwt/refresh', async () => {
     access_token: expect.any(String),
     refresh_token: expect.any(String),
   });
+});
+
+test('POST: /jwt/refresh rejects a malformed token and an access token', async () => {
+  for (const token of ['invalid', accessToken]) {
+    await request.post('/jwt/refresh').set('Authorization', `Bearer ${accessToken}`).send({ refresh_token: token }).expect(401);
+  }
 });
 
 afterAll(async () => {

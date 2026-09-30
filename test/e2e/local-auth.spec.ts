@@ -2,6 +2,7 @@
 import type { NestExpressApplication } from '@nestjs/platform-express';
 import { Test } from '@nestjs/testing';
 import supertest from 'supertest';
+import { afterAll, beforeAll, expect, test } from 'vitest';
 
 import { middleware } from '../../src/app.middleware';
 import { AppModule } from '../../src/app.module';
@@ -25,7 +26,6 @@ beforeAll(async () => {
 });
 
 test('POST: /login', async () => {
-  // eslint-disable-next-line sonarjs/no-hardcoded-passwords
   const { status, body } = await request.post('/login').send({ username: 'foobar', password: 'crypto' });
 
   expect([200, 201]).toContain(status);

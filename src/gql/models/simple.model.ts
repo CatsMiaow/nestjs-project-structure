@@ -5,7 +5,7 @@ export class Simple {
   @Field(() => ID)
   public id!: number;
 
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   public score?: number;
 
   // If there is no type, the default is Float

@@ -1,4 +1,3 @@
-// export * from './development';
 export const config = {
   db: {
     type: 'mysql',
@@ -15,6 +14,6 @@ export const config = {
     autoLoadEntities: true,
   },
   graphql: {
-    playground: false,
+    graphiql: false,
   },
 };

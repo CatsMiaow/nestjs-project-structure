@@ -1,9 +1,9 @@
 // @ts-check
 /* eslint-disable import/no-default-export */
 import eslint from '@eslint/js';
+import vitest from '@vitest/eslint-plugin';
 import { defineConfig } from 'eslint/config';
 import importPlugin from 'eslint-plugin-import';
-import jest from 'eslint-plugin-jest';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import { configs as sonarjs } from 'eslint-plugin-sonarjs';
 import unicorn from 'eslint-plugin-unicorn';
@@ -20,7 +20,7 @@ export default defineConfig(
   prettierRecommended,
   unicorn.configs.unopinionated,
   sonarjs.recommended,
-  jest.configs['flat/recommended'],
+  vitest.configs.recommended,
   {
     ignores: ['**/node_modules/**', 'dist/**', 'src/entity/**'],
   },
@@ -36,7 +36,7 @@ export default defineConfig(
     plugins: {
       '@typescript-eslint': tseslint.plugin,
       import: importPlugin,
-      jest,
+      vitest,
     },
     // https://github.com/import-js/eslint-plugin-import?tab=readme-ov-file#config---flat-with-config-in-typescript-eslint
     settings: {
@@ -116,6 +116,7 @@ export default defineConfig(
       // #endregion
 
       // #region sonarjs
+      'sonarjs/assertions-in-tests': 'off',
       'sonarjs/cognitive-complexity': ['error', 25],
       // https://community.sonarsource.com/t/eslint-plugin-sonarjs-performance-issues-on-large-codebase/138392
       'sonarjs/no-commented-code': 'off',
@@ -129,7 +130,7 @@ export default defineConfig(
       'unicorn/prefer-top-level-await': 'off',
       // #endregion
 
-      'jest/expect-expect': ['error', { assertFunctionNames: ['expect', 'request.**.expect'] }],
+      'vitest/expect-expect': ['error', { assertFunctionNames: ['expect', 'request.**.expect'] }],
     },
   },
 );

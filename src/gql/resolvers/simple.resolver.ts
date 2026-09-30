@@ -11,7 +11,7 @@ import { SimpleService } from '../providers';
 @Resolver(() => Simple)
 export class SimpleResolver {
   constructor(
-    @InjectPinoLogger(SimpleService.name) private readonly logger: PinoLogger,
+    @InjectPinoLogger(SimpleResolver.name) private readonly logger: PinoLogger,
     private simpleService: SimpleService,
   ) {}
 

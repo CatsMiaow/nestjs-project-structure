@@ -8,14 +8,16 @@ Node.js framework NestJS project structure
 This example is based on the modules recommended by the NestJS [official documentation](https://docs.nestjs.com) as default (introduced at the top of the section). \
 If you focus on the performance or features of the module, you can consider:
 
-- [Fastify](https://docs.nestjs.com/techniques/performance) instead of `Express`
-- [MikroORM](https://docs.nestjs.com/recipes/mikroorm) instead of `TypeORM`
-  - or [DrizzleORM](https://trilon.io/blog/nestjs-drizzleorm-a-great-match)
-  - or [Sequelize](https://docs.nestjs.com/techniques/database#sequelize-integration)
-  - or [Prisma](https://docs.nestjs.com/recipes/prisma)
-- [SWC](https://docs.nestjs.com/recipes/swc#swc) instead of `TypeScript compiler`
-- [Vitest](https://docs.nestjs.com/recipes/swc#vitest) instead of `Jest`
+- [Fastify](https://docs.nestjs.com/http/performance) instead of `Express`
+- [MikroORM](https://docs.nestjs.com/data/mikroorm) instead of `TypeORM`
+  - or [DrizzleORM](https://docs.nestjs.com/data/drizzle)
+  - or [Sequelize](https://docs.nestjs.com/data/sequelize)
+  - or [Prisma](https://docs.nestjs.com/data/prisma)
+- [SWC](https://docs.nestjs.com/recipes/swc) instead of `TypeScript compiler`
 - [ESM](https://nodejs.org/api/esm.html) instead of `CommonJS`
+- [Oxlint](https://oxc.rs/docs/guide/usage/linter.html) instead of `ESLint`
+- [Oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) instead of `Prettier`
+- [pnpm](https://pnpm.io) instead of `npm`
 
 Check out the [nestjs-project-performance](https://github.com/CatsMiaow/nestjs-project-performance) repository for examples using this alternative.
 
@@ -38,7 +40,7 @@ npm run entity:sync
 npm run entity:load
 ```
 
-If you use multiple databases in `entity:load`, [modify them.](bin/entity.ts#L47-L48)
+If you use multiple databases in `entity:load`, [modify them.](bin/entity.ts#L48-L50)
 
 ## Development
 
@@ -54,6 +56,7 @@ Run [http://localhost:3000](http://localhost:3000)
 
 ```sh
 npm test # exclude e2e
+npm run test:cov # with coverage
 npm run test:e2e
 ```
 
@@ -95,7 +98,7 @@ npm start
 |   +-- shared // Shared Nest Modules
 |   +-- gql // GraphQL Structure
 |   +-- * // Other Nest Modules, non-global, same as common structure above
-+-- test // Jest testing
++-- test // Vitest testing
 +-- typings // Modules and global type definitions
 
 // Module structure

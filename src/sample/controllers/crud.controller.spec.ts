@@ -1,5 +1,6 @@
 import { Test, type TestingModule } from '@nestjs/testing';
-import { mockDeep, type DeepMockProxy } from 'jest-mock-extended';
+import { afterAll, beforeAll, expect, test } from 'vitest';
+import { mockDeep, type DeepMockProxy } from 'vitest-mock-extended';
 
 import type { Sampletable1 } from '#entity/sampledb1';
 import { CrudController } from './crud.controller';

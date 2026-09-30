@@ -7,11 +7,20 @@ import { User, UserService } from '../shared/user';
 
 @Injectable()
 export class AuthService {
+  private readonly refreshSecret: string;
+
   constructor(
     private jwt: JwtService,
     private user: UserService,
-    private config: ConfigService,
-  ) {}
+    config: ConfigService,
+  ) {
+    const refreshSecret = config.get<string>('jwtRefreshSecret');
+    // With the same secret, an access token would also pass as a refresh token.
+    if (!refreshSecret || refreshSecret === config.get<string>('jwtSecret')) {
+      throw new Error('JWT_REFRESH_SECRET must be set and differ from JWT_SECRET.');
+    }
+    this.refreshSecret = refreshSecret;
+  }
 
   public async validateUser(username: string, password: string): Promise<User | null> {
     const user = await this.user.fetch(username);
@@ -26,12 +35,13 @@ export class AuthService {
   }
 
   public validateRefreshToken(data: Payload, refreshToken: string): boolean {
-    if (!this.jwt.verify(refreshToken, { secret: this.config.get('jwtRefreshSecret') })) {
+    try {
+      const payload = this.jwt.verify<{ sub: string }>(refreshToken, { secret: this.refreshSecret });
+      return payload.sub === data.userId;
+    } catch {
+      // verify() throws when the token is malformed, expired or signed with another secret.
       return false;
     }
-
-    const payload = this.jwt.decode<{ sub: string }>(refreshToken);
-    return payload.sub === data.userId;
   }
 
   public jwtSign(data: Payload): JwtSign {
@@ -52,7 +62,7 @@ export class AuthService {
 
       return { userId: payload.sub, username: payload.username, roles: payload.roles };
     } catch {
-      // Unexpected token i in JSON at position XX
+      // decode() throws when the payload is not valid JSON.
       return null;
     }
   }
@@ -61,7 +71,7 @@ export class AuthService {
     return this.jwt.sign(
       { sub },
       {
-        secret: this.config.get('jwtRefreshSecret'),
+        secret: this.refreshSecret,
         expiresIn: '7d', // Set greater than the expiresIn of the access_token
       },
     );
