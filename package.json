@@ -8,8 +8,8 @@
   },
   "engineStrict": true,
   "scripts": {
-    "lint": "eslint \"src/**/*.ts\"",
-    "lint:fix": "eslint --fix \"src/**/*.ts\"",
+    "lint": "eslint \"{src,test,bin}/**/*.ts\"",
+    "lint:fix": "eslint --fix \"{src,test,bin}/**/*.ts\"",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "entity:load": "vite-node bin/entity.ts",
     "entity:sync": "vite-node bin/synchronize.ts",

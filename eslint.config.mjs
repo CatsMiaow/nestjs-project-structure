@@ -116,6 +116,7 @@ export default defineConfig(
       // #endregion
 
       // #region sonarjs
+      'sonarjs/assertions-in-tests': 'off',
       'sonarjs/cognitive-complexity': ['error', 25],
       // https://community.sonarsource.com/t/eslint-plugin-sonarjs-performance-issues-on-large-codebase/138392
       'sonarjs/no-commented-code': 'off',

@@ -2,9 +2,9 @@
 import { loadEnvFile } from 'node:process';
 import { DataSource, type DataSourceOptions } from 'typeorm';
 
+import { configuration } from '../src/config';
 import * as sampledb1 from '../src/entity/sampledb1';
 import * as sampledb2 from '../src/entity/sampledb2';
-import { configuration } from '../src/config';
 
 try {
   loadEnvFile();
