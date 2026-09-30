@@ -53,6 +53,7 @@ Run [http://localhost:3000](http://localhost:3000)
 
 ```sh
 npm test # exclude e2e
+npm run test:cov # with coverage
 npm run test:e2e
 ```
 

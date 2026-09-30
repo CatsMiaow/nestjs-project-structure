@@ -20,6 +20,7 @@
     "start:debug": "nest start --debug --watch",
     "start:repl": "nest start --entryFile repl",
     "test": "vitest run --exclude '**/e2e/**/*.ts'",
+    "test:cov": "npm test -- --coverage",
     "test:e2e": "vitest run --config ./test/vitest.e2e.mts",
     "doc": "compodoc -p tsconfig.json -s -d docs",
     "doc:api": "npm run build && node dist/swagger"
@@ -74,6 +75,7 @@
     "@types/passport-local": "^1.0.38",
     "@types/prompts": "^2.4.9",
     "@types/supertest": "^7.2.1",
+    "@vitest/coverage-v8": "^5.0.2",
     "@vitest/eslint-plugin": "^1.6.27",
     "esbuild": "^0.28.2",
     "eslint": "^9.39.5",
