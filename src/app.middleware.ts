@@ -1,7 +1,6 @@
 import type { INestApplication } from '@nestjs/common';
 import compression from 'compression';
 import session from 'express-session';
-import helmet from 'helmet';
 import passport from 'passport';
 
 export function middleware(app: INestApplication): INestApplication {
@@ -19,13 +18,6 @@ export function middleware(app: INestApplication): INestApplication {
   );
   app.use(passport.initialize());
   app.use(passport.session());
-  // GraphiQL loads its assets from unpkg.com, which helmet's default CSP blocks.
-  app.use(
-    helmet({
-      contentSecurityPolicy: isProduction ? undefined : false,
-      crossOriginEmbedderPolicy: isProduction ? undefined : false,
-    }),
-  );
   // app.enableCors();
 
   return app;

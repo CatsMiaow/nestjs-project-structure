@@ -17,6 +17,10 @@ async function bootstrap(): Promise<string> {
     bufferLogs: true,
   });
 
+  // https://docs.nestjs.com/security/helmet
+  app.useSecurityHeaders({
+    contentSecurityPolicy: isProduction,
+  });
   app.useLogger(app.get(Logger));
   app.useGlobalInterceptors(new LoggerErrorInterceptor());
 
