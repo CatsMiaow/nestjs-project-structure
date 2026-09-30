@@ -50,8 +50,10 @@ test('POST: /jwt/refresh', async () => {
   });
 });
 
-test('POST: /jwt/refresh rejects an invalid refresh token', async () => {
-  await request.post('/jwt/refresh').set('Authorization', `Bearer ${accessToken}`).send({ refresh_token: 'invalid' }).expect(401);
+test('POST: /jwt/refresh rejects a malformed token and an access token', async () => {
+  for (const token of ['invalid', accessToken]) {
+    await request.post('/jwt/refresh').set('Authorization', `Bearer ${accessToken}`).send({ refresh_token: token }).expect(401);
+  }
 });
 
 afterAll(async () => {
