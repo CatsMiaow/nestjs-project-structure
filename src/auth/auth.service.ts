@@ -26,12 +26,13 @@ export class AuthService {
   }
 
   public validateRefreshToken(data: Payload, refreshToken: string): boolean {
-    if (!this.jwt.verify(refreshToken, { secret: this.config.get('jwtRefreshSecret') })) {
+    try {
+      const payload = this.jwt.verify<{ sub: string }>(refreshToken, { secret: this.config.get('jwtRefreshSecret') });
+      return payload.sub === data.userId;
+    } catch {
+      // verify() throws when the token is malformed, expired or signed with another secret.
       return false;
     }
-
-    const payload = this.jwt.decode<{ sub: string }>(refreshToken);
-    return payload.sub === data.userId;
   }
 
   public jwtSign(data: Payload): JwtSign {
