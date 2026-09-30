@@ -2,8 +2,7 @@
 import ormconfig from './ormconfig';
 
 /**
- * The `typeorm schema:sync` command loads the data source with its own loader, which cannot read
- * TypeScript, so drive the DataSource directly and let vite-node compile this file.
+ * Synchronizes the database schema with the entities.
  * https://typeorm.io/docs/data-source/data-source-api
  */
 (async (): Promise<void> => {

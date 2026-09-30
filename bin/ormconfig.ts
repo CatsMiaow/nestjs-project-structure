@@ -1,26 +1,26 @@
 /// <reference types="../typings/global" />
+import { globSync } from 'node:fs';
+import path from 'node:path';
 import { loadEnvFile } from 'node:process';
 import { DataSource, type DataSourceOptions } from 'typeorm';
 
 import { configuration } from '../src/config';
-import * as sampledb1 from '../src/entity/sampledb1';
-import * as sampledb2 from '../src/entity/sampledb2';
 
 try {
   loadEnvFile();
 } catch {}
 
-// TypeORM resolves glob paths with its own loader, which cannot read TypeScript.
-// Passing the classes keeps the entities inside the module graph vite-node compiles.
-// Add the folder here after creating it with `npm run entity:load`.
-const entities = [...Object.values(sampledb1), ...Object.values(sampledb2)];
+const root = path.join(__dirname, '..');
 
 const ormconfig = async (): Promise<DataSource> => {
   const config = <{ db: DataSourceOptions }>await configuration();
+  // TypeORM cannot load TypeScript entities from glob paths, so import them here.
+  const files = globSync('src/entity/**/*.entity.ts', { cwd: root });
+  const modules = await Promise.all(files.map(async (file) => <Record<string, unknown>>await import(path.join(root, file))));
 
   return new DataSource({
     ...config.db,
-    entities,
+    entities: <DataSourceOptions['entities']>modules.flatMap((entityModule) => Object.values(entityModule)),
   });
 };
 
