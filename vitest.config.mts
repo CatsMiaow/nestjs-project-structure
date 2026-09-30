@@ -2,11 +2,14 @@
 import { loadEnvFile } from 'node:process';
 import { defineConfig } from 'vitest/config';
 
+import { nestGraphqlPlugin } from './test/vitest.graphql-plugin.mjs';
+
 try {
   loadEnvFile();
 } catch {}
 
 export default defineConfig({
+  plugins: [nestGraphqlPlugin()],
   test: {
     root: './',
     testTimeout: 30_000,
